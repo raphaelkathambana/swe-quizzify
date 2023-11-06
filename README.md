@@ -55,7 +55,7 @@
 
 ## Getting Started
 
-Visit the [Setup.md](Setup.md) page for more information on how to configure the  application.
+Visit the [Setup.md](SETUP.md) page for more information on how to configure the  application.
 
 ## Folder Structure
 
