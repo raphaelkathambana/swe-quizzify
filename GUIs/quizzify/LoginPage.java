@@ -181,11 +181,6 @@ public class LoginPage extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void closeLAbelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeLAbelMouseClicked
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_closeLAbelMouseClicked
-
     private void backLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backLabelMouseClicked
         // TODO add your handling code here:
         EntryPage entrypage = new EntryPage();
@@ -193,6 +188,11 @@ public class LoginPage extends javax.swing.JFrame {
         entrypage.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_backLabelMouseClicked
+
+    private void closeLAbelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeLAbelMouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_closeLAbelMouseClicked
 
     /**
      * @param args the command line arguments

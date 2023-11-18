@@ -41,12 +41,10 @@ public class EntryPage extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(153, 0, 153));
         jPanel1.setMinimumSize(new java.awt.Dimension(820, 620));
         jPanel1.setPreferredSize(new java.awt.Dimension(820, 620));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         AreYouLabel.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         AreYouLabel.setForeground(new java.awt.Color(255, 255, 255));
         AreYouLabel.setText("Are You....");
-        jPanel1.add(AreYouLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(301, 86, 219, 95));
 
         TeacherButton.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         TeacherButton.setText("A Teacher");
@@ -60,12 +58,10 @@ public class EntryPage extends javax.swing.JFrame {
                 TeacherButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(TeacherButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(252, 199, 300, 90));
 
         ORlabel.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
         ORlabel.setForeground(new java.awt.Color(255, 255, 255));
         ORlabel.setText("OR");
-        jPanel1.add(ORlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 310, -1, -1));
 
         StudentButton.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         StudentButton.setText("A Student");
@@ -79,10 +75,8 @@ public class EntryPage extends javax.swing.JFrame {
                 StudentButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(StudentButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 380, 300, 100));
 
         logoLAbel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/QUIZZIFY-removebg-preview2.png"))); // NOI18N
-        jPanel1.add(logoLAbel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 430, 340));
 
         closeLabel.setForeground(new java.awt.Color(255, 255, 255));
         closeLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/images-removebg-preview.png"))); // NOI18N
@@ -91,7 +85,50 @@ public class EntryPage extends javax.swing.JFrame {
                 closeLabelMouseClicked(evt);
             }
         });
-        jPanel1.add(closeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 10, -1, -1));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(252, 252, 252)
+                        .addComponent(TeacherButton, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(370, 370, 370)
+                        .addComponent(ORlabel))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(301, 301, 301)
+                        .addComponent(AreYouLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(logoLAbel, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(228, 228, 228)
+                .addComponent(closeLabel))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(250, 250, 250)
+                .addComponent(StudentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(169, 169, 169)
+                                .addComponent(TeacherButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(21, 21, 21)
+                                .addComponent(ORlabel))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(56, 56, 56)
+                                .addComponent(AreYouLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(logoLAbel, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(closeLabel))
+                .addGap(10, 10, 10)
+                .addComponent(StudentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -108,26 +145,14 @@ public class EntryPage extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TeacherButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TeacherButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TeacherButtonActionPerformed
-
-    private void StudentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StudentButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_StudentButtonActionPerformed
-
     private void closeLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeLabelMouseClicked
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_closeLabelMouseClicked
 
-    private void TeacherButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TeacherButtonMouseClicked
+    private void StudentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StudentButtonActionPerformed
         // TODO add your handling code here:
-        TeachersLogin login = new TeachersLogin();
-        login.setVisible(true);
-        login.setLocationRelativeTo(null);
-        this.dispose();
-    }//GEN-LAST:event_TeacherButtonMouseClicked
+    }//GEN-LAST:event_StudentButtonActionPerformed
 
     private void StudentButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_StudentButtonMouseClicked
         // TODO add your handling code here:
@@ -136,6 +161,18 @@ public class EntryPage extends javax.swing.JFrame {
         loginpage.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_StudentButtonMouseClicked
+
+    private void TeacherButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TeacherButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TeacherButtonActionPerformed
+
+    private void TeacherButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TeacherButtonMouseClicked
+        // TODO add your handling code here:
+        TeachersLogin login = new TeachersLogin();
+        login.setVisible(true);
+        login.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_TeacherButtonMouseClicked
 
     /**
      * @param args the command line arguments
