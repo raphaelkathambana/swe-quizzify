@@ -5,12 +5,21 @@
 package quizzify;
 
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.*;
+import java.awt.Color;
+import util.Operation;
 
 /**
  *
  * @author austi
  */
-public class StudentSignUp extends javax.swing.JInternalFrame {
+public class StudentSignUp extends JInternalFrame {
+
+    Operation O = new Operation();
+    char[] focused = { '0', '0', '0' };
+    boolean empty = false;
+    boolean PassSee = false;
+    String userType = "Stud";
 
     /**
      * Creates new form CreateStudent
@@ -20,6 +29,17 @@ public class StudentSignUp extends javax.swing.JInternalFrame {
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();
         ui.setNorthPane(null);
+        
+        studNameField.setForeground(Color.GRAY);
+        studNameField.setText("  Name");
+        studEmailField.setForeground(Color.GRAY);
+        studEmailField.setText("  Email");
+        studPassword.setForeground(Color.GRAY);
+        studPassword.setText("  Password");
+
+        if (focused[1] == '0'){
+            studPassword.setEchoChar((char) 0);
+        }
     }
 
     /**
@@ -32,80 +52,238 @@ public class StudentSignUp extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel6 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        studIDfield = new javax.swing.JTextField();
         studNameField = new javax.swing.JTextField();
         studEmailField = new javax.swing.JTextField();
-        studPassword = new javax.swing.JTextField();
-        createStudAccButton = new javax.swing.JButton();
+        SignupButton = new javax.swing.JButton();
+        ShowPass = new javax.swing.JRadioButton();
+        ClearButton = new javax.swing.JButton();
+        studPassword = new javax.swing.JPasswordField();
+        jTextField1 = new javax.swing.JTextField();
 
-        setBackground(new java.awt.Color(255, 255, 51));
-        setPreferredSize(new java.awt.Dimension(1100, 670));
-        getContentPane().setLayout(null);
+        setBackground(new java.awt.Color(255, 255, 50));
+        setPreferredSize(new java.awt.Dimension(1050, 530));
+        setVisible(true);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabel6.setText("Create Student Account");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(300, 40, 580, 80);
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("Student ID");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(80, 150, 190, 32);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel2.setText("Student Name");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(80, 210, 180, 32);
+        jLabel2.setText("Student's Name");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel3.setText("Email");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(80, 270, 170, 25);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel4.setText("Password");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(80, 330, 180, 32);
-
-        studIDfield.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        getContentPane().add(studIDfield);
-        studIDfield.setBounds(300, 150, 520, 37);
 
         studNameField.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        getContentPane().add(studNameField);
-        studNameField.setBounds(300, 210, 520, 37);
+        studNameField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                studNameFieldFocusGained(evt);
+            }
+        });
 
         studEmailField.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        getContentPane().add(studEmailField);
-        studEmailField.setBounds(300, 270, 520, 37);
+        studEmailField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                studEmailFieldFocusGained(evt);
+            }
+        });
+
+        SignupButton.setBackground(new java.awt.Color(255, 255, 51));
+        SignupButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        SignupButton.setText("SIGN UP");
+        SignupButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SignupButtonActionPerformed(evt);
+            }
+        });
+
+        ShowPass.setBackground(new java.awt.Color(255, 255, 255));
+        ShowPass.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        ShowPass.setText("Show Password");
+        ShowPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShowPassActionPerformed(evt);
+            }
+        });
+
+        ClearButton.setBackground(new java.awt.Color(255, 255, 51));
+        ClearButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        ClearButton.setText("CLEAR");
+        ClearButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ClearButtonActionPerformed(evt);
+            }
+        });
 
         studPassword.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        getContentPane().add(studPassword);
-        studPassword.setBounds(300, 330, 520, 37);
+        studPassword.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                studPasswordFocusGained(evt);
+            }
+        });
 
-        createStudAccButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        createStudAccButton.setText("Create Account");
-        getContentPane().add(createStudAccButton);
-        createStudAccButton.setBounds(440, 410, 240, 80);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(300, 300, 300)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel2))
+                        .addGap(49, 49, 49)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(studNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(ClearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(SignupButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(ShowPass, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(studPassword, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(studEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(142, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(studNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(16, 16, 16))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2)
+                        .addGap(24, 24, 24)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(studEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(studPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(12, 12, 12)
+                .addComponent(ShowPass)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SignupButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ClearButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void ShowPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowPassActionPerformed
+        if (focused[1] == '1') {
+            if (PassSee == false) {
+                PassSee = true;
+                studPassword.setEchoChar((char) 0);
+            } else if (PassSee == true) {
+                PassSee = false;
+                studPassword.setEchoChar('*');
+            }
+        }
+    }//GEN-LAST:event_ShowPassActionPerformed
+
+    private void ClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearButtonActionPerformed
+        if (focused[0] == '1')
+            studNameField.setText("");
+        if (focused[1] == '1')
+            studEmailField.setText("");
+        if (focused[2] == '1')
+            studPassword.setText("");
+    }//GEN-LAST:event_ClearButtonActionPerformed
+
+    private void SignupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignupButtonActionPerformed
+        String theName = studNameField.getText();
+        String theEmail = studEmailField.getText();
+        String thePass = String.valueOf(studPassword.getPassword());
+        
+        if (theName.isEmpty() || focused[0] == '0')
+            empty = true;
+        
+        if (theEmail.isEmpty() || focused[1] == '0')
+            empty = true;
+        
+        if (thePass.isEmpty() || focused[2] == '0')
+            empty = true;
+        
+        if (empty == false) {
+            try {
+                O.SignUp(theName, theEmail, thePass, userType);
+                JOptionPane.showMessageDialog(this, "Sign Up Successful! Your ID number is: " + O.getStrId(userType));
+                // TODO find correct Dashboard
+                QuizzifyDashboard Q = new QuizzifyDashboard();
+                Q.setVisible(true);
+                this.setVisible(false);
+            } catch (NumberFormatException NumErr) {
+                JOptionPane.showMessageDialog(this, "Please Write Your Details Properly");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Please Fill Out All The Details");
+            empty = false;
+        }
+    }//GEN-LAST:event_SignupButtonActionPerformed
+
+    private void studNameFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_studNameFieldFocusGained
+        if (evt.getSource() == studNameField && focused[0] == '0') {
+            studNameField.setText("");
+            studNameField.setForeground(Color.BLACK);
+            focused[0] = '1';
+        }
+    }//GEN-LAST:event_studNameFieldFocusGained
+
+    private void studEmailFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_studEmailFieldFocusGained
+        if (evt.getSource() == studEmailField && focused[1] == '0') {
+            studEmailField.setText("");
+            studEmailField.setForeground(Color.BLACK);
+            focused[1] = '1';
+        }
+    }//GEN-LAST:event_studEmailFieldFocusGained
+
+    private void studPasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_studPasswordFocusGained
+        if (evt.getSource() == studPassword && focused[2] == '0') {
+            studPassword.setText("");
+            studPassword.setForeground(Color.BLACK);
+            studPassword.setEchoChar('*');
+            focused[2] = '1';
+        } 
+    }//GEN-LAST:event_studPasswordFocusGained
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton createStudAccButton;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton ClearButton;
+    private javax.swing.JRadioButton ShowPass;
+    private javax.swing.JButton SignupButton;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField studEmailField;
-    private javax.swing.JTextField studIDfield;
     private javax.swing.JTextField studNameField;
-    private javax.swing.JTextField studPassword;
+    private javax.swing.JPasswordField studPassword;
     // End of variables declaration//GEN-END:variables
 }
