@@ -130,7 +130,6 @@
             <Property name="text" type="java.lang.String" value="A Teacher"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="TeacherButtonMouseClicked"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TeacherButtonActionPerformed"/>
           </Events>
         </Component>
@@ -153,7 +152,6 @@
             <Property name="text" type="java.lang.String" value="A Student"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="StudentButtonMouseClicked"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="StudentButtonActionPerformed"/>
           </Events>
         </Component>

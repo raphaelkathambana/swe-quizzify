@@ -68,7 +68,7 @@ public class StudentDashboard extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 1100, 140);
+        jPanel1.setBounds(0, 0, 1109, 140);
 
         jPanel2.setBackground(new java.awt.Color(153, 0, 153));
 

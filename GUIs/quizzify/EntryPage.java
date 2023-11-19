@@ -48,11 +48,6 @@ public class EntryPage extends javax.swing.JFrame {
 
         TeacherButton.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         TeacherButton.setText("A Teacher");
-        TeacherButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TeacherButtonMouseClicked(evt);
-            }
-        });
         TeacherButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TeacherButtonActionPerformed(evt);
@@ -65,11 +60,6 @@ public class EntryPage extends javax.swing.JFrame {
 
         StudentButton.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         StudentButton.setText("A Student");
-        StudentButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                StudentButtonMouseClicked(evt);
-            }
-        });
         StudentButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 StudentButtonActionPerformed(evt);
@@ -146,33 +136,22 @@ public class EntryPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void closeLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeLabelMouseClicked
-        // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_closeLabelMouseClicked
 
-    private void StudentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StudentButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_StudentButtonActionPerformed
-
-    private void StudentButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_StudentButtonMouseClicked
-        // TODO add your handling code here:
+    private void StudentButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
         LoginPage loginpage = new LoginPage();
         loginpage.setVisible(true);
         loginpage.setLocationRelativeTo(null);
         this.dispose();
-    }//GEN-LAST:event_StudentButtonMouseClicked
+    }                                            
 
     private void TeacherButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TeacherButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TeacherButtonActionPerformed
-
-    private void TeacherButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TeacherButtonMouseClicked
-        // TODO add your handling code here:
         TeachersLogin login = new TeachersLogin();
         login.setVisible(true);
         login.setLocationRelativeTo(null);
         this.dispose();
-    }//GEN-LAST:event_TeacherButtonMouseClicked
+    }//GEN-LAST:event_TeacherButtonActionPerformed
 
     /**
      * @param args the command line arguments
