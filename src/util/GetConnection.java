@@ -1,24 +1,43 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Singleton.java to edit this template
- */
 package util;
 
-/**
- *
- * @author maya1
- */
-public class GetConnection {
-    
-    private GetConnection() {
-    }
-    
-    public static GetConnection getInstance() {
-        return GetConnectionHolder.INSTANCE;
-    }
-    
-    private static class GetConnectionHolder {
+import java.io.FileReader;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.Properties;
 
-        private static final GetConnection INSTANCE = new GetConnection();
-    }
+public class GetConnection {
+
+        private static GetConnection instance;
+        private Connection connection;
+
+        private GetConnection() {
+            Properties mySql = new Properties();
+            try (FileReader in = new FileReader("database.properties")) {
+                mySql.load(in);
+            } catch (IOException e) {
+                System.out.println("Error loading db.properties from classpath." + e);
+            }
+            String username = mySql.getProperty("username");
+            String password = mySql.getProperty("password");
+            String url = mySql.getProperty("url");
+            try {
+                this.connection = DriverManager.getConnection(url, username, password);
+            } catch (SQLException e) {
+                System.out.println("Error connecting to the database." + e);
+            }
+        }
+
+        public Connection getConnection() {
+            return connection;
+        }
+
+        public static GetConnection getInstance() {
+            if (instance == null) {
+                instance = new GetConnection();
+            }
+            return instance;
+        }  
+        
 }
