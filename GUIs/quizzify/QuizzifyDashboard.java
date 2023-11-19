@@ -95,7 +95,7 @@ public class QuizzifyDashboard extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(closeLabel)
-                        .addGap(38, 38, 38))))
+                        .addContainerGap())))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,9 +138,8 @@ public class QuizzifyDashboard extends javax.swing.JFrame {
         createStudLayout.setHorizontalGroup(
             createStudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(createStudLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 14, Short.MAX_VALUE))
         );
         createStudLayout.setVerticalGroup(
             createStudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,9 +168,8 @@ public class QuizzifyDashboard extends javax.swing.JFrame {
         viewStudLayout.setHorizontalGroup(
             viewStudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(viewStudLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         viewStudLayout.setVerticalGroup(
             viewStudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,9 +198,8 @@ public class QuizzifyDashboard extends javax.swing.JFrame {
         quizzesLayout.setHorizontalGroup(
             quizzesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(quizzesLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         quizzesLayout.setVerticalGroup(
             quizzesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -231,9 +228,8 @@ public class QuizzifyDashboard extends javax.swing.JFrame {
         studentProgLayout.setHorizontalGroup(
             studentProgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(studentProgLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         studentProgLayout.setVerticalGroup(
             studentProgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
