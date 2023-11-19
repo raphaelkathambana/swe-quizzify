@@ -1,0 +1,5 @@
+/nbproject/private/
+/build/
+*.properties
+*.class
+TODO.txt
