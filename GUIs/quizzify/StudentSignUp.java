@@ -10,12 +10,12 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  *
  * @author austi
  */
-public class CreateStudent extends javax.swing.JInternalFrame {
+public class StudentSignUp extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form CreateStudent
      */
-    public CreateStudent() {
+    public StudentSignUp() {
         initComponents();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();

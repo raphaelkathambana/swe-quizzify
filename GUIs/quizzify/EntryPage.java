@@ -140,9 +140,9 @@ public class EntryPage extends javax.swing.JFrame {
     }//GEN-LAST:event_closeLabelMouseClicked
 
     private void StudentButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
-        LoginPage loginpage = new LoginPage();
-        loginpage.setVisible(true);
-        loginpage.setLocationRelativeTo(null);
+        StudentLogin login = new StudentLogin();
+        login.setVisible(true);
+        login.setLocationRelativeTo(null);
         this.dispose();
     }                                            
 

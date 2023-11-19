@@ -364,7 +364,7 @@ public class QuizzifyDashboard extends javax.swing.JFrame {
 
     private void createStudMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createStudMouseClicked
         // TODO add your handling code here:
-        CreateStudent createstudent = new CreateStudent();
+        StudentSignUp createstudent = new StudentSignUp();
         ViewScreen.removeAll();
         ViewScreen.add(createstudent).setVisible(true);
     }//GEN-LAST:event_createStudMouseClicked

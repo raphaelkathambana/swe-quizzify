@@ -11,7 +11,7 @@ import util.Operation;
  *
  * @author austi
  */
-public class LoginPage extends JFrame {
+public class StudentLogin extends JFrame {
 
     Operation O = new Operation();
     char[] focused = { '0', '0' };
@@ -19,7 +19,7 @@ public class LoginPage extends JFrame {
     boolean PassSee = false;
     String userType = "Stud";
 
-    public LoginPage() {
+    public StudentLogin() {
         initComponents();
         studIDfield.setForeground(Color.GRAY);
         studIDfield.setText("  ID");
@@ -371,20 +371,21 @@ public class LoginPage extends JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StudentLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StudentLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StudentLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StudentLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginPage().setVisible(true);
+                new StudentLogin().setVisible(true);
             }
         });
     }
