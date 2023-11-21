@@ -72,6 +72,37 @@ public class Operation {
         }
     }
 
+    public void Details(int ID, String Type) {
+        
+        Statement Stat;
+        ResultSet rs;
+        String query = "";
+
+        if (Type == "Stud") {
+            query = "SELECT * FROM Student WHERE Student_ID = " + ID + ";";
+        } else if (Type == "Teach") {
+            query = "SELECT * FROM Teacher WHERE Teacher_ID = " + ID + ";";
+        }
+
+        System.out.println(query);
+
+        try {
+            Stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE);
+            rs = Stat.executeQuery(query);
+
+            rs.next();
+            theId = rs.getInt(1);
+            theName = rs.getString(2);
+            theEmail = rs.getString(3);
+            thePass = rs.getString(4);
+
+            System.out.println("Inserting Works");
+
+        } catch (SQLException e) {
+            System.out.println("Error " + e.getMessage());
+        }
+    }
 
     public String getStrId(String Type) {
         
