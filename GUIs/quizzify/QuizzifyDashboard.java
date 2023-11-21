@@ -7,11 +7,15 @@ package quizzify;
 import java.awt.Color;
 // import javax.swing.JFrame;
 
+import javax.swing.JFrame;
+
+import util.Operation;
+
 /**
  *
  * @author austi
  */
-public class QuizzifyDashboard extends TeachersLogin {
+public class QuizzifyDashboard extends JFrame {
 
     /**
      * Creates new form QuizzifyDashboard
@@ -22,8 +26,12 @@ public class QuizzifyDashboard extends TeachersLogin {
     public QuizzifyDashboard() {
         initComponents();
         DefaultColour= new Color(153,0,153);
-        ClickedColour= new Color(255,255,51);
-        // WelcomeLabel.setText("Welcome, " + O.getName());
+        ClickedColour= new Color(230,196,70);
+
+        Operation O = new Operation();
+        int TeachID = O.getCache("Teach");
+        O.Details(TeachID, "Teach");
+        WelcomeLabel.setText("Welcome, " + O.getName());
     }
 
     /**
@@ -56,6 +64,7 @@ public class QuizzifyDashboard extends TeachersLogin {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
+        jPanel3.setBackground(new java.awt.Color(240, 240, 0));
         jPanel3.setLayout(null);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -90,7 +99,7 @@ public class QuizzifyDashboard extends TeachersLogin {
                         .addGap(25, 25, 25))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(53, 53, 53)
-                        .addComponent(WelcomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(WelcomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel4Layout.setVerticalGroup(
@@ -130,14 +139,15 @@ public class QuizzifyDashboard extends TeachersLogin {
         createStudLayout.setHorizontalGroup(
             createStudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(createStudLayout.createSequentialGroup()
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 14, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         createStudLayout.setVerticalGroup(
             createStudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(createStudLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -160,8 +170,9 @@ public class QuizzifyDashboard extends TeachersLogin {
         viewStudLayout.setHorizontalGroup(
             viewStudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(viewStudLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         viewStudLayout.setVerticalGroup(
             viewStudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,8 +201,9 @@ public class QuizzifyDashboard extends TeachersLogin {
         quizzesLayout.setHorizontalGroup(
             quizzesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(quizzesLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         quizzesLayout.setVerticalGroup(
             quizzesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -220,8 +232,9 @@ public class QuizzifyDashboard extends TeachersLogin {
         studentProgLayout.setHorizontalGroup(
             studentProgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(studentProgLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         studentProgLayout.setVerticalGroup(
             studentProgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -246,21 +259,19 @@ public class QuizzifyDashboard extends TeachersLogin {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(createStud, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(viewStud, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(quizzes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(studentProg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(logoutButton)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                .addComponent(logoutButton)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(createStud, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(viewStud, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(quizzes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(studentProg, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(createStud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
+                .addGap(18, 18, 18)
                 .addComponent(viewStud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(quizzes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -308,7 +319,9 @@ public class QuizzifyDashboard extends TeachersLogin {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 687, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 698, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();

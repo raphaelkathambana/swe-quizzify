@@ -241,7 +241,8 @@ public class TeachersLogin extends javax.swing.JFrame {
             O.SignIn(theID, thePass, userType);
             if (theID == O.getId() && thePass.equals(O.getPass())) {
                 // JOptionPane.showMessageDialog(this, "Loged in!");
-
+                int TeachID = Integer.valueOf(this.teachIDfield.getText());
+                O.setCache(TeachID, userType);
                 QuizzifyDashboard Q = new QuizzifyDashboard();
                 Q.setVisible(true);
                 this.setVisible(false);

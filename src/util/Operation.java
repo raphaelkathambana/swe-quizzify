@@ -8,6 +8,9 @@ import java.sql.Statement;
 public class Operation {
 
     GetConnection connection = GetConnection.getInstance();
+    int theId;
+    String theName, theEmail, thePass;
+
     public void SignUp(String Name, String Email, String Pass, String Type) {
 
         String query = "";
@@ -36,11 +39,54 @@ public class Operation {
         }
     }
 
-    int theId;
-    String theName, theEmail, thePass;
+    public void setCache(int ID, String Type) {
+
+        String query = "";
+
+        if (Type == "Stud") {
+            query = "INSERT INTO StudentCache (`ID`) VALUES (?);";
+        } else if (Type == "Teach") {
+            query = "INSERT INTO TeacherCache (`ID`) VALUES (?);";
+        }
+
+        PreparedStatement pStat;
+
+        try {
+            pStat = connection.getConnection().prepareStatement(query);
+            pStat.setInt(1, ID);
+            pStat.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Error " + e.getMessage());
+        }
+    }
+    
+    public int getCache(String Type) {
+        Statement Stat;
+        ResultSet rs;
+        String query = "";
+
+        if (Type == "Stud") {
+            query = "SELECT * FROM StudentCache;";
+        } else if (Type == "Teach") {
+            query = "SELECT * FROM TeacherCache;";
+        }
+
+        try {
+            Stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE);
+            rs = Stat.executeQuery(query);
+            rs.next();
+            theId = rs.getInt(1);
+        } catch (SQLException e) {
+            System.out.println("Error " + e.getMessage());
+        }
+        return theId;
+    }
+
+    
 
     public void SignIn(int ID, String Pass, String Type) {
-        
+
         Statement Stat;
         ResultSet rs;
         String query = "";
@@ -73,7 +119,7 @@ public class Operation {
     }
 
     public void Details(int ID, String Type) {
-        
+
         Statement Stat;
         ResultSet rs;
         String query = "";
@@ -96,6 +142,7 @@ public class Operation {
             theName = rs.getString(2);
             theEmail = rs.getString(3);
             thePass = rs.getString(4);
+            // theId = Integer.toString(intId);
 
             System.out.println("Inserting Works");
 
@@ -105,32 +152,32 @@ public class Operation {
     }
 
     public String getStrId(String Type) {
-        
+
         Statement Stat;
         ResultSet rs;
 
         int nowId = 0;
         String query = "";
-        // String query = "select CID from login.clients where CID =(select max(CID) from clients)";
+        // String query = "select CID from login.clients where CID =(select max(CID)
+        // from clients)";
         if (Type == "Stud") {
             query = "SELECT Student_ID FROM Student WHERE Student_ID = (select max(Student_ID) from Student);";
         } else if (Type == "Teach") {
             query = "SELECT Teacher_ID FROM Teacher WHERE Teacher_ID = (select max(Teacher_ID) from Teacher);";
         }
 
-
         try {
-        Stat = connection.getConnection().createStatement();
-        rs = Stat.executeQuery(query);
-        while (rs.next())
-            nowId = rs.getInt(1);
+            Stat = connection.getConnection().createStatement();
+            rs = Stat.executeQuery(query);
+            while (rs.next())
+                nowId = rs.getInt(1);
         } catch (SQLException e) {
             System.out.println("Couldn't find number of user");
         }
 
         String StrId = "";
         int digits = Integer.toString(nowId).trim().length();
-        
+
         if (digits == 1)
             StrId = "000" + nowId;
         if (digits == 2)
@@ -141,8 +188,7 @@ public class Operation {
             StrId = "" + nowId;
 
         System.out.println(StrId);
-        
-        
+
         return StrId;
     }
 

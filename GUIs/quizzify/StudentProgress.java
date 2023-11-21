@@ -31,6 +31,7 @@ public class StudentProgress extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         topLabel = new javax.swing.JLabel();
         studIDlabel = new javax.swing.JLabel();
         StudIDfield = new javax.swing.JTextField();
@@ -44,105 +45,169 @@ public class StudentProgress extends javax.swing.JInternalFrame {
         EnglishResultField = new javax.swing.JTextField();
         ScienceResultField = new javax.swing.JTextField();
         SSTResultField = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 51));
         setMinimumSize(new java.awt.Dimension(1100, 670));
         setPreferredSize(new java.awt.Dimension(1100, 670));
-        getContentPane().setLayout(null);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 130));
 
         topLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         topLabel.setText("Student Progress");
-        getContentPane().add(topLabel);
-        topLabel.setBounds(237, 6, 575, 81);
 
         studIDlabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         studIDlabel.setText("Student ID:");
-        getContentPane().add(studIDlabel);
-        studIDlabel.setBounds(49, 93, 182, 44);
-        getContentPane().add(StudIDfield);
-        StudIDfield.setBounds(237, 100, 569, 35);
 
+        checkButton.setBackground(new java.awt.Color(255, 255, 255));
         checkButton.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         checkButton.setText("Check");
-        getContentPane().add(checkButton);
-        checkButton.setBounds(452, 149, 108, 37);
 
         englishLabel.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         englishLabel.setText("English:");
-        getContentPane().add(englishLabel);
-        englishLabel.setBounds(49, 219, 169, 48);
 
         ScienceLabel.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         ScienceLabel.setText("Science:");
-        getContentPane().add(ScienceLabel);
-        ScienceLabel.setBounds(49, 402, 211, 48);
 
         SSTlabel.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         SSTlabel.setText("Social Studies:");
-        getContentPane().add(SSTlabel);
-        SSTlabel.setBounds(564, 219, 312, 48);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         jLabel6.setText("Results");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(49, 278, 87, 27);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         jLabel7.setText("Results");
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(564, 278, 87, 27);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         jLabel8.setText("Results");
-        getContentPane().add(jLabel8);
-        jLabel8.setBounds(49, 456, 87, 27);
 
-        EnglishResultField.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
+        EnglishResultField.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         EnglishResultField.setForeground(new java.awt.Color(153, 0, 153));
+        EnglishResultField.setFocusable(false);
         EnglishResultField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EnglishResultFieldActionPerformed(evt);
             }
         });
-        getContentPane().add(EnglishResultField);
-        EnglishResultField.setBounds(92, 319, 139, 77);
 
-        ScienceResultField.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
+        ScienceResultField.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         ScienceResultField.setForeground(new java.awt.Color(153, 0, 153));
+        ScienceResultField.setFocusable(false);
         ScienceResultField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ScienceResultFieldActionPerformed(evt);
             }
         });
-        getContentPane().add(ScienceResultField);
-        ScienceResultField.setBounds(91, 495, 139, 80);
 
-        SSTResultField.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
+        SSTResultField.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         SSTResultField.setForeground(new java.awt.Color(153, 0, 153));
+        SSTResultField.setFocusable(false);
         SSTResultField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SSTResultFieldActionPerformed(evt);
             }
         });
-        getContentPane().add(SSTResultField);
-        SSTResultField.setBounds(613, 317, 139, 79);
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel9.setText("Total:");
-        getContentPane().add(jLabel9);
-        jLabel9.setBounds(730, 510, 120, 70);
-
-        jTextField5.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
+        jTextField5.setFont(new java.awt.Font("Trebuchet MS", 1, 30)); // NOI18N
         jTextField5.setForeground(new java.awt.Color(204, 0, 0));
+        jTextField5.setFocusable(false);
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField5ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField5);
-        jTextField5.setBounds(870, 510, 140, 80);
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel9.setText("Total:");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(280, 280, 280)
+                        .addComponent(topLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(92, 92, 92)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(englishLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(EnglishResultField, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(113, 113, 113)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ScienceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ScienceResultField, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(112, 112, 112)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(SSTlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(SSTResultField, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(149, 149, 149))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(studIDlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(checkButton)
+                                    .addComponent(StudIDfield, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(85, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(topLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(StudIDfield, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(studIDlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addComponent(checkButton)
+                .addGap(40, 40, 40)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(englishLabel)
+                        .addComponent(ScienceLabel))
+                    .addComponent(SSTlabel))
+                .addGap(1, 1, 1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(EnglishResultField)
+                            .addComponent(ScienceResultField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(SSTResultField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(26, 26, 26)
+                .addComponent(jLabel9)
+                .addGap(1, 1, 1)
+                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(37, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -177,6 +242,7 @@ public class StudentProgress extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JLabel studIDlabel;
     private javax.swing.JLabel topLabel;
