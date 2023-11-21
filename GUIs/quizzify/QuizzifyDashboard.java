@@ -22,15 +22,16 @@ public class QuizzifyDashboard extends JFrame {
      */
     
     Color DefaultColour, ClickedColour;
+    String userType = "Teach";
+    Operation O = new Operation();
     
     public QuizzifyDashboard() {
         initComponents();
         DefaultColour= new Color(153,0,153);
         ClickedColour= new Color(230,196,70);
 
-        Operation O = new Operation();
-        int TeachID = O.getCache("Teach");
-        O.Details(TeachID, "Teach");
+        int TeachID = O.getCache(userType);
+        O.Details(TeachID, userType);
         WelcomeLabel.setText("Welcome, " + O.getName());
     }
 
@@ -247,9 +248,9 @@ public class QuizzifyDashboard extends JFrame {
         logoutButton.setBackground(new java.awt.Color(255, 255, 51));
         logoutButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         logoutButton.setText("Log Out");
-        logoutButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                logoutButtonMouseClicked(evt);
+        logoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutButtonActionPerformed(evt);
             }
         });
 
@@ -329,6 +330,7 @@ public class QuizzifyDashboard extends JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void closeLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeLabelMouseClicked
+        O.delCache(userType);
         this.dispose();
     }//GEN-LAST:event_closeLabelMouseClicked
 
@@ -383,18 +385,18 @@ public class QuizzifyDashboard extends JFrame {
         ViewScreen.removeAll();
     }//GEN-LAST:event_logoLabelMousePressed
 
-    private void logoutButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutButtonMouseClicked
-        TeachersLogin login = new TeachersLogin();
-        login.setVisible(true);
-        login.setLocationRelativeTo(null);
-        this.dispose();
-    }//GEN-LAST:event_logoutButtonMouseClicked
-
     private void quizzesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quizzesMouseClicked
         QuizMenu quiz = new QuizMenu();
         ViewScreen.removeAll();
         ViewScreen.add(quiz).setVisible(true);
     }//GEN-LAST:event_quizzesMouseClicked
+
+    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+        O.delCache(userType);
+        EntryPage E = new EntryPage();
+        E.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_logoutButtonActionPerformed
 
     /**
      * @param args the command line arguments

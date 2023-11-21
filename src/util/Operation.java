@@ -11,6 +11,8 @@ public class Operation {
     int theId;
     String theName, theEmail, thePass;
 
+    // Auth
+/* ****************************************** */
     public void SignUp(String Name, String Email, String Pass, String Type) {
 
         String query = "";
@@ -38,7 +40,43 @@ public class Operation {
             System.out.println("Error " + e.getMessage());
         }
     }
+  
+    public void SignIn(int ID, String Pass, String Type) {
 
+        Statement Stat;
+        ResultSet rs;
+        String query = "";
+
+        if (Type == "Stud") {
+            query = "SELECT * FROM Student WHERE Student_ID = " + ID + ";";
+        } else if (Type == "Teach") {
+            query = "SELECT * FROM Teacher WHERE Teacher_ID = " + ID + ";";
+        }
+
+        System.out.println(query);
+
+        try {
+            Stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE);
+            rs = Stat.executeQuery(query);
+
+            rs.next();
+            theId = rs.getInt(1);
+            theName = rs.getString(2);
+            theEmail = rs.getString(3);
+            thePass = rs.getString(4);
+            // theId = Integer.toString(intId);
+
+            System.out.println("Inserting Works");
+
+        } catch (SQLException e) {
+            System.out.println("Error " + e.getMessage());
+        }
+    }
+/* ****************************************** */
+
+    // Cache
+/* ****************************************** */
     public void setCache(int ID, String Type) {
 
         String query = "";
@@ -83,41 +121,29 @@ public class Operation {
         return theId;
     }
 
-    
+    public void delCache(String Type) {
 
-    public void SignIn(int ID, String Pass, String Type) {
-
-        Statement Stat;
-        ResultSet rs;
         String query = "";
 
         if (Type == "Stud") {
-            query = "SELECT * FROM Student WHERE Student_ID = " + ID + ";";
+            query = "DELETE FROM `StudentCache`;";
         } else if (Type == "Teach") {
-            query = "SELECT * FROM Teacher WHERE Teacher_ID = " + ID + ";";
+            query = "DELETE FROM `TeacherCache`;";
         }
 
-        System.out.println(query);
+        PreparedStatement pStat;
 
         try {
-            Stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
-                    ResultSet.CONCUR_UPDATABLE);
-            rs = Stat.executeQuery(query);
-
-            rs.next();
-            theId = rs.getInt(1);
-            theName = rs.getString(2);
-            theEmail = rs.getString(3);
-            thePass = rs.getString(4);
-            // theId = Integer.toString(intId);
-
-            System.out.println("Inserting Works");
-
+            pStat = connection.getConnection().prepareStatement(query);
+            pStat.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Error " + e.getMessage());
         }
     }
+/* ****************************************** */
 
+    // Retrival
+/* ****************************************** */
     public void Details(int ID, String Type) {
 
         Statement Stat;
@@ -191,7 +217,10 @@ public class Operation {
 
         return StrId;
     }
+/* ****************************************** */
 
+    // Getters
+/* ****************************************** */
     public int getId() {
         return theId;
     }
@@ -207,5 +236,5 @@ public class Operation {
     public String getPass() {
         return thePass;
     }
-
+/* ****************************************** */
 }
