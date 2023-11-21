@@ -31,7 +31,7 @@ public class TeacherSignUp extends JFrame {
         passwordField.setForeground(Color.GRAY);
         passwordField.setText("  Password");
 
-        if (focused[1] == '0'){
+        if (focused[2] == '0'){
             passwordField.setEchoChar((char) 0);
         }
     }

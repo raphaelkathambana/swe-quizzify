@@ -60,16 +60,14 @@
                       <Component id="logoLabel" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                              <Component id="WelcomeLabel" min="-2" pref="174" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="NameLabel" min="-2" pref="532" max="-2" attributes="0"/>
-                              <EmptySpace pref="330" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="1043" max="32767" attributes="0"/>
                               <Component id="closeLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                              <Component id="WelcomeLabel" min="-2" pref="564" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -83,10 +81,7 @@
                           <Group type="102" attributes="0">
                               <Component id="closeLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="WelcomeLabel" alignment="3" min="-2" pref="74" max="-2" attributes="0"/>
-                                  <Component id="NameLabel" alignment="3" min="-2" pref="74" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="WelcomeLabel" min="-2" pref="74" max="-2" attributes="0"/>
                           </Group>
                           <Component id="logoLabel" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -117,14 +112,6 @@
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="WelcomeLabel">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="36" style="1"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Welcome,"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="NameLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="36" style="1"/>
