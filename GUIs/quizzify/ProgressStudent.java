@@ -14,12 +14,12 @@ import util.Operation;
  *
  * @author austi
  */
-public class StudentProgress extends javax.swing.JInternalFrame {
+public class ProgressStudent extends javax.swing.JInternalFrame {
 
     Operation O = new Operation();
     // String[] Eng = Arrays.toString(O.EngQuizID()).split("[\\[\\]]")[1].split(", "); 
 
-    public StudentProgress() {
+    public ProgressStudent() {
         initComponents();
 
         // int[] nums = {-5,1,2,11,3};
