@@ -106,11 +106,6 @@ public class StudentLogin extends JFrame {
                 studIDfieldFocusGained(evt);
             }
         });
-        studIDfield.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                studIDfieldActionPerformed(evt);
-            }
-        });
 
         PassLAbel.setFont(new java.awt.Font("Segoe UI", 1, 21)); // NOI18N
         PassLAbel.setText("Password:");
@@ -129,11 +124,6 @@ public class StudentLogin extends JFrame {
         passwordField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 passwordFieldFocusGained(evt);
-            }
-        });
-        passwordField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordFieldActionPerformed(evt);
             }
         });
 
@@ -333,23 +323,6 @@ public class StudentLogin extends JFrame {
             empty = false;
         }
     }//GEN-LAST:event_loginButtonActionPerformed
-
-    private void studIDfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studIDfieldActionPerformed
-        if (evt.getSource() == studIDfield && focused[0] == '0') {
-            studIDfield.setText("");
-            studIDfield.setForeground(Color.BLACK);
-            focused[0] = '1';
-        }
-    }//GEN-LAST:event_studIDfieldActionPerformed
-
-    private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
-        if (evt.getSource() == passwordField && focused[1] == '0') {
-            passwordField.setText("");
-            passwordField.setForeground(Color.BLACK);
-            passwordField.setEchoChar('*');
-            focused[1] = '1';
-        } 
-    }//GEN-LAST:event_passwordFieldActionPerformed
 
     private void studIDfieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_studIDfieldFocusGained
         if (evt.getSource() == studIDfield && focused[0] == '0') {
