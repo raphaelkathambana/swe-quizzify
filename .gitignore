@@ -3,3 +3,5 @@
 *.properties
 *.class
 TODO.txt
+.vscode/
+*.json
