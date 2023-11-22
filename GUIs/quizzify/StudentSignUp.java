@@ -67,7 +67,6 @@ public class StudentSignUp extends JInternalFrame {
         setBackground(new java.awt.Color(255, 255, 50));
         setPreferredSize(new java.awt.Dimension(1050, 530));
         setVisible(true);
-        getContentPane().setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 130));
 
@@ -207,8 +206,16 @@ public class StudentSignUp extends JInternalFrame {
                 .addGap(27, 27, 27))
         );
 
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 1051, 510);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

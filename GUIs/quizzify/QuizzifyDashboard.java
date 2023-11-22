@@ -392,10 +392,10 @@ public class QuizzifyDashboard extends JFrame {
     }//GEN-LAST:event_quizzesMouseClicked
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+        this.dispose();
         O.delCache(userType);
         EntryPage E = new EntryPage();
         E.setVisible(true);
-        this.setVisible(false);
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     /**

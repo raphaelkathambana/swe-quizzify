@@ -5,10 +5,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.swing.ComboBoxModel;
+
 public class Operation {
 
     GetConnection connection = GetConnection.getInstance();
-    int theId;
+    int theId, result;
     String theName, theEmail, thePass;
 
     // Auth
@@ -142,7 +144,7 @@ public class Operation {
     }
 /* ****************************************** */
 
-    // Retrival
+    // Retrival of User
 /* ****************************************** */
     public void Details(int ID, String Type) {
 
@@ -237,4 +239,54 @@ public class Operation {
         return thePass;
     }
 /* ****************************************** */
+
+
+    public int getResult(int StudID, int QuizID, int SubjID) {
+
+        Statement Stat;
+        ResultSet rs;
+        String query = "";
+
+        query = "SELECT `Results` FROM `Result` WHERE `Student_ID` = " + StudID + " and `Quiz_ID` = " + QuizID + " and `subject_ID` = " + SubjID + ";";
+
+        System.out.println(query);
+
+        try {
+            Stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE);
+            rs = Stat.executeQuery(query);
+
+            rs.next();
+            result = rs.getInt(1);
+        } catch (SQLException e) {
+            System.out.println("Error " + e.getMessage());
+        }
+        return result;
+    }
+
+    public String[] EngQuizID() {
+        String[] QuizIDs = {};
+        int count = 0;
+        Statement Stat;
+        ResultSet rs;
+        String query = "SELECT `Quiz_ID` from `Quiz` where `Subject_ID` = 1;";
+
+        try {
+            Stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE);
+            rs = Stat.executeQuery(query);
+
+            while (rs.next()){
+                QuizIDs[count] = Integer.toString(rs.getInt(1));
+            }
+            System.out.println("Inserting Works");
+
+        } catch (SQLException e) {
+            System.out.println("Error " + e.getMessage());
+        }
+        
+        return QuizIDs;
+    }
+    // TODO: operation that takes in SubjID, StudID and gives QuizID
+    // TODO: operation that takes SubjID and get result for average total of a subject,
 }
