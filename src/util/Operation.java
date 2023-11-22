@@ -264,20 +264,51 @@ public class Operation {
         return result;
     }
 
-    public String[] EngQuizID() {
-        String[] QuizIDs = {};
-        int count = 0;
+    public int num(String cQuery){
+        int num = 0;
         Statement Stat;
         ResultSet rs;
-        String query = "SELECT `Quiz_ID` from `Quiz` where `Subject_ID` = 1;";
 
+        try {
+            Stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE);
+            rs = Stat.executeQuery(cQuery);
+            rs.next();
+            num = rs.getInt(1);
+        } catch (SQLException e) {
+            System.out.println("Error " + e.getMessage());
+        }
+        return num;
+    }
+
+    public String[] QuizIDList(int SubjID) {
+        Statement Stat;
+        ResultSet rs;
+        String query = "";
+        String cQuery = "";
+
+        if (SubjID == 1){
+            query = "SELECT `Quiz_ID` from `Quiz` where `Subject_ID` = 1;";
+            cQuery = "SELECT COUNT(*) FROM `Quiz` WHERE `Subject_ID` = 1;";
+        } else if (SubjID == 2){
+            query = "SELECT `Quiz_ID` from `Quiz` where `Subject_ID` = 2;";
+            cQuery = "SELECT COUNT(*) FROM `Quiz` WHERE `Subject_ID` = 2;";
+        } else if (SubjID == 3){
+            query = "SELECT `Quiz_ID` from `Quiz` where `Subject_ID` = 3;";
+            cQuery = "SELECT COUNT(*) FROM `Quiz` WHERE `Subject_ID` = 3;";
+        }
+
+        String[] QuizIDs = new String[num(cQuery)];
+        int count = 0;
+        
         try {
             Stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
                     ResultSet.CONCUR_UPDATABLE);
             rs = Stat.executeQuery(query);
 
-            while (rs.next()){
-                QuizIDs[count] = Integer.toString(rs.getInt(1));
+            while (rs.next() == true){
+                    QuizIDs[count] = Integer.toString(rs.getInt(1));
+                    count++;
             }
             System.out.println("Inserting Works");
 

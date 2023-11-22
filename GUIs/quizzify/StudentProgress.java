@@ -4,7 +4,11 @@
  */
 package quizzify;
 
+import java.util.Arrays;
+
+import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import util.Operation;
 
 /**
  *
@@ -12,11 +16,16 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  */
 public class StudentProgress extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form StudentProgress
-     */
+    Operation O = new Operation();
+    // String[] Eng = Arrays.toString(O.EngQuizID()).split("[\\[\\]]")[1].split(", "); 
+
     public StudentProgress() {
         initComponents();
+
+        // int[] nums = {-5,1,2,11,3};
+        // Arrays.sort(O.EngQuizID());
+
+        
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();
         ui.setNorthPane(null);
@@ -45,8 +54,11 @@ public class StudentProgress extends javax.swing.JInternalFrame {
         EnglishResultField = new javax.swing.JTextField();
         ScienceResultField = new javax.swing.JTextField();
         SSTResultField = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        TotalField = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
+        EngBox = new javax.swing.JComboBox<>();
+        SciBox = new javax.swing.JComboBox<>();
+        SoStBox = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(255, 255, 51));
         setMinimumSize(new java.awt.Dimension(1100, 670));
@@ -63,6 +75,11 @@ public class StudentProgress extends javax.swing.JInternalFrame {
         checkButton.setBackground(new java.awt.Color(255, 255, 255));
         checkButton.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         checkButton.setText("Check");
+        checkButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkButtonActionPerformed(evt);
+            }
+        });
 
         englishLabel.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         englishLabel.setText("English:");
@@ -74,52 +91,38 @@ public class StudentProgress extends javax.swing.JInternalFrame {
         SSTlabel.setText("Social Studies:");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        jLabel6.setText("Results");
+        jLabel6.setText("Quiz ID");
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        jLabel7.setText("Results");
+        jLabel7.setText("Quiz ID");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        jLabel8.setText("Results");
+        jLabel8.setText("Quiz ID");
 
         EnglishResultField.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         EnglishResultField.setForeground(new java.awt.Color(153, 0, 153));
         EnglishResultField.setFocusable(false);
-        EnglishResultField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EnglishResultFieldActionPerformed(evt);
-            }
-        });
 
         ScienceResultField.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         ScienceResultField.setForeground(new java.awt.Color(153, 0, 153));
         ScienceResultField.setFocusable(false);
-        ScienceResultField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ScienceResultFieldActionPerformed(evt);
-            }
-        });
 
         SSTResultField.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         SSTResultField.setForeground(new java.awt.Color(153, 0, 153));
         SSTResultField.setFocusable(false);
-        SSTResultField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SSTResultFieldActionPerformed(evt);
-            }
-        });
 
-        jTextField5.setFont(new java.awt.Font("Trebuchet MS", 1, 30)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(204, 0, 0));
-        jTextField5.setFocusable(false);
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
-            }
-        });
+        TotalField.setFont(new java.awt.Font("Trebuchet MS", 1, 30)); // NOI18N
+        TotalField.setForeground(new java.awt.Color(204, 0, 0));
+        TotalField.setFocusable(false);
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel9.setText("Total:");
+
+        EngBox.setModel(new javax.swing.DefaultComboBoxModel<>(O.QuizIDList(1)));
+
+        SciBox.setModel(new javax.swing.DefaultComboBoxModel<>(O.QuizIDList(2)));
+
+        SoStBox.setModel(new javax.swing.DefaultComboBoxModel<>(O.QuizIDList(3)));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -136,20 +139,28 @@ public class StudentProgress extends javax.swing.JInternalFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(englishLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(EnglishResultField, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(jLabel6)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(EngBox, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(EnglishResultField, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(113, 113, 113)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(ScienceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ScienceResultField, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(ScienceResultField, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel7)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(SciBox, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(112, 112, 112)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(SSTlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(SSTResultField, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(SSTResultField, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(149, 149, 149))))
+                                        .addComponent(jLabel8)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(SoStBox, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(studIDlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -157,8 +168,8 @@ public class StudentProgress extends javax.swing.JInternalFrame {
                                     .addComponent(checkButton)
                                     .addComponent(StudIDfield, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(85, Short.MAX_VALUE))
+                            .addComponent(TotalField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(135, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,21 +192,27 @@ public class StudentProgress extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel6)
+                                .addComponent(EngBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel7)
+                                .addComponent(SciBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(EnglishResultField)
                             .addComponent(ScienceResultField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(SoStBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(SSTResultField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(26, 26, 26)
                 .addComponent(jLabel9)
                 .addGap(1, 1, 1)
-                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addComponent(TotalField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(125, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -212,30 +229,39 @@ public class StudentProgress extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void EnglishResultFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnglishResultFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_EnglishResultFieldActionPerformed
+    private void checkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkButtonActionPerformed
+        int StudID;
+        int QuizID;
+        int SubjID;
+        if (StudIDfield.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please Enter Student ID number");
+        } 
+        else {
+            try {
+                StudID = Integer.valueOf(StudIDfield.getText());
+                O.getResult(StudID, 1, StudID);
+            } 
+            catch (NumberFormatException ex){
+                JOptionPane.showMessageDialog(this,"Please Enter Correct Student ID number");
+            }
+        }
+        
+        
+    }//GEN-LAST:event_checkButtonActionPerformed
 
-    private void ScienceResultFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ScienceResultFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ScienceResultFieldActionPerformed
-
-    private void SSTResultFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SSTResultFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SSTResultFieldActionPerformed
-
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
-
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> EngBox;
     private javax.swing.JTextField EnglishResultField;
     private javax.swing.JTextField SSTResultField;
     private javax.swing.JLabel SSTlabel;
+    private javax.swing.JComboBox<String> SciBox;
     private javax.swing.JLabel ScienceLabel;
     private javax.swing.JTextField ScienceResultField;
+    private javax.swing.JComboBox<String> SoStBox;
     private javax.swing.JTextField StudIDfield;
+    private javax.swing.JTextField TotalField;
     private javax.swing.JButton checkButton;
     private javax.swing.JLabel englishLabel;
     private javax.swing.JLabel jLabel6;
@@ -243,7 +269,6 @@ public class StudentProgress extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JLabel studIDlabel;
     private javax.swing.JLabel topLabel;
     // End of variables declaration//GEN-END:variables
