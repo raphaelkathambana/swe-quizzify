@@ -5,12 +5,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import javax.swing.ComboBoxModel;
-
 public class Operation {
 
     GetConnection connection = GetConnection.getInstance();
-    int theId, result;
+    int theId;
     String theName, theEmail, thePass;
 
     // Auth
@@ -144,7 +142,7 @@ public class Operation {
     }
 /* ****************************************** */
 
-    // Retrival of User
+    // Retrival of User Details
 /* ****************************************** */
     public void Details(int ID, String Type) {
 
@@ -240,30 +238,62 @@ public class Operation {
     }
 /* ****************************************** */
 
-
-    public int getResult(int StudID, int QuizID, int SubjID) {
+// Results (out of 10) 
+/* ****************************************** */
+    public double getResult(int StudID, String QuizID, int SubjID) {
+        double result = 0;
 
         Statement Stat;
         ResultSet rs;
         String query = "";
 
-        query = "SELECT `Results` FROM `Result` WHERE `Student_ID` = " + StudID + " and `Quiz_ID` = " + QuizID + " and `subject_ID` = " + SubjID + ";";
+        if (QuizID != "Total Average"){
 
-        System.out.println(query);
+            query = "SELECT `Results` FROM `Result` WHERE `Student_ID` = " + StudID + " and `Quiz_ID` = " + QuizID + " and `subject_ID` = " + SubjID + ";";
+            try {
+                Stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+                        ResultSet.CONCUR_UPDATABLE);
+                rs = Stat.executeQuery(query);
 
-        try {
-            Stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
-                    ResultSet.CONCUR_UPDATABLE);
-            rs = Stat.executeQuery(query);
+                rs.next();
+                result = rs.getDouble(1);
+            } catch (SQLException e) {
+                System.out.println("Error " + e.getMessage());
+            }
+            
+        }    
+        else if (QuizID == "Total Average"){
+            
+            query = "SELECT `Results` FROM `Result` WHERE `Student_ID` = " + StudID + " and `Subject_ID` = " + SubjID + ";";
+            String cQuery = "SELECT COUNT(*) FROM `Results` WHERE `Student_ID` = " + StudID + " `Subject_ID` = " + SubjID + ";";
+            
+            Double[] Results = new Double[num(cQuery)];
+            int count = 0;
+            
+            try {
+                Stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+                        ResultSet.CONCUR_UPDATABLE);
+                rs = Stat.executeQuery(query);
 
-            rs.next();
-            result = rs.getInt(1);
-        } catch (SQLException e) {
-            System.out.println("Error " + e.getMessage());
+                while (rs.next() == true){
+                    Results[count] = rs.getDouble(1);
+                    count++;
+                    result = result + Results[count];
+                }
+                result = result/count;
+                // result = rs.getDouble(1);
+            } catch (SQLException e) {
+                System.out.println("Error " + e.getMessage());
+            }
+            
         }
+        
         return result;
     }
+/* ****************************************** */
 
+// List Of QuizID
+/* ****************************************** */
     public int num(String cQuery){
         int num = 0;
         Statement Stat;
@@ -284,19 +314,9 @@ public class Operation {
     public String[] QuizIDList(int SubjID) {
         Statement Stat;
         ResultSet rs;
-        String query = "";
-        String cQuery = "";
 
-        if (SubjID == 1){
-            query = "SELECT `Quiz_ID` from `Quiz` where `Subject_ID` = 1;";
-            cQuery = "SELECT COUNT(*) FROM `Quiz` WHERE `Subject_ID` = 1;";
-        } else if (SubjID == 2){
-            query = "SELECT `Quiz_ID` from `Quiz` where `Subject_ID` = 2;";
-            cQuery = "SELECT COUNT(*) FROM `Quiz` WHERE `Subject_ID` = 2;";
-        } else if (SubjID == 3){
-            query = "SELECT `Quiz_ID` from `Quiz` where `Subject_ID` = 3;";
-            cQuery = "SELECT COUNT(*) FROM `Quiz` WHERE `Subject_ID` = 3;";
-        }
+        String query = "SELECT `Quiz_ID` from `Quiz` where `Subject_ID` = " + SubjID + ";";
+        String cQuery = "SELECT COUNT(*) FROM `Quiz` WHERE `Subject_ID` = " + SubjID + ";";
 
         String[] QuizIDs = new String[num(cQuery)];
         int count = 0;
@@ -318,6 +338,10 @@ public class Operation {
         
         return QuizIDs;
     }
-    // TODO: operation that takes in SubjID, StudID and gives QuizID
-    // TODO: operation that takes SubjID and get result for average total of a subject,
+/* ****************************************** */
+
 }
+
+// todo: operation that takes SubjID, StudID, QuizID and get result out of 10
+// todo: operation that takes SubjID, StudID and get result for average total of a subject out of 10
+// todo: operation that takes in SubjID and gives list of QuizID
