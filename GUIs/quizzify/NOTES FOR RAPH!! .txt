@@ -1,0 +1,10 @@
+So there are a few things I want you to consider...
+
+Results of Quizes should be out of 10! 
+Please make sure of that... all my calculations are based out of ten
+
+SQL has changes, so ERD has changed... Make sure you run the new script.
+
+What else... I think that's it! 
+
+Oh and I love youu! <3
