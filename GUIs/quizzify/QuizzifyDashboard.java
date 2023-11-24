@@ -376,7 +376,7 @@ public class QuizzifyDashboard extends JFrame {
     }//GEN-LAST:event_viewStudMouseClicked
 
     private void studentProgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_studentProgMouseClicked
-        ProgressStudent progress = new ProgressStudent();
+        ResultStudent progress = new ResultStudent();
         ViewScreen.removeAll();
         ViewScreen.add(progress).setVisible(true);
     }//GEN-LAST:event_studentProgMouseClicked

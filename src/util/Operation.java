@@ -240,7 +240,7 @@ public class Operation {
 
 // Results (out of 10) 
 /* ****************************************** */
-    public double getResult(int StudID, String QuizID, int SubjID) {
+    public double getResult(int StudID, String QuizID) {
         double result = 0;
 
         Statement Stat;
@@ -249,7 +249,7 @@ public class Operation {
 
         if (QuizID != "Total Average"){
 
-            query = "SELECT `Results` FROM `Result` WHERE `Student_ID` = " + StudID + " and `Quiz_ID` = " + QuizID + " and `subject_ID` = " + SubjID + ";";
+            query = "SELECT `Result` FROM `Result` WHERE `Student_ID` = " + StudID + " and `Quiz_ID` = " + QuizID + ";";
             try {
                 Stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
                         ResultSet.CONCUR_UPDATABLE);
@@ -264,8 +264,8 @@ public class Operation {
         }    
         else if (QuizID == "Total Average"){
             
-            query = "SELECT `Results` FROM `Result` WHERE `Student_ID` = " + StudID + " and `Subject_ID` = " + SubjID + ";";
-            String cQuery = "SELECT COUNT(*) FROM `Results` WHERE `Student_ID` = " + StudID + " `Subject_ID` = " + SubjID + ";";
+            query = "SELECT `Results` FROM `Result` WHERE `Student_ID` = " + StudID + ";";
+            String cQuery = "SELECT COUNT(*) FROM `Results` WHERE `Student_ID` = " + StudID + ";";
             
             Double[] Results = new Double[num(cQuery)];
             int count = 0;
@@ -315,8 +315,8 @@ public class Operation {
         Statement Stat;
         ResultSet rs;
 
-        String query = "SELECT `Quiz_ID` from `Quiz` where `Subject_ID` = " + SubjID + ";";
-        String cQuery = "SELECT COUNT(*) FROM `Quiz` WHERE `Subject_ID` = " + SubjID + ";";
+        String query = "SELECT `Quiz_ID` from `Quiz` where `Subject_ID` = " + SubjID + " and `Teacher_ID` = " + getCache("Teach") + ";";
+        String cQuery = "SELECT COUNT(*) FROM `Quiz` WHERE `Subject_ID` = " + SubjID + " and `Teacher_ID` = " + getCache("Teach") + ";";
 
         String[] QuizIDs = new String[num(cQuery)];
         int count = 0;
@@ -327,7 +327,7 @@ public class Operation {
             rs = Stat.executeQuery(query);
 
             while (rs.next() == true){
-                    QuizIDs[count] = Integer.toString(rs.getInt(1));
+                    QuizIDs[count] = String.valueOf(rs.getInt(1));
                     count++;
             }
             System.out.println("Inserting Works");
