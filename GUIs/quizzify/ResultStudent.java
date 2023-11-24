@@ -283,7 +283,10 @@ public class ResultStudent extends javax.swing.JInternalFrame {
             StudID = Integer.valueOf(StudIDfield.getText());
             QuizID = String.valueOf(EngBox.getSelectedItem());
 
-            EnglishResultField.setText(String.valueOf(O.getResult(StudID, QuizID)) + "/10");
+            if (QuizID == "Average" || QuizID == "Total")
+                EnglishResultField.setText(String.valueOf(O.getResult(StudID, QuizID, 1)));
+            else 
+                EnglishResultField.setText(String.valueOf(O.getResult(StudID, QuizID))  + "/10");
         }
     }//GEN-LAST:event_EngBoxActionPerformed
 
@@ -295,7 +298,10 @@ public class ResultStudent extends javax.swing.JInternalFrame {
             StudID = Integer.valueOf(StudIDfield.getText());
             QuizID = String.valueOf(SciBox.getSelectedItem());
 
-            ScienceResultField.setText(String.valueOf(O.getResult(StudID, QuizID)) + "/10");
+            if (QuizID == "Average" || QuizID == "Total")
+                ScienceResultField.setText(String.valueOf(O.getResult(StudID, QuizID, 2)));
+            else
+                ScienceResultField.setText(String.valueOf(O.getResult(StudID, QuizID))  + "/10");
         }
     }//GEN-LAST:event_SciBoxActionPerformed
 
@@ -307,7 +313,10 @@ public class ResultStudent extends javax.swing.JInternalFrame {
             StudID = Integer.valueOf(StudIDfield.getText());
             QuizID = String.valueOf(SoStBox.getSelectedItem());
 
-            SSTResultField.setText(String.valueOf(O.getResult(StudID, QuizID)) + "/10");
+            if (QuizID == "Average" || QuizID == "Total")
+                SSTResultField.setText(String.valueOf(O.getResult(StudID, QuizID, 3)));
+            else
+                SSTResultField.setText(String.valueOf(O.getResult(StudID, QuizID))  + "/10");
         }
     }//GEN-LAST:event_SoStBoxActionPerformed
 
