@@ -16,6 +16,8 @@ public class ResultStudent extends javax.swing.JInternalFrame {
 
     Operation O = new Operation();
     boolean view = false;
+    double EngR, SciR, SoStR;
+    double EngS, SciS, SoStS;
 
     public ResultStudent() {
         initComponents();
@@ -248,6 +250,8 @@ public class ResultStudent extends javax.swing.JInternalFrame {
         view = true;
         String Eng, Sci, SoSt;
         String[] QuizID = new String[3];
+        
+
         if (StudIDfield.getText().isEmpty()){
             JOptionPane.showMessageDialog(this,"Please Enter Student ID number");
         } 
@@ -257,11 +261,31 @@ public class ResultStudent extends javax.swing.JInternalFrame {
                     QuizID[0] = String.valueOf(EngBox.getSelectedItem());
                     QuizID[1] = String.valueOf(SciBox.getSelectedItem());
                     QuizID[2] = String.valueOf(SoStBox.getSelectedItem());
-                    
-                    Eng = String.valueOf(O.getResult(StudID, QuizID[0])) + "/10";
-                    Sci = String.valueOf(O.getResult(StudID, QuizID[1])) + "/10";
-                    SoSt = String.valueOf(O.getResult(StudID, QuizID[2])) + "/10";
 
+                    if (QuizID[0] == "Average" || QuizID[0] == "Total"){
+                        EngS = Math.round(O.getResult(StudID, QuizID[0], 1)*100.0)/100.0;
+                        Eng = String.valueOf(EngS);
+                    }
+                    else {
+                        EngR = Math.round(O.getResult(StudID, QuizID[0])*100.0)/100.0;
+                        Eng = String.valueOf(EngR) + "/10";
+                    }
+                    if (QuizID[1] == "Average" || QuizID[1] == "Total"){
+                        SciS = Math.round(O.getResult(StudID, QuizID[1], 2)*100.0)/100.0;
+                        Sci = String.valueOf(SciS);
+                    }
+                    else {
+                        SciR = Math.round(O.getResult(StudID, QuizID[1], 2)*100.0)/100.0;
+                        Sci = String.valueOf(SciR) + "/10";
+                    }
+                    if (QuizID[2] == "Average" || QuizID[2] == "Total"){
+                        SoStS = Math.round(O.getResult(StudID, QuizID[2], 1)*100.0)/100.0;
+                        SoSt = String.valueOf(SoStS);
+                    }
+                    else {
+                        SoStR = Math.round(O.getResult(StudID, QuizID[2])*100.0)/100.0;
+                        SoSt = String.valueOf(SoStR) + "/10";
+                    }
                     EnglishResultField.setText(Eng);
                     ScienceResultField.setText(Sci);
                     SSTResultField.setText(SoSt);
@@ -283,10 +307,13 @@ public class ResultStudent extends javax.swing.JInternalFrame {
             StudID = Integer.valueOf(StudIDfield.getText());
             QuizID = String.valueOf(EngBox.getSelectedItem());
 
+            EngR = Math.round(O.getResult(StudID, QuizID)*100.0)/100.0;
+            EngS = Math.round(O.getResult(StudID, QuizID, 1)*100.0)/100.0;
+
             if (QuizID == "Average" || QuizID == "Total")
-                EnglishResultField.setText(String.valueOf(O.getResult(StudID, QuizID, 1)));
+                EnglishResultField.setText(String.valueOf(EngS));
             else 
-                EnglishResultField.setText(String.valueOf(O.getResult(StudID, QuizID))  + "/10");
+                EnglishResultField.setText(String.valueOf(EngR)  + "/10");
         }
     }//GEN-LAST:event_EngBoxActionPerformed
 
@@ -298,10 +325,13 @@ public class ResultStudent extends javax.swing.JInternalFrame {
             StudID = Integer.valueOf(StudIDfield.getText());
             QuizID = String.valueOf(SciBox.getSelectedItem());
 
+            SciR = Math.round(O.getResult(StudID, QuizID)*100.0)/100.0;
+            SciS = Math.round(O.getResult(StudID, QuizID, 2)*100.0)/100.0;
+                        
             if (QuizID == "Average" || QuizID == "Total")
-                ScienceResultField.setText(String.valueOf(O.getResult(StudID, QuizID, 2)));
+                ScienceResultField.setText(String.valueOf(SciS));
             else
-                ScienceResultField.setText(String.valueOf(O.getResult(StudID, QuizID))  + "/10");
+                ScienceResultField.setText(String.valueOf(SciR)  + "/10");
         }
     }//GEN-LAST:event_SciBoxActionPerformed
 
@@ -313,10 +343,13 @@ public class ResultStudent extends javax.swing.JInternalFrame {
             StudID = Integer.valueOf(StudIDfield.getText());
             QuizID = String.valueOf(SoStBox.getSelectedItem());
 
+            SoStR = Math.round(O.getResult(StudID, QuizID)*100.0)/100.0;
+            SoStS = Math.round(O.getResult(StudID, QuizID, 3)*100.0)/100.0;
+
             if (QuizID == "Average" || QuizID == "Total")
-                SSTResultField.setText(String.valueOf(O.getResult(StudID, QuizID, 3)));
+                SSTResultField.setText(String.valueOf(SoStS));
             else
-                SSTResultField.setText(String.valueOf(O.getResult(StudID, QuizID))  + "/10");
+                SSTResultField.setText(String.valueOf(SoStR)  + "/10");
         }
     }//GEN-LAST:event_SoStBoxActionPerformed
 
