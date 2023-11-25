@@ -119,21 +119,21 @@ public class ResultStudent extends javax.swing.JInternalFrame {
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel9.setText("Total:");
 
-        EngBox.setModel(new javax.swing.DefaultComboBoxModel<>(O.QuizIDList(1)));
+        EngBox.setModel(new javax.swing.DefaultComboBoxModel<>(O.quizIDList(1)));
         EngBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EngBoxActionPerformed(evt);
             }
         });
 
-        SciBox.setModel(new javax.swing.DefaultComboBoxModel<>(O.QuizIDList(2)));
+        SciBox.setModel(new javax.swing.DefaultComboBoxModel<>(O.quizIDList(2)));
         SciBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SciBoxActionPerformed(evt);
             }
         });
 
-        SoStBox.setModel(new javax.swing.DefaultComboBoxModel<>(O.QuizIDList(3)));
+        SoStBox.setModel(new javax.swing.DefaultComboBoxModel<>(O.quizIDList(3)));
         SoStBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SoStBoxActionPerformed(evt);
