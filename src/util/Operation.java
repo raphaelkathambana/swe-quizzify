@@ -466,19 +466,17 @@ public class Operation {
                 "?, " +
                 "?, " +
                 "?, " +
-                "?, " +
                 "? );";
 
         try {
             pStat = connection.getConnection().prepareStatement(sql);
             pStat.setInt(1, quizId);
-            pStat.setInt(2, 1);
-            pStat.setString(3, question.getPrompt());
-            int param = 4;
+            pStat.setString(2, question.getPrompt());
+            int param = 3;
             for (int i = 0; i < question.getNumOptions(); i++) {
                 if (i == question.getCorrectAnswerIndex()) {
                     // save correct answer to database
-                    pStat.setString(7, question.getOption(i));
+                    pStat.setString(6, question.getOption(i));
                 } else {
                     pStat.setString(param, question.getOption(i));
                     param++;
