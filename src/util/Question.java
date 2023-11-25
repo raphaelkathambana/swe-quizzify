@@ -69,9 +69,6 @@ public class Question {
         return options.get(j);
     }
 
-    public void setCorrectAnswerIndex(int correctAnswerIndex2) {
-    }
-
     public String getQuestion() {
         return this.prompt;
     }
@@ -80,5 +77,11 @@ public class Question {
     @Override
     public String toString() {
         return "Question{" + "prompt=" + prompt + ", options=" + options + ", correctAnswerIndex=" + correctAnswerIndex + ", multimediaElements=" + multimediaElements + '}';
+    }
+
+    //save to database
+    public void saveToDatabase(int quizId) {
+        //save question to database
+        Operation.saveQuestionToDatabase(this, quizId);
     }
 }
