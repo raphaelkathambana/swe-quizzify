@@ -4,17 +4,10 @@
  */
 package util;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 import java.util.logging.Level;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 /**
  *
@@ -25,7 +18,7 @@ public class Quiz {
     private List<Question> questions;
     private String subject;
 
-    GetConnection connection = GetConnection.getInstance();
+    static GetConnection connection = GetConnection.getInstance();
 
     public Quiz() {
         questions = new ArrayList<>();
@@ -86,57 +79,12 @@ public class Quiz {
 
     // save to database
     public void saveQuiz(int teacherId) {
-        try (
-                Connection conn = GetConnection.getInstance().getConnection();
-                Statement stmt = conn.createStatement();) {
-            // get subject id
-            ResultSet rs = stmt.executeQuery("SELECT * FROM subject WHERE `Name` = '" + this.subject + "';");
-            rs.next();
-            int subjectId = rs.getInt(1);
-            // insert quiz into database
-            stmt.executeUpdate("INSERT INTO quiz (Subject_ID, Teacher_ID) VALUES (" + subjectId + ", " + teacherId + ");");
-            Logger.getLogger(Quiz.class.getName()).info("Quiz saved to database");
-        } catch (SQLException ex) {
-            Logger.getLogger(Quiz.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    public int getId() {
-        int id = 0;
-        try (
-                Connection conn = GetConnection.getInstance().getConnection();
-                Statement stmt = conn.createStatement();) {
-            // get subject id
-            ResultSet rs = stmt.executeQuery("SELECT * FROM quiz WHERE `Subject_ID` = (SELECT ID FROM subject WHERE `Name` = '" + this.subject + "');");
-            rs.next();
-            id = rs.getInt(1);
-            Logger.getLogger(Quiz.class.getName()).info("Quiz id returned");
-        } catch (SQLException ex) {
-            Logger.getLogger(Quiz.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return id;
+        Operation op = new Operation();
+        op.saveQuizToDatabase(this, teacherId);
     }
 
     public int getQuizID() {
-
-        int LatestQuizID = 0;
-        String query = "";
-
-        Statement Stat;
-        ResultSet rs;
-
-            query = "SELECT Quiz_ID FROM Quiz WHERE Quiz_ID = (select max(Quiz_ID) from Quiz);";
-
-        try {
-            Stat = connection.getConnection().createStatement();
-            rs = Stat.executeQuery(query);
-            while (rs.next())
-                LatestQuizID = rs.getInt(1);
-        } catch (SQLException e) {
-            System.out.println("Error: Couldn't find number of user");
-        }
-
-
-        return LatestQuizID;
+        Operation op = new Operation();
+        return op.getQuizID();
     }
 }

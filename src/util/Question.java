@@ -34,7 +34,7 @@ public class Question {
     }
 
     public List<String> getOptions() {
-        return options;
+        return this.options;
     }
 
     public int getCorrectAnswerIndex() {
@@ -46,11 +46,11 @@ public class Question {
     }
 
     public void addOption(String option) {
-        options.add(option);
+        this.options.add(option);
     }
 
     public void removeOption(int index) {
-        options.remove(index);
+        this.options.remove(index);
     }
 
     public void addMultimediaElement(String multimediaElement) {
@@ -62,7 +62,7 @@ public class Question {
     }
 
     public int getNumOptions() {
-        return options.size();
+        return this.options.size();
     }
 
     public String getOption(int j) {
@@ -82,6 +82,7 @@ public class Question {
     //save to database
     public void saveToDatabase(int quizId) {
         //save question to database
-        Operation.saveQuestionToDatabase(this, quizId);
+        Operation operations = new Operation();
+        operations.saveQuestionToDatabase(this, quizId);
     }
 }
