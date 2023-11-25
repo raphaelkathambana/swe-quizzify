@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 import java.util.logging.Level;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
@@ -16,6 +19,8 @@ import java.util.logging.Level;
 public class Quiz {
 
     private List<Question> questions;
+
+    GetConnection connection = GetConnection.getInstance();
 
     public Quiz() {
         questions = new ArrayList<>();
@@ -47,5 +52,28 @@ public class Quiz {
             result.append("Correct Answer: ").append(question.getCorrectAnswerIndex()).append("\n\n");
         }
         return result.toString();
+    }
+
+    public int getQuizID() {
+
+        int LatestQuizID = 0;
+        String query = "";
+
+        Statement Stat;
+        ResultSet rs;
+
+            query = "SELECT Quiz_ID FROM Quiz WHERE Quiz_ID = (select max(Quiz_ID) from Quiz);";
+
+        try {
+            Stat = connection.getConnection().createStatement();
+            rs = Stat.executeQuery(query);
+            while (rs.next())
+                LatestQuizID = rs.getInt(1);
+        } catch (SQLException e) {
+            System.out.println("Error: Couldn't find number of user");
+        }
+
+
+        return LatestQuizID;
     }
 }
