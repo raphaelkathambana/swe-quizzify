@@ -334,7 +334,7 @@ public class Operation {
         return num;
     }
 
-    public String[] QuizIDList(int SubjID) {
+    public String[] quizIDList(int SubjID) {
 
         String query = "SELECT `Quiz_ID` from `Quiz` where `Subject_ID` = " + SubjID + " and `Teacher_ID` = "
                 + getCache("Teach") + ";";
