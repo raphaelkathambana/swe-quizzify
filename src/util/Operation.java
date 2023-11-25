@@ -4,11 +4,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-<<<<<<< HEAD
-=======
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
->>>>>>> 523c7ae06256333fc7592d9dd85fc0e23921292a
 
 public class Operation {
 
@@ -245,17 +240,10 @@ public class Operation {
     /* ****************************************** */
     public int QuizIDNum(int SubjID) {
 
-<<<<<<< HEAD
         int QuizID = 0;
         String query = "SELECT `Quiz_ID` from `Quiz` where `Subject_ID` = " + SubjID + " and `Teacher_ID` = "
                 + getCache("Teach") + ";";
 
-=======
-        String query = "SELECT `Quiz_ID` from `Quiz` where `Subject_ID` = " + SubjID + " and `Teacher_ID` = "
-                + getCache("Teach") + ";";
-
-        int QuizID = 0;
->>>>>>> 523c7ae06256333fc7592d9dd85fc0e23921292a
         try {
             Stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
                     ResultSet.CONCUR_UPDATABLE);
@@ -270,11 +258,7 @@ public class Operation {
         return QuizID;
     }
 
-<<<<<<< HEAD
     public double getResult(int StudID, String QuizID, int SubjID) {
-=======
-    public double getResult(int studID, String QuizID, int SubjID) {
->>>>>>> 523c7ae06256333fc7592d9dd85fc0e23921292a
 
         String query = "";
         String cQuery = "SELECT COUNT(*) FROM `Quiz` WHERE `Subject_ID` = " + SubjID + " and `Teacher_ID` = "
@@ -288,11 +272,7 @@ public class Operation {
 
         try {
             do {
-<<<<<<< HEAD
                 query = "SELECT `Result` FROM `Result` WHERE `Student_ID` = " + StudID + " and `Quiz_ID` = "
-=======
-                query = "SELECT `Result` FROM `Result` WHERE `Student_ID` = " + studID + " and `Quiz_ID` = "
->>>>>>> 523c7ae06256333fc7592d9dd85fc0e23921292a
                         + Quiz[count] + ";";
 
                 Stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
@@ -301,11 +281,6 @@ public class Operation {
                 rs.next();
 
                 Results[count] = rs.getInt(1);
-<<<<<<< HEAD
-=======
-
-                System.out.println(Results[count]);
->>>>>>> 523c7ae06256333fc7592d9dd85fc0e23921292a
                 result = result + Results[count];
                 count++;
 
@@ -332,10 +307,7 @@ public class Operation {
 
             rs.next();
             result = rs.getDouble(1);
-<<<<<<< HEAD
 
-=======
->>>>>>> 523c7ae06256333fc7592d9dd85fc0e23921292a
         } catch (SQLException e) {
             System.out.println("Error " + e.getMessage());
         }
@@ -362,7 +334,7 @@ public class Operation {
         return num;
     }
 
-    public String[] quizIDList(int SubjID) {
+    public String[] QuizIDList(int SubjID) {
 
         String query = "SELECT `Quiz_ID` from `Quiz` where `Subject_ID` = " + SubjID + " and `Teacher_ID` = "
                 + getCache("Teach") + ";";
@@ -421,11 +393,6 @@ public class Operation {
 
     /* ****************************************** */
 
-<<<<<<< HEAD
-=======
-    
-
->>>>>>> 523c7ae06256333fc7592d9dd85fc0e23921292a
 }
 
 // todo: operation that takes SubjID, StudID, QuizID and get result out of 10
