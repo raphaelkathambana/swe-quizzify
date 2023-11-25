@@ -4,8 +4,6 @@
  */
 package quizzify;
 
-import java.util.Arrays;
-
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import util.Operation;
@@ -14,21 +12,18 @@ import util.Operation;
  *
  * @author austi
  */
-public class ProgressStudent extends javax.swing.JInternalFrame {
+public class ResultStudent extends javax.swing.JInternalFrame {
 
     Operation O = new Operation();
-    // String[] Eng = Arrays.toString(O.EngQuizID()).split("[\\[\\]]")[1].split(", "); 
+    boolean view = false;
+    double EngR, SciR, SoStR;
+    double EngS, SciS, SoStS;
 
-    public ProgressStudent() {
+    public ResultStudent() {
         initComponents();
-
-        // int[] nums = {-5,1,2,11,3};
-        // Arrays.sort(O.EngQuizID());
-
-        
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
-        BasicInternalFrameUI internalUi = (BasicInternalFrameUI)this.getUI();
-        internalUi.setNorthPane(null);
+        BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();
+        ui.setNorthPane(null);
     }
 
     /**
@@ -71,6 +66,12 @@ public class ProgressStudent extends javax.swing.JInternalFrame {
 
         studIDlabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         studIDlabel.setText("Student ID:");
+
+        StudIDfield.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                StudIDfieldFocusGained(evt);
+            }
+        });
 
         checkButton.setBackground(new java.awt.Color(255, 255, 255));
         checkButton.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
@@ -119,10 +120,25 @@ public class ProgressStudent extends javax.swing.JInternalFrame {
         jLabel9.setText("Total:");
 
         EngBox.setModel(new javax.swing.DefaultComboBoxModel<>(O.QuizIDList(1)));
+        EngBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EngBoxActionPerformed(evt);
+            }
+        });
 
         SciBox.setModel(new javax.swing.DefaultComboBoxModel<>(O.QuizIDList(2)));
+        SciBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SciBoxActionPerformed(evt);
+            }
+        });
 
         SoStBox.setModel(new javax.swing.DefaultComboBoxModel<>(O.QuizIDList(3)));
+        SoStBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SoStBoxActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -231,15 +247,49 @@ public class ProgressStudent extends javax.swing.JInternalFrame {
 
     private void checkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkButtonActionPerformed
         int StudID;
-        int QuizID;
-        int SubjID;
+        view = true;
+        String Eng, Sci, SoSt;
+        String[] QuizID = new String[3];
+        
+
         if (StudIDfield.getText().isEmpty()){
             JOptionPane.showMessageDialog(this,"Please Enter Student ID number");
         } 
         else {
-            try {
-                StudID = Integer.valueOf(StudIDfield.getText());
-                O.getResult(StudID, "1", StudID);
+            try {      
+                    StudID = Integer.valueOf(StudIDfield.getText());
+                    QuizID[0] = String.valueOf(EngBox.getSelectedItem());
+                    QuizID[1] = String.valueOf(SciBox.getSelectedItem());
+                    QuizID[2] = String.valueOf(SoStBox.getSelectedItem());
+
+                    if (QuizID[0] == "Average" || QuizID[0] == "Total"){
+                        EngS = Math.round(O.getResult(StudID, QuizID[0], 1)*100.0)/100.0;
+                        Eng = String.valueOf(EngS);
+                    }
+                    else {
+                        EngR = Math.round(O.getResult(StudID, QuizID[0])*100.0)/100.0;
+                        Eng = String.valueOf(EngR) + "/10";
+                    }
+                    if (QuizID[1] == "Average" || QuizID[1] == "Total"){
+                        SciS = Math.round(O.getResult(StudID, QuizID[1], 2)*100.0)/100.0;
+                        Sci = String.valueOf(SciS);
+                    }
+                    else {
+                        SciR = Math.round(O.getResult(StudID, QuizID[1], 2)*100.0)/100.0;
+                        Sci = String.valueOf(SciR) + "/10";
+                    }
+                    if (QuizID[2] == "Average" || QuizID[2] == "Total"){
+                        SoStS = Math.round(O.getResult(StudID, QuizID[2], 1)*100.0)/100.0;
+                        SoSt = String.valueOf(SoStS);
+                    }
+                    else {
+                        SoStR = Math.round(O.getResult(StudID, QuizID[2])*100.0)/100.0;
+                        SoSt = String.valueOf(SoStR) + "/10";
+                    }
+                    EnglishResultField.setText(Eng);
+                    ScienceResultField.setText(Sci);
+                    SSTResultField.setText(SoSt);
+                
             } 
             catch (NumberFormatException ex){
                 JOptionPane.showMessageDialog(this,"Please Enter Correct Student ID number");
@@ -248,6 +298,65 @@ public class ProgressStudent extends javax.swing.JInternalFrame {
         
         
     }//GEN-LAST:event_checkButtonActionPerformed
+
+    private void EngBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EngBoxActionPerformed
+        if (view == true) {
+            int StudID;
+            String QuizID;
+
+            StudID = Integer.valueOf(StudIDfield.getText());
+            QuizID = String.valueOf(EngBox.getSelectedItem());
+
+            EngR = Math.round(O.getResult(StudID, QuizID)*100.0)/100.0;
+            EngS = Math.round(O.getResult(StudID, QuizID, 1)*100.0)/100.0;
+
+            if (QuizID == "Average" || QuizID == "Total")
+                EnglishResultField.setText(String.valueOf(EngS));
+            else 
+                EnglishResultField.setText(String.valueOf(EngR)  + "/10");
+        }
+    }//GEN-LAST:event_EngBoxActionPerformed
+
+    private void SciBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SciBoxActionPerformed
+        if (view == true) {
+            int StudID;
+            String QuizID;
+
+            StudID = Integer.valueOf(StudIDfield.getText());
+            QuizID = String.valueOf(SciBox.getSelectedItem());
+
+            SciR = Math.round(O.getResult(StudID, QuizID)*100.0)/100.0;
+            SciS = Math.round(O.getResult(StudID, QuizID, 2)*100.0)/100.0;
+                        
+            if (QuizID == "Average" || QuizID == "Total")
+                ScienceResultField.setText(String.valueOf(SciS));
+            else
+                ScienceResultField.setText(String.valueOf(SciR)  + "/10");
+        }
+    }//GEN-LAST:event_SciBoxActionPerformed
+
+    private void SoStBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SoStBoxActionPerformed
+        if (view == true) {
+            int StudID;
+            String QuizID;
+
+            StudID = Integer.valueOf(StudIDfield.getText());
+            QuizID = String.valueOf(SoStBox.getSelectedItem());
+
+            SoStR = Math.round(O.getResult(StudID, QuizID)*100.0)/100.0;
+            SoStS = Math.round(O.getResult(StudID, QuizID, 3)*100.0)/100.0;
+
+            if (QuizID == "Average" || QuizID == "Total")
+                SSTResultField.setText(String.valueOf(SoStS));
+            else
+                SSTResultField.setText(String.valueOf(SoStR)  + "/10");
+        }
+    }//GEN-LAST:event_SoStBoxActionPerformed
+
+    private void StudIDfieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_StudIDfieldFocusGained
+        view = false;
+        StudIDfield.setText(""); 
+    }//GEN-LAST:event_StudIDfieldFocusGained
 
     
 
