@@ -170,7 +170,7 @@ public class QuizzifyStudDashboard extends JFrame {
             viewStudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(viewStudLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         viewStudLayout.setVerticalGroup(
@@ -318,9 +318,9 @@ public class QuizzifyStudDashboard extends JFrame {
     }//GEN-LAST:event_studentProgMousePressed
 
     private void quizMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quizMenuMouseClicked
-        QuizStudMenu QuizMenu = new QuizStudMenu();
+        QuizStudMenu student = new QuizStudMenu();
         ViewScreen.removeAll();
-        ViewScreen.add(QuizMenu).setVisible(true);
+        ViewScreen.add(student).setVisible(true);
     }//GEN-LAST:event_quizMenuMouseClicked
 
     private void viewStudMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewStudMouseClicked
