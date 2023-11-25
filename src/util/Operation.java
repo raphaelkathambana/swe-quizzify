@@ -9,7 +9,7 @@ import java.text.DecimalFormat;
 
 public class Operation {
 
-    GetConnection connection = GetConnection.getInstance();
+    static GetConnection connection = GetConnection.getInstance();
     Statement Stat;
     ResultSet rs;
     PreparedStatement pStat;
@@ -408,9 +408,43 @@ public class Operation {
     }
     /* ****************************************** */
 
+    public static void saveQuestionToDatabase(Question question, int quizId) {
+        // save question to database
+        String sql = "INSERT INTO questions "+
+        " VALUES ( "+
+            "?, "+
+            "?, "+
+            "?, "+
+            "?, "+
+            "?, "+
+            "?, "+
+            "? );";
+
+            try (PreparedStatement stat = connection.getConnection().prepareStatement(sql);) {
+                stat.setInt(1, quizId);
+                stat.setInt(2, 1);
+                stat.setString(3, question.getPrompt());
+                int param = 4;
+                for (int i = 0; i < question.getNumOptions(); i++) {
+                    if (i == question.getCorrectAnswerIndex()) {
+                        // save correct answer to database
+                        stat.setString(7, question.getOption(i));
+                    } else {
+                        stat.setString(param, question.getOption(i));
+                        param++;
+                    }
+                }
+                stat.executeUpdate();
+            } catch (Exception e) {
+                System.out.println("Error " + e.getMessage());
+            }
+        // save options to database
+        // save multimedia elements to database
+    }
+
     /* ****************************************** */
 
-    
+
 
 }
 
