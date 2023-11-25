@@ -15,12 +15,14 @@ import javax.swing.SwingUtilities;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 import util.GetConnection;
+import util.Operation;
 
 /**
  *
  * @author austi
  */
 public class CreateQuiz extends javax.swing.JInternalFrame {
+    static GetConnection connection = GetConnection.getInstance();
 
     /**
      * Creates new form CreateQuiz
@@ -100,7 +102,6 @@ public class CreateQuiz extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ContinueButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ContinueButtonActionPerformed
-
         String subject = SubjectMenu.getItemAt(getSelectedSubjectIndex());
         SwingUtilities.invokeLater(() -> new QuizCreationUI(subject).setVisible(true));
     }// GEN-LAST:event_ContinueButtonActionPerformed
@@ -111,24 +112,8 @@ public class CreateQuiz extends javax.swing.JInternalFrame {
 
     // get subjects from database to add to SubjectMenu
     private String[] getSubjects() {
-        String[] subjects = new String[3];
-        try (
-                Connection conn = GetConnection.getInstance().getConnection();
-                Statement stmt = conn.createStatement();) {
-            // get subjects from database
-            // add subjects to SubjectMenu
-            ResultSet rs = stmt.executeQuery("SELECT * FROM subject;");
-            int index = 0;
-            while (rs.next()) {
-                subjects[index] = (rs.getString(2));
-                index++;
-            }
-            Logger.getLogger(CreateQuiz.class.getName()).info("Subjects returned");
-            Logger.getLogger(CreateQuiz.class.getName()).log(Level.INFO, "subjects, {0}", subjects);
-        } catch (SQLException ex) {
-            Logger.getLogger(CreateQuiz.class.getName()).log(Level.SEVERE, "error", ex);
-        }
-        return subjects;
+        Operation operation = new Operation();
+        return operation.getSubjectsFromDatabase();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
