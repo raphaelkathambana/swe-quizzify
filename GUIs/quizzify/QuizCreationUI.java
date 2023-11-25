@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UnsupportedLookAndFeelException;
 
+import util.Operation;
 import util.Question;
 import util.Quiz;
 
@@ -360,7 +361,8 @@ public class QuizCreationUI extends javax.swing.JFrame {
         // Create a quiz
         Quiz quiz = new Quiz();
         quiz.setSubject(this.subject);
-        quiz.saveQuiz(1);
+        Operation op = new Operation();
+        quiz.saveQuiz(op.getCache("Teach"));
         for (int i = 0; i < questions.size(); i++) {
             Question question = questions.get(i);
             question.saveToDatabase(quiz.getQuizID());
