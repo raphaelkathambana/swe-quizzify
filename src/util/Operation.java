@@ -4,8 +4,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
 
 public class Operation {
 
@@ -30,15 +28,12 @@ public class Operation {
         }
 
         try {
-
             pStat = connection.getConnection().prepareStatement(query);
 
             pStat.setString(1, Name);
             pStat.setString(2, Email);
             pStat.setString(3, Pass);
             pStat.executeUpdate();
-
-            System.out.println("Inserting Works");
 
         } catch (SQLException e) {
             System.out.println("Error " + e.getMessage());
@@ -55,8 +50,6 @@ public class Operation {
             query = "SELECT * FROM Teacher WHERE Teacher_ID = " + ID + ";";
         }
 
-        System.out.println(query);
-
         try {
             Stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
                     ResultSet.CONCUR_UPDATABLE);
@@ -67,9 +60,6 @@ public class Operation {
             theName = rs.getString(2);
             theEmail = rs.getString(3);
             thePass = rs.getString(4);
-            // theId = Integer.toString(intId);
-
-            System.out.println("Inserting Works");
 
         } catch (SQLException e) {
             System.out.println("Error " + e.getMessage());
@@ -93,6 +83,7 @@ public class Operation {
             pStat = connection.getConnection().prepareStatement(query);
             pStat.setInt(1, ID);
             pStat.executeUpdate();
+
         } catch (SQLException e) {
             System.out.println("Error " + e.getMessage());
         }
@@ -114,6 +105,7 @@ public class Operation {
             rs = Stat.executeQuery(query);
             rs.next();
             theId = rs.getInt(1);
+
         } catch (SQLException e) {
             System.out.println("Error " + e.getMessage());
         }
@@ -133,6 +125,7 @@ public class Operation {
         try {
             pStat = connection.getConnection().prepareStatement(query);
             pStat.executeUpdate();
+
         } catch (SQLException e) {
             System.out.println("Error " + e.getMessage());
         }
@@ -151,8 +144,6 @@ public class Operation {
             query = "SELECT * FROM Teacher WHERE Teacher_ID = " + ID + ";";
         }
 
-        System.out.println(query);
-
         try {
             Stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
                     ResultSet.CONCUR_UPDATABLE);
@@ -163,9 +154,6 @@ public class Operation {
             theName = rs.getString(2);
             theEmail = rs.getString(3);
             thePass = rs.getString(4);
-            // theId = Integer.toString(intId);
-
-            System.out.println("Inserting Works");
 
         } catch (SQLException e) {
             System.out.println("Error " + e.getMessage());
@@ -176,8 +164,7 @@ public class Operation {
 
         int nowId = 0;
         String query = "";
-        // String query = "select CID from login.clients where CID =(select max(CID)
-        // from clients)";
+
         if (Type == "Stud") {
             query = "SELECT Student_ID FROM Student WHERE Student_ID = (select max(Student_ID) from Student);";
         } else if (Type == "Teach") {
@@ -190,7 +177,7 @@ public class Operation {
             while (rs.next())
                 nowId = rs.getInt(1);
         } catch (SQLException e) {
-            System.out.println("Couldn't find number of user");
+            System.out.println("Error: Couldn't find number of user");
         }
 
         String StrId = "";
@@ -204,8 +191,6 @@ public class Operation {
             StrId = "0" + nowId;
         if (digits == 4)
             StrId = "" + nowId;
-
-        System.out.println(StrId);
 
         return StrId;
     }
@@ -255,10 +240,10 @@ public class Operation {
     /* ****************************************** */
     public int QuizIDNum(int SubjID) {
 
+        int QuizID = 0;
         String query = "SELECT `Quiz_ID` from `Quiz` where `Subject_ID` = " + SubjID + " and `Teacher_ID` = "
                 + getCache("Teach") + ";";
 
-        int QuizID = 0;
         try {
             Stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
                     ResultSet.CONCUR_UPDATABLE);
@@ -273,7 +258,7 @@ public class Operation {
         return QuizID;
     }
 
-    public double getResult(int studID, String QuizID, int SubjID) {
+    public double getResult(int StudID, String QuizID, int SubjID) {
 
         String query = "";
         String cQuery = "SELECT COUNT(*) FROM `Quiz` WHERE `Subject_ID` = " + SubjID + " and `Teacher_ID` = "
@@ -282,12 +267,12 @@ public class Operation {
         int count = 0;
         double result = 0;
 
-        int[] Quiz = QuizIDAll(SubjID);
+        int[] Quiz = quizIDAll(SubjID);
         double[] Results = new double[num(cQuery)];
 
         try {
             do {
-                query = "SELECT `Result` FROM `Result` WHERE `Student_ID` = " + studID + " and `Quiz_ID` = "
+                query = "SELECT `Result` FROM `Result` WHERE `Student_ID` = " + StudID + " and `Quiz_ID` = "
                         + Quiz[count] + ";";
 
                 Stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
@@ -296,8 +281,6 @@ public class Operation {
                 rs.next();
 
                 Results[count] = rs.getInt(1);
-
-                System.out.println(Results[count]);
                 result = result + Results[count];
                 count++;
 
@@ -315,8 +298,7 @@ public class Operation {
     public double getResult(int StudID, String QuizID) {
         double result = 0;
 
-        String query = "SELECT `Result` FROM `Result` WHERE `Student_ID` = " + StudID + " and `Quiz_ID` = " + QuizID
-                + ";";
+        String query = "SELECT `Result` FROM `Result` WHERE `Student_ID` = " + StudID + " and `Quiz_ID` = " + QuizID + ";";
         try {
             Stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
                     ResultSet.CONCUR_UPDATABLE);
@@ -324,6 +306,43 @@ public class Operation {
 
             rs.next();
             result = rs.getDouble(1);
+
+        } catch (SQLException e) {
+            System.out.println("Error " + e.getMessage());
+        }
+
+        return result;
+    }
+
+    public double getAllResult(int StudID, String Choose) {
+
+        String query = "";
+        String cQuery = "SELECT COUNT(*) FROM `Quiz` WHERE `Teacher_ID` = " + getCache("Teach") + ";";
+
+        int count = 0;
+        double result = 0;
+
+        int[] Quiz = quizIDAll();
+        double[] Results = new double[num(cQuery)];
+
+        try {
+            do {
+                query = "SELECT `Result` FROM `Result` WHERE `Student_ID` = " + StudID + " and `Quiz_ID` = "
+                        + Quiz[count] + ";";
+
+                Stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+                        ResultSet.CONCUR_UPDATABLE);
+                rs = Stat.executeQuery(query);
+                rs.next();
+
+                Results[count] = rs.getInt(1);
+                result = result + Results[count];
+                count++;
+
+            } while (count != num(cQuery));
+
+            if ("Average".equals(Choose))
+                result = result / count;
         } catch (SQLException e) {
             System.out.println("Error " + e.getMessage());
         }
@@ -371,7 +390,6 @@ public class Operation {
             }
             QuizIDs[count] = "Total";
             QuizIDs[count + 1] = "Average";
-            System.out.println("Inserting Works");
 
         } catch (SQLException e) {
             System.out.println("Error " + e.getMessage());
@@ -380,12 +398,37 @@ public class Operation {
         return QuizIDs;
     }
 
-    public int[] QuizIDAll(int SubjID) {
+    public int[] quizIDAll(int SubjID) {
 
         String query = "SELECT `Quiz_ID` from `Quiz` where `Subject_ID` = " + SubjID + " and `Teacher_ID` = "
                 + getCache("Teach") + ";";
         String cQuery = "SELECT COUNT(*) FROM `Quiz` WHERE `Subject_ID` = " + SubjID + " and `Teacher_ID` = "
                 + getCache("Teach") + ";";
+
+        int[] QuizIDs = new int[num(cQuery)];
+        int count = 0;
+
+        try {
+            Stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE);
+            rs = Stat.executeQuery(query);
+
+            while (rs.next()) {
+                QuizIDs[count] = rs.getInt(1);
+                count++;
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error " + e.getMessage());
+        }
+
+        return QuizIDs;
+    }
+
+    public int[] quizIDAll() {
+
+        String query = "SELECT `Quiz_ID` from `Quiz` where `Teacher_ID` = " + getCache("Teach") + ";";
+        String cQuery = "SELECT COUNT(*) FROM `Quiz` WHERE `Teacher_ID` = " + getCache("Teach") + ";";
 
         int[] QuizIDs = new int[num(cQuery)];
         int count = 0;
@@ -443,8 +486,6 @@ public class Operation {
     }
 
     /* ****************************************** */
-
-
 
 }
 

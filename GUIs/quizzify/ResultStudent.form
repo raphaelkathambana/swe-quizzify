@@ -57,28 +57,47 @@
                           <Component id="topLabel" min="-2" pref="395" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="englishLabel" alignment="0" min="-2" pref="169" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="EngBox" min="-2" pref="68" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="englishLabel" alignment="0" min="-2" pref="169" max="-2" attributes="0"/>
+                                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="32767" attributes="0"/>
+                                                      <Component id="EngBox" min="-2" pref="68" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Component id="EnglishResultField" min="-2" pref="139" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
-                                          <Component id="EnglishResultField" min="-2" pref="139" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="ScienceLabel" alignment="0" min="-2" pref="151" max="-2" attributes="0"/>
+                                              <Component id="ScienceResultField" alignment="0" min="-2" pref="139" max="-2" attributes="0"/>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="SciBox" min="-2" pref="68" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
                                       </Group>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="ScienceLabel" alignment="0" min="-2" pref="151" max="-2" attributes="0"/>
-                                      <Component id="ScienceResultField" alignment="0" min="-2" pref="139" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="SciBox" min="-2" pref="68" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="jLabel9" min="-2" pref="120" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <EmptySpace max="32767" attributes="0"/>
+                                                  <Component id="AverageField" min="-2" pref="140" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <EmptySpace min="-2" pref="155" max="-2" attributes="0"/>
+                                                  <Component id="jLabel10" min="-2" pref="152" max="-2" attributes="0"/>
+                                                  <EmptySpace min="0" pref="25" max="32767" attributes="0"/>
+                                              </Group>
+                                          </Group>
                                       </Group>
                                   </Group>
                                   <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
@@ -93,15 +112,19 @@
                                   </Group>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <Component id="studIDlabel" min="-2" pref="182" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <EmptySpace min="19" pref="19" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="checkButton" min="-2" max="-2" attributes="0"/>
-                                      <Component id="StudIDfield" min="-2" pref="414" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="studIDlabel" min="-2" pref="182" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="checkButton" min="-2" max="-2" attributes="0"/>
+                                              <Component id="StudIDfield" min="-2" pref="414" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Component id="TotalField" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="jLabel9" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
-                              <Component id="TotalField" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -158,10 +181,16 @@
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                  <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                  <Component id="TotalField" min="-2" pref="50" max="-2" attributes="0"/>
-                  <EmptySpace pref="125" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="TotalField" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                      <Component id="AverageField" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="117" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -302,7 +331,7 @@
         <Component class="javax.swing.JComboBox" name="EngBox">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(O.QuizIDList(1))" type="code"/>
+              <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(O.quizIDList(1))" type="code"/>
             </Property>
           </Properties>
           <Events>
@@ -315,7 +344,7 @@
         <Component class="javax.swing.JComboBox" name="SciBox">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(O.QuizIDList(2))" type="code"/>
+              <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(O.quizIDList(2))" type="code"/>
             </Property>
           </Properties>
           <Events>
@@ -328,7 +357,7 @@
         <Component class="javax.swing.JComboBox" name="SoStBox">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(O.QuizIDList(3))" type="code"/>
+              <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(O.quizIDList(3))" type="code"/>
             </Property>
           </Properties>
           <Events>
@@ -337,6 +366,25 @@
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
+        </Component>
+        <Component class="javax.swing.JTextField" name="AverageField">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Trebuchet MS" size="30" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="cc" type="rgb"/>
+            </Property>
+            <Property name="focusable" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel10">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="36" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Average:"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

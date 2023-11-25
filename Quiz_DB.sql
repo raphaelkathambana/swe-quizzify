@@ -54,7 +54,6 @@ CREATE TABLE IF NOT EXISTS `Quiz` (
 
 CREATE TABLE IF NOT EXISTS `Questions`(
 	`Quiz_ID` int(4) NOT NULL,
-    `Qu_Num` int(2),
 	`Question` varchar(255),
     `Option-A` varchar(255),
     `Option-B` varchar(255),

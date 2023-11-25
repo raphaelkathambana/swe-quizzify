@@ -12,6 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 import java.util.logging.Level;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
@@ -21,6 +24,8 @@ public class Quiz {
 
     private List<Question> questions;
     private String subject;
+
+    GetConnection connection = GetConnection.getInstance();
 
     public Quiz() {
         questions = new ArrayList<>();
@@ -110,5 +115,28 @@ public class Quiz {
             Logger.getLogger(Quiz.class.getName()).log(Level.SEVERE, null, ex);
         }
         return id;
+    }
+
+    public int getQuizID() {
+
+        int LatestQuizID = 0;
+        String query = "";
+
+        Statement Stat;
+        ResultSet rs;
+
+            query = "SELECT Quiz_ID FROM Quiz WHERE Quiz_ID = (select max(Quiz_ID) from Quiz);";
+
+        try {
+            Stat = connection.getConnection().createStatement();
+            rs = Stat.executeQuery(query);
+            while (rs.next())
+                LatestQuizID = rs.getInt(1);
+        } catch (SQLException e) {
+            System.out.println("Error: Couldn't find number of user");
+        }
+
+
+        return LatestQuizID;
     }
 }
