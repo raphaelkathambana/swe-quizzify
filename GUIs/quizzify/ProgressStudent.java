@@ -27,8 +27,8 @@ public class ProgressStudent extends javax.swing.JInternalFrame {
 
         
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
-        BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();
-        ui.setNorthPane(null);
+        BasicInternalFrameUI internalUi = (BasicInternalFrameUI)this.getUI();
+        internalUi.setNorthPane(null);
     }
 
     /**
@@ -239,7 +239,7 @@ public class ProgressStudent extends javax.swing.JInternalFrame {
         else {
             try {
                 StudID = Integer.valueOf(StudIDfield.getText());
-                O.getResult(StudID, 1, StudID);
+                O.getResult(StudID, "1", StudID);
             } 
             catch (NumberFormatException ex){
                 JOptionPane.showMessageDialog(this,"Please Enter Correct Student ID number");
