@@ -13,22 +13,24 @@ import quizzify.CreateQuiz;
 public class Operation {
 
     static GetConnection connection = GetConnection.getInstance();
-    Statement Stat;
+    Statement stat;
     ResultSet rs;
     PreparedStatement pStat;
 
     int theId;
-    String theName, theEmail, thePass;
+    String theName;
+    String theEmail;
+    String thePass;
 
     // Auth
     /* ****************************************** */
-    public void SignUp(String Name, String Email, String Pass, String Type) {
+    public void SignUp(String Name, String Email, String Pass, String type) {
 
         String query = "";
 
-        if (Type == "Stud") {
+        if ("Stud".equals(type)) {
             query = "INSERT INTO Student (`Name`, `Email`, `Password`) VALUES (?, ?, ?);";
-        } else if (Type == "Teach") {
+        } else if ("Teach".equals(type)) {
             query = "INSERT INTO Teacher (`Name`, `Email`, `Password`) VALUES (?, ?, ?);";
         }
 
@@ -49,16 +51,16 @@ public class Operation {
 
         String query = "";
 
-        if (Type == "Stud") {
+        if ("Stud".equals(Type)) {
             query = "SELECT * FROM Student WHERE Student_ID = " + ID + ";";
-        } else if (Type == "Teach") {
+        } else if ("Teach".equals(Type)) {
             query = "SELECT * FROM Teacher WHERE Teacher_ID = " + ID + ";";
         }
 
         try {
-            Stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+            stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
                     ResultSet.CONCUR_UPDATABLE);
-            rs = Stat.executeQuery(query);
+            rs = stat.executeQuery(query);
 
             rs.next();
             theId = rs.getInt(1);
@@ -74,13 +76,13 @@ public class Operation {
 
     // Cache
     /* ****************************************** */
-    public void setCache(int ID, String Type) {
+    public void setCache(int ID, String type) {
 
         String query = "";
 
-        if (Type == "Stud") {
+        if ("Stud".equals(type)) {
             query = "INSERT INTO StudentCache (`ID`) VALUES (?);";
-        } else if (Type == "Teach") {
+        } else if ("Teach".equals(type)) {
             query = "INSERT INTO TeacherCache (`ID`) VALUES (?);";
         }
 
@@ -94,20 +96,20 @@ public class Operation {
         }
     }
 
-    public int getCache(String Type) {
+    public int getCache(String type) {
 
         String query = "";
 
-        if (Type == "Stud") {
+        if (type == "Stud") {
             query = "SELECT * FROM StudentCache;";
-        } else if (Type == "Teach") {
+        } else if (type == "Teach") {
             query = "SELECT * FROM TeacherCache;";
         }
 
         try {
-            Stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+            stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
                     ResultSet.CONCUR_UPDATABLE);
-            rs = Stat.executeQuery(query);
+            rs = stat.executeQuery(query);
             rs.next();
             theId = rs.getInt(1);
 
@@ -117,13 +119,13 @@ public class Operation {
         return theId;
     }
 
-    public void delCache(String Type) {
+    public void delCache(String type) {
 
         String query = "";
 
-        if (Type == "Stud") {
+        if ("Stud".equals(type)) {
             query = "DELETE FROM `StudentCache`;";
-        } else if (Type == "Teach") {
+        } else if ("Teach".equals(type)) {
             query = "DELETE FROM `TeacherCache`;";
         }
 
@@ -137,22 +139,22 @@ public class Operation {
     }
     /* ****************************************** */
 
-    // Retrival of User Details
+    // Retrieval of User Details
     /* ****************************************** */
     public void Details(int ID, String Type) {
 
         String query = "";
 
-        if (Type == "Stud") {
+        if ("Stud".equals(Type)) {
             query = "SELECT * FROM Student WHERE Student_ID = " + ID + ";";
-        } else if (Type == "Teach") {
+        } else if ("Teach".equals(Type)) {
             query = "SELECT * FROM Teacher WHERE Teacher_ID = " + ID + ";";
         }
 
         try {
-            Stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+            stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
                     ResultSet.CONCUR_UPDATABLE);
-            rs = Stat.executeQuery(query);
+            rs = stat.executeQuery(query);
 
             rs.next();
             theId = rs.getInt(1);
@@ -165,20 +167,20 @@ public class Operation {
         }
     }
 
-    public String getStrId(String Type) {
+    public String getStrId(String type) {
 
         int nowId = 0;
         String query = "";
 
-        if (Type == "Stud") {
+        if ("Stud".equals(type)) {
             query = "SELECT Student_ID FROM Student WHERE Student_ID = (select max(Student_ID) from Student);";
-        } else if (Type == "Teach") {
+        } else if ("Teach".equals(type)) {
             query = "SELECT Teacher_ID FROM Teacher WHERE Teacher_ID = (select max(Teacher_ID) from Teacher);";
         }
 
         try {
-            Stat = connection.getConnection().createStatement();
-            rs = Stat.executeQuery(query);
+            stat = connection.getConnection().createStatement();
+            rs = stat.executeQuery(query);
             while (rs.next())
                 nowId = rs.getInt(1);
         } catch (SQLException e) {
@@ -202,11 +204,11 @@ public class Operation {
 
     public void getTableList() {
 
-        String Query = "select * from `Student`";
+        String query = "select * from `Student`";
         try {
-            Stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+            stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
                     ResultSet.CONCUR_UPDATABLE);
-            rs = Stat.executeQuery(Query);
+            rs = stat.executeQuery(query);
 
             while (rs.next()) {
 
@@ -250,9 +252,9 @@ public class Operation {
                 + getCache("Teach") + ";";
 
         try {
-            Stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+            stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
                     ResultSet.CONCUR_UPDATABLE);
-            rs = Stat.executeQuery(query);
+            rs = stat.executeQuery(query);
 
             QuizID = rs.getInt(1);
 
@@ -280,9 +282,9 @@ public class Operation {
                 query = "SELECT `Result` FROM `Result` WHERE `Student_ID` = " + StudID + " and `Quiz_ID` = "
                         + Quiz[count] + ";";
 
-                Stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+                stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
                         ResultSet.CONCUR_UPDATABLE);
-                rs = Stat.executeQuery(query);
+                rs = stat.executeQuery(query);
                 rs.next();
 
                 Results[count] = rs.getInt(1);
@@ -306,9 +308,9 @@ public class Operation {
         String query = "SELECT `Result` FROM `Result` WHERE `Student_ID` = " + StudID + " and `Quiz_ID` = " + QuizID
                 + ";";
         try {
-            Stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+            stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
                     ResultSet.CONCUR_UPDATABLE);
-            rs = Stat.executeQuery(query);
+            rs = stat.executeQuery(query);
 
             rs.next();
             result = rs.getDouble(1);
@@ -328,21 +330,21 @@ public class Operation {
         int count = 0;
         double result = 0;
 
-        int[] Quiz = quizIDAll();
-        double[] Results = new double[num(cQuery)];
+        int[] quiz = quizIDAll();
+        double[] results = new double[num(cQuery)];
 
         try {
             do {
                 query = "SELECT `Result` FROM `Result` WHERE `Student_ID` = " + StudID + " and `Quiz_ID` = "
-                        + Quiz[count] + ";";
+                        + quiz[count] + ";";
 
-                Stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+                stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
                         ResultSet.CONCUR_UPDATABLE);
-                rs = Stat.executeQuery(query);
+                rs = stat.executeQuery(query);
                 rs.next();
 
-                Results[count] = rs.getInt(1);
-                result = result + Results[count];
+                results[count] = rs.getInt(1);
+                result = result + results[count];
                 count++;
 
             } while (count != num(cQuery));
@@ -364,9 +366,9 @@ public class Operation {
         int num = 0;
 
         try {
-            Stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+            stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
                     ResultSet.CONCUR_UPDATABLE);
-            rs = Stat.executeQuery(cQuery);
+            rs = stat.executeQuery(cQuery);
             rs.next();
             num = rs.getInt(1);
         } catch (SQLException e) {
@@ -386,9 +388,9 @@ public class Operation {
         int count = 0;
 
         try {
-            Stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+            stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
                     ResultSet.CONCUR_UPDATABLE);
-            rs = Stat.executeQuery(query);
+            rs = stat.executeQuery(query);
 
             while (rs.next()) {
                 QuizIDs[count] = String.valueOf(rs.getInt(1));
@@ -415,9 +417,9 @@ public class Operation {
         int count = 0;
 
         try {
-            Stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+            stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
                     ResultSet.CONCUR_UPDATABLE);
-            rs = Stat.executeQuery(query);
+            rs = stat.executeQuery(query);
 
             while (rs.next()) {
                 QuizIDs[count] = rs.getInt(1);
@@ -440,9 +442,9 @@ public class Operation {
         int count = 0;
 
         try {
-            Stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+            stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
                     ResultSet.CONCUR_UPDATABLE);
-            rs = Stat.executeQuery(query);
+            rs = stat.executeQuery(query);
 
             while (rs.next()) {
                 QuizIDs[count] = rs.getInt(1);
@@ -466,19 +468,17 @@ public class Operation {
                 "?, " +
                 "?, " +
                 "?, " +
-                "?, " +
                 "? );";
 
         try {
             pStat = connection.getConnection().prepareStatement(sql);
             pStat.setInt(1, quizId);
-            pStat.setInt(2, 1);
-            pStat.setString(3, question.getPrompt());
-            int param = 4;
+            pStat.setString(2, question.getPrompt());
+            int param = 3;
             for (int i = 0; i < question.getNumOptions(); i++) {
                 if (i == question.getCorrectAnswerIndex()) {
                     // save correct answer to database
-                    pStat.setString(7, question.getOption(i));
+                    pStat.setString(6, question.getOption(i));
                 } else {
                     pStat.setString(param, question.getOption(i));
                     param++;
@@ -495,13 +495,13 @@ public class Operation {
 
     public void saveQuizToDatabase(Quiz quiz, int teacherId) {
         try {
-            Stat = connection.getConnection().createStatement();
+            stat = connection.getConnection().createStatement();
             // get subject id
-            rs = Stat.executeQuery("SELECT * FROM subject WHERE `Name` = '" + quiz.getSubject() + "';");
+            rs = stat.executeQuery("SELECT * FROM subject WHERE `Name` = '" + quiz.getSubject() + "';");
             rs.next();
             int subjectId = rs.getInt(1);
             // insert quiz into database
-            Stat.executeUpdate(
+            stat.executeUpdate(
                     "INSERT INTO quiz (Subject_ID, Teacher_ID) VALUES (" + subjectId + ", " + teacherId + ");");
             Logger.getLogger(Quiz.class.getName()).info("Quiz saved to database");
         } catch (SQLException ex) {
@@ -515,8 +515,8 @@ public class Operation {
         query = "SELECT Quiz_ID FROM Quiz WHERE Quiz_ID = (select max(Quiz_ID) from Quiz);";
 
         try {
-            Stat = connection.getConnection().createStatement();
-            rs = Stat.executeQuery(query);
+            stat = connection.getConnection().createStatement();
+            rs = stat.executeQuery(query);
             while (rs.next())
                 latestQuizID = rs.getInt(1);
             Logger.getLogger(Quiz.class.getName()).info("Quiz id returned");
@@ -529,10 +529,10 @@ public class Operation {
     public String[] getSubjectsFromDatabase() {
         String[] subjects = new String[3];
         try  {
-            Stat = connection.getConnection().createStatement();
+            stat = connection.getConnection().createStatement();
             // get subjects from database
             // add subjects to SubjectMenu
-            rs = Stat.executeQuery("SELECT * FROM subject;");
+            rs = stat.executeQuery("SELECT * FROM subject;");
             int index = 0;
             while (rs.next()) {
                 subjects[index] = (rs.getString(2));
