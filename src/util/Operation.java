@@ -1,9 +1,14 @@
 package util;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import quizzify.CreateQuiz;
 
 public class Operation {
 
@@ -298,7 +303,8 @@ public class Operation {
     public double getResult(int StudID, String QuizID) {
         double result = 0;
 
-        String query = "SELECT `Result` FROM `Result` WHERE `Student_ID` = " + StudID + " and `Quiz_ID` = " + QuizID + ";";
+        String query = "SELECT `Result` FROM `Result` WHERE `Student_ID` = " + StudID + " and `Quiz_ID` = " + QuizID
+                + ";";
         try {
             Stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
                     ResultSet.CONCUR_UPDATABLE);
@@ -451,38 +457,93 @@ public class Operation {
     }
     /* ****************************************** */
 
-    public static void saveQuestionToDatabase(Question question, int quizId) {
+    public void saveQuestionToDatabase(Question question, int quizId) {
         // save question to database
-        String sql = "INSERT INTO questions "+
-        " VALUES ( "+
-            "?, "+
-            "?, "+
-            "?, "+
-            "?, "+
-            "?, "+
-            "?, "+
-            "? );";
+        String sql = "INSERT INTO questions " +
+                " VALUES ( " +
+                "?, " +
+                "?, " +
+                "?, " +
+                "?, " +
+                "?, " +
+                "?, " +
+                "? );";
 
-            try (PreparedStatement stat = connection.getConnection().prepareStatement(sql);) {
-                stat.setInt(1, quizId);
-                stat.setInt(2, 1);
-                stat.setString(3, question.getPrompt());
-                int param = 4;
-                for (int i = 0; i < question.getNumOptions(); i++) {
-                    if (i == question.getCorrectAnswerIndex()) {
-                        // save correct answer to database
-                        stat.setString(7, question.getOption(i));
-                    } else {
-                        stat.setString(param, question.getOption(i));
-                        param++;
-                    }
+        try {
+            pStat = connection.getConnection().prepareStatement(sql);
+            pStat.setInt(1, quizId);
+            pStat.setInt(2, 1);
+            pStat.setString(3, question.getPrompt());
+            int param = 4;
+            for (int i = 0; i < question.getNumOptions(); i++) {
+                if (i == question.getCorrectAnswerIndex()) {
+                    // save correct answer to database
+                    pStat.setString(7, question.getOption(i));
+                } else {
+                    pStat.setString(param, question.getOption(i));
+                    param++;
                 }
-                stat.executeUpdate();
-            } catch (Exception e) {
-                System.out.println("Error " + e.getMessage());
             }
+            pStat.executeUpdate();
+            Logger.getLogger(Operation.class.getName()).info("Question Saved to database");
+        } catch (Exception e) {
+            System.out.println("Error " + e.getMessage());
+        }
         // save options to database
         // save multimedia elements to database
+    }
+
+    public void saveQuizToDatabase(Quiz quiz, int teacherId) {
+        try {
+            Stat = connection.getConnection().createStatement();
+            // get subject id
+            rs = Stat.executeQuery("SELECT * FROM subject WHERE `Name` = '" + quiz.getSubject() + "';");
+            rs.next();
+            int subjectId = rs.getInt(1);
+            // insert quiz into database
+            Stat.executeUpdate(
+                    "INSERT INTO quiz (Subject_ID, Teacher_ID) VALUES (" + subjectId + ", " + teacherId + ");");
+            Logger.getLogger(Quiz.class.getName()).info("Quiz saved to database");
+        } catch (SQLException ex) {
+            Logger.getLogger(Quiz.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public int getQuizID() {
+        int latestQuizID = 0;
+        String query = "";
+        query = "SELECT Quiz_ID FROM Quiz WHERE Quiz_ID = (select max(Quiz_ID) from Quiz);";
+
+        try {
+            Stat = connection.getConnection().createStatement();
+            rs = Stat.executeQuery(query);
+            while (rs.next())
+                latestQuizID = rs.getInt(1);
+            Logger.getLogger(Quiz.class.getName()).info("Quiz id returned");
+        } catch (SQLException e) {
+            System.out.println("Error: Couldn't find quiz ID" + e.getMessage());
+        }
+        return latestQuizID;
+    }
+
+    public String[] getSubjectsFromDatabase() {
+        String[] subjects = new String[3];
+        try  {
+            Stat = connection.getConnection().createStatement();
+            // get subjects from database
+            // add subjects to SubjectMenu
+            rs = Stat.executeQuery("SELECT * FROM subject;");
+            int index = 0;
+            while (rs.next()) {
+                subjects[index] = (rs.getString(2));
+                index++;
+            }
+            Logger.getLogger(CreateQuiz.class.getName()).info("Subjects returned");
+            Logger.getLogger(CreateQuiz.class.getName()).log(Level.INFO, "subjects, {}", subjects);
+        } catch (SQLException ex) {
+            Logger.getLogger(CreateQuiz.class.getName()).log(Level.SEVERE, "error", ex);
+        }
+        return subjects;
     }
 
     /* ****************************************** */
