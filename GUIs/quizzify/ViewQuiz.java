@@ -5,6 +5,7 @@
 package quizzify;
 
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import util.Quiz;
 
 /**
  *
@@ -17,8 +18,15 @@ public class ViewQuiz extends javax.swing.JInternalFrame {
      */
     public ViewQuiz() {
         initComponents();
-        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
-        BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();
+        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
+        ui.setNorthPane(null);
+    }
+
+    ViewQuiz(Quiz quiz) {
+        initComponents();
+        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
         ui.setNorthPane(null);
     }
 
