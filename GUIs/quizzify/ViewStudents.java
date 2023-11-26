@@ -7,7 +7,13 @@ package quizzify;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 
-import util.Operation;
+import util.GetConnection;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+
 
 /**
  *
@@ -18,15 +24,33 @@ public class ViewStudents extends javax.swing.JInternalFrame {
     /**
      * Creates new form ViewStudents
      */
-    Operation O = new Operation();
+
+    static GetConnection connection = GetConnection.getInstance();
     
 
     public ViewStudents() {
         initComponents();
-        O.getTableList();
-        String List [] = {String.valueOf(O.getId()), O.getName(), O.getEmail(), O.getPass()};
-        DefaultTableModel Model = (DefaultTableModel)Table.getModel();
-        Model.addRow(List);
+        
+        String query = "select * from `Student`";
+        try {
+            Statement stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE);
+            ResultSet rs = stat.executeQuery(query);
+
+            while (rs.next()) {
+
+                String theId = String.valueOf(rs.getInt("Student_ID")) ;
+                String theName = rs.getString("Name");
+                String theEmail = rs.getString("Email");
+
+                String List [] = {theId, theName, theEmail};
+
+                DefaultTableModel Model = (DefaultTableModel)Table.getModel();
+                Model.addRow(List);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error " + e.getMessage());
+        }
         
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();
@@ -58,14 +82,14 @@ public class ViewStudents extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Student ID", "Name", "Email", "Password"
+                "Student ID", "Name", "Email"
             }
         ) {
-            Class<ViewProgress>[] types = new Class [] {
+            Class[] types = new Class [] {
                 java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
-            public Class<ViewProgress> getColumnClass(int columnIndex) {
+            public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });

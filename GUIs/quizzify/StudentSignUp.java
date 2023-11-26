@@ -88,11 +88,6 @@ public class StudentSignUp extends JInternalFrame {
                 studNameFieldFocusGained(evt);
             }
         });
-        studNameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                studNameFieldActionPerformed(evt);
-            }
-        });
 
         studEmailField.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         studEmailField.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -259,9 +254,11 @@ public class StudentSignUp extends JInternalFrame {
             try {
                 O.SignUp(theName, theEmail, thePass, userType);
                 JOptionPane.showMessageDialog(this, "Sign Up Successful! The Student's ID number is: " + O.getStrId(userType));
-                QuizzifyDashboard Q = new QuizzifyDashboard();
-                Q.setVisible(true);
-                this.setVisible(false);
+
+                studNameField.setText("");
+                studEmailField.setText("");
+                studPassword.setText("");
+                
             } catch (NumberFormatException NumErr) {
                 JOptionPane.showMessageDialog(this, "Please Write Your Details Properly");
             }
@@ -295,10 +292,6 @@ public class StudentSignUp extends JInternalFrame {
             focused[2] = '1';
         } 
     }//GEN-LAST:event_studPasswordFocusGained
-
-    private void studNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studNameFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_studNameFieldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

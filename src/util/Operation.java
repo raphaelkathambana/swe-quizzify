@@ -1,14 +1,19 @@
 package util;
 
-import java.sql.Connection;
+// import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.table.DefaultTableModel;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.mysql.cj.xdevapi.Table;
+
 import quizzify.CreateQuiz;
+import quizzify.ViewStudents;
 
 public class Operation {
 
@@ -18,9 +23,7 @@ public class Operation {
     PreparedStatement pStat;
 
     int theId;
-    String theName;
-    String theEmail;
-    String thePass;
+    String strId, theName, theEmail, thePass;
 
     // Auth
     /* ****************************************** */
@@ -202,7 +205,7 @@ public class Operation {
         return StrId;
     }
 
-    public void getTableList() {
+    public void getTableList(DefaultTableModel Model) {
 
         String query = "select * from `Student`";
         try {
@@ -212,11 +215,15 @@ public class Operation {
 
             while (rs.next()) {
 
-                theId = rs.getInt("Student_ID");
+                strId = String.valueOf(rs.getInt("Student_ID")) ;
                 theName = rs.getString("Name");
                 theEmail = rs.getString("Email");
                 thePass = rs.getString("Password");
 
+                String List [] = {strId, theName, theEmail, thePass};
+
+                ViewStudents v = new ViewStudents();
+                Model.addRow(List);
             }
         } catch (SQLException e) {
             System.out.println("Error " + e.getMessage());
