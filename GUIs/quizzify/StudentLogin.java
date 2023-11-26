@@ -311,7 +311,8 @@ public class StudentLogin extends JFrame {
                 // JOptionPane.showMessageDialog(this, "Loged in!");
                 int StudID = Integer.valueOf(this.studIDfield.getText());
                 O.setCache(StudID, userType);
-                StudentDashboard S = new StudentDashboard();
+                // StudentDashboard S = new StudentDashboard();
+                QuizzifyStudDashboard S = new QuizzifyStudDashboard();
                 S.setVisible(true);
                 this.setVisible(false);
             } else {

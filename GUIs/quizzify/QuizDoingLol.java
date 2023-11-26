@@ -25,41 +25,46 @@ public class QuizDoingLol extends javax.swing.JFrame {
     private int timeRemaining;
     private Timer timer;
     private int currentQuestionIndex;
+    private List<Integer> answers;
 
     /**
      * Creates new form QuizDoingLol
      */
     public QuizDoingLol() {
         initComponents();
+        this.answers = new ArrayList<>();
 
         timer = new Timer(1000, e -> {
             timeRemaining--;
             timerLabel.setText("Time Remaining: " + timeRemaining + " seconds");
+            Logger.getLogger(QuizTakingUI.class.getName()).log(Level.INFO, "time: {0}", timeRemaining);
             if (timeRemaining <= 0) {
+                Logger.getLogger(QuizTakingUI.class.getName()).info("Timer Stopped");
                 showNextQuestion();
-                Logger.getLogger(QuizTakingUI.class.getName()).info("Timer Started");
             }
         });
 
-        updateQuestion();
+        startQuiz();
     }
 
     public QuizDoingLol(Quiz quiz) {
         initComponents();
         this.quiz = quiz;
         this.currentQuestionIndex = 0;
+        this.answers = new ArrayList<>();
         this.timeRemaining = 60; // 60 seconds for each question
 
         timer = new Timer(1000, e -> {
             timeRemaining--;
             timerLabel.setText("Time Remaining: " + timeRemaining + " seconds");
+            Logger.getLogger(QuizTakingUI.class.getName()).log(Level.INFO, "time: {0}", timeRemaining);
             if (timeRemaining <= 0) {
+                Logger.getLogger(QuizTakingUI.class.getName()).info("Timer Stopped");
                 showNextQuestion();
-                Logger.getLogger(QuizTakingUI.class.getName()).info("Timer Started");
             }
         });
 
-        updateQuestion();
+        startQuiz();
     }
 
     /**
@@ -401,15 +406,17 @@ public class QuizDoingLol extends javax.swing.JFrame {
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_nextButtonActionPerformed
         int selectedOptionIndex = getSelectedOptionIndex();
         int correctAnswerIndex = quiz.getQuestion(currentQuestionIndex).getCorrectAnswerIndex();
+        answers.add(selectedOptionIndex);
 
         currentQuestionIndex++;
 
         if (currentQuestionIndex < quiz.getNumQuestions()) {
+            nextButton.setEnabled(false);
             processAnswer(selectedOptionIndex, correctAnswerIndex);
             updateQuestion();
         } else {
             JOptionPane.showMessageDialog(this, "Quiz Completed");
-            this.dispose();
+            showNextQuestion();
         }
     }// GEN-LAST:event_nextButtonActionPerformed
 
@@ -421,7 +428,7 @@ public class QuizDoingLol extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         /* Set the Nimbus look and feel */
         // <editor-fold defaultstate="collapsed" desc=" Look and feel setting code
         // (optional) ">
@@ -438,23 +445,16 @@ public class QuizDoingLol extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(QuizDoingLol.class.getName()).log(java.util.logging.Level.SEVERE, null,
                     ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(QuizDoingLol.class.getName()).log(java.util.logging.Level.SEVERE, null,
-                    ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(QuizDoingLol.class.getName()).log(java.util.logging.Level.SEVERE, null,
-                    ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(QuizDoingLol.class.getName()).log(java.util.logging.Level.SEVERE, null,
-                    ex);
-        }
+        }   
         // </editor-fold>
 
         /* Create and display the form */
         Quiz quiz = new Quiz();
+        quiz.setSubject("Science");
+        quiz.saveQuiz(1);
         Question question1 = new Question("What is the capital of France?",
                 List.of("London", "Berlin", "Paris", "else"), 2);
         Question question2 = new Question("Which planet is known as the Red Planet?",
@@ -467,8 +467,11 @@ public class QuizDoingLol extends javax.swing.JFrame {
         optionsForQuestion3.add("Uranus");
 
         Question question3 = new Question("What is the largest planet in our solar system?", optionsForQuestion3, 0);
+        question1.saveToDatabase(quiz.getQuizID());
         quiz.addQuestion(question1);
+        question2.saveToDatabase(quiz.getQuizID());
         quiz.addQuestion(question2);
+        question3.saveToDatabase(quiz.getQuizID());
         quiz.addQuestion(question3);
 
         java.awt.EventQueue.invokeLater(() -> new QuizDoingLol(quiz).setVisible(true));
@@ -510,25 +513,17 @@ public class QuizDoingLol extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public void startQuiz() {
-        showNextQuestion();
+        updateQuestion();
         timer.start();
         this.setVisible(true);
     }
 
     private void showNextQuestion() {
-        if (currentQuestionIndex < quiz.getNumQuestions()) {
-            int selectedOptionIndex = getSelectedOptionIndex();
-            int correctAnswerIndex = quiz.getQuestion(currentQuestionIndex).getCorrectAnswerIndex();
-
-            currentQuestionIndex++;
-            processAnswer(selectedOptionIndex, correctAnswerIndex);
-            updateQuestion();
-            nextButton.setEnabled(false);
-            currentQuestionIndex++;
-            timeRemaining = 60;
-        } else {
+        if (currentQuestionIndex >= quiz.getNumQuestions()) {
             timer.stop();
-            JOptionPane.showMessageDialog(this, "Quiz completed!");
+            int score = quiz.gradeQuiz(answers);
+            JOptionPane.showMessageDialog(this,
+                    "Your score is: " + score + "/" + quiz.getNumQuestions());
             this.dispose();
         }
     }

@@ -16,9 +16,25 @@ import java.util.logging.Level;
 public class Quiz {
 
     private List<Question> questions;
+    private String subject;
+
+    static GetConnection connection = GetConnection.getInstance();
 
     public Quiz() {
         questions = new ArrayList<>();
+    }
+
+    public Quiz(String subject) {
+        questions = new ArrayList<>();
+        this.subject = subject;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 
     public void addQuestion(Question question) {
@@ -29,11 +45,11 @@ public class Quiz {
     }
 
     public Question getQuestion(int index) {
-        return questions.get(index);
+        return this.questions.get(index);
     }
 
     public int getNumQuestions() {
-        return questions.size();
+        return this.questions.size();
     }
 
     public String getQuestions() {
@@ -47,5 +63,28 @@ public class Quiz {
             result.append("Correct Answer: ").append(question.getCorrectAnswerIndex()).append("\n\n");
         }
         return result.toString();
+    }
+
+    // grade the quiz
+    public int gradeQuiz(List<Integer> answers) {
+        int score = 0;
+        for (int i = 0; i < this.getNumQuestions(); i++) {
+            Question question = this.getQuestion(i);
+            if (question.getCorrectAnswerIndex() == answers.get(i)) {
+                score++;
+            }
+        }
+        return score;
+    }
+
+    // save to database
+    public void saveQuiz(int teacherId) {
+        Operation op = new Operation();
+        op.saveQuizToDatabase(this, teacherId);
+    }
+
+    public int getQuizID() {
+        Operation op = new Operation();
+        return op.getQuizID();
     }
 }

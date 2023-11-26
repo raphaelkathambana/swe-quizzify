@@ -291,7 +291,7 @@ public class QuizCreation extends javax.swing.JFrame {
     }//GEN-LAST:event_Option2RadioBtnActionPerformed
 
     private void CloseProgressReportbttnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CloseProgressReportbttnMouseClicked
-        this.dispose();        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_CloseProgressReportbttnMouseClicked
 
     /**

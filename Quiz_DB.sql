@@ -4,6 +4,7 @@ USE `QuizzifyDB`;
 SELECT DATABASE();
 
 DROP TABLE IF EXISTS `Result`;  
+DROP TABLE IF EXISTS `Questions`;
 DROP TABLE IF EXISTS `Quiz`;  
 DROP TABLE IF EXISTS `Student`;
 DROP TABLE IF EXISTS `Teacher`;
@@ -38,6 +39,7 @@ INSERT INTO `Subject` (`Name`) VALUES ("Social Studies");
 
 CREATE TABLE IF NOT EXISTS `Quiz` (
     `Quiz_ID` int(4) NOT NULL AUTO_INCREMENT,
+    `Title` varchar(200),
     `Subject_ID` int(4),
     `Teacher_ID` int(4),
     
@@ -50,11 +52,10 @@ CREATE TABLE IF NOT EXISTS `Quiz` (
     CONSTRAINT FK_1
 	FOREIGN KEY (`Teacher_ID`)
 	REFERENCES `Teacher` (`Teacher_ID`)
-)AUTO_INCREMENT=0001;
+) AUTO_INCREMENT=0001;
 
 CREATE TABLE IF NOT EXISTS `Questions`(
 	`Quiz_ID` int(4) NOT NULL,
-    `Qu_Num` int(2),
 	`Question` varchar(255),
     `Option-A` varchar(255),
     `Option-B` varchar(255),

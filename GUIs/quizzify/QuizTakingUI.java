@@ -28,28 +28,32 @@ public class QuizTakingUI extends javax.swing.JFrame {
     private int timeRemaining;
     private Timer timer;
     private int currentQuestionIndex;
+    private List<Integer> answers;
 
     /**
      * Creates new form QuizTakingUI
      */
     public QuizTakingUI() {
         initComponents();
+        this.answers = new ArrayList<>();
         timerLabel = new JLabel();
 
         timer = new Timer(1000, e -> {
             timeRemaining--;
             timerLabel.setText("Time Remaining: " + timeRemaining + " seconds");
+            Logger.getLogger(QuizTakingUI.class.getName()).log(Level.INFO, "time: {0}", timeRemaining);
             if (timeRemaining <= 0) {
+                Logger.getLogger(QuizTakingUI.class.getName()).info("Timer Stopped");
                 showNextQuestion();
-                Logger.getLogger(QuizTakingUI.class.getName()).info("Timer Started");
             }
         });
 
-        updateQuestion();
+        startQuiz();
     }
 
     public QuizTakingUI(Quiz quiz) {
         initComponents();
+        this.answers = new ArrayList<>();
         this.quiz = quiz;
         this.currentQuestionIndex = 0;
         this.timeRemaining = 60; // 60 seconds for each question
@@ -58,13 +62,14 @@ public class QuizTakingUI extends javax.swing.JFrame {
         timer = new Timer(1000, e -> {
             timeRemaining--;
             timerLabel.setText("Time Remaining: " + timeRemaining + " seconds");
+            Logger.getLogger(QuizTakingUI.class.getName()).log(Level.INFO, "time: {0}", timeRemaining);
             if (timeRemaining <= 0) {
+                Logger.getLogger(QuizTakingUI.class.getName()).info("Timer Stopped");
                 showNextQuestion();
-                Logger.getLogger(QuizTakingUI.class.getName()).info("Timer Started");
             }
         });
 
-        updateQuestion();
+        startQuiz();
     }
 
     /**
@@ -74,7 +79,8 @@ public class QuizTakingUI extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         optionGroup = new javax.swing.ButtonGroup();
@@ -196,6 +202,7 @@ public class QuizTakingUI extends javax.swing.JFrame {
         javax.swing.GroupLayout quizPanelLayout = new javax.swing.GroupLayout(quizPanel);
         quizPanel.setLayout(quizPanelLayout);
         quizPanelLayout.setHorizontalGroup(
+<<<<<<< HEAD
             quizPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(quizPanelLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
@@ -231,10 +238,43 @@ public class QuizTakingUI extends javax.swing.JFrame {
                     .addComponent(nextButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20))
         );
+=======
+                quizPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(quizPanelLayout.createSequentialGroup()
+                                .addGap(42, 42, 42)
+                                .addComponent(questionTextArea, javax.swing.GroupLayout.PREFERRED_SIZE, 772,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(189, Short.MAX_VALUE))
+                        .addGroup(quizPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(quizPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(nextButton, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
+                                                quizPanelLayout.createSequentialGroup()
+                                                        .addGap(0, 0, Short.MAX_VALUE)
+                                                        .addComponent(timerLabel,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE, 160,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap()));
+        quizPanelLayout.setVerticalGroup(
+                quizPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(quizPanelLayout.createSequentialGroup()
+                                .addGap(42, 42, 42)
+                                .addComponent(questionTextArea, javax.swing.GroupLayout.PREFERRED_SIZE, 58,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 415,
+                                        Short.MAX_VALUE)
+                                .addComponent(nextButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(timerLabel)
+                                .addContainerGap()));
+>>>>>>> 0766ebedcd46412f35d1e696e117b1637251e3e7
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
+<<<<<<< HEAD
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -248,6 +288,21 @@ public class QuizTakingUI extends javax.swing.JFrame {
                 .addComponent(quizPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(193, Short.MAX_VALUE))
         );
+=======
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(quizPanel, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap()));
+        layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(quizPanel, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap()));
+>>>>>>> 0766ebedcd46412f35d1e696e117b1637251e3e7
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -259,14 +314,17 @@ public class QuizTakingUI extends javax.swing.JFrame {
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_nextButtonActionPerformed
         int selectedOptionIndex = getSelectedOptionIndex();
         int correctAnswerIndex = quiz.getQuestion(currentQuestionIndex).getCorrectAnswerIndex();
+        answers.add(selectedOptionIndex);
 
         currentQuestionIndex++;
 
         if (currentQuestionIndex < quiz.getNumQuestions()) {
+            nextButton.setEnabled(false);
             processAnswer(selectedOptionIndex, correctAnswerIndex);
             updateQuestion();
         } else {
             JOptionPane.showMessageDialog(this, "Quiz Completed");
+            showNextQuestion();
         }
     }// GEN-LAST:event_nextButtonActionPerformed
 
@@ -290,7 +348,8 @@ public class QuizTakingUI extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+                | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(QuizTakingUI.class.getName()).log(java.util.logging.Level.SEVERE, null,
                     ex);
         }
@@ -298,7 +357,9 @@ public class QuizTakingUI extends javax.swing.JFrame {
 
         /* Create and display the form */
         Quiz quiz = new Quiz();
-        Question question1 = new Question("What is the capital of France?", List.of("London", "Berlin", "Paris"), 2);
+        Question question1 = new Question("What is the capital of France?",
+                List.of("London", "Berlin", "Paris", "else"), 2);
+        question1.saveToDatabase(1);
         Question question2 = new Question("Which planet is known as the Red Planet?", List.of("Earth", "Mars", "Venus"),
                 1);
         List<String> optionsForQuestion3 = new ArrayList<>();
@@ -316,25 +377,17 @@ public class QuizTakingUI extends javax.swing.JFrame {
     }
 
     public void startQuiz() {
-        showNextQuestion();
+        updateQuestion();
         timer.start();
         this.setVisible(true);
     }
 
     private void showNextQuestion() {
-        if (currentQuestionIndex < quiz.getNumQuestions()) {
-            int selectedOptionIndex = getSelectedOptionIndex();
-            int correctAnswerIndex = quiz.getQuestion(currentQuestionIndex).getCorrectAnswerIndex();
-
-            currentQuestionIndex++;
-            processAnswer(selectedOptionIndex, correctAnswerIndex);
-            updateQuestion();
-            nextButton.setEnabled(false);
-            currentQuestionIndex++;
-            timeRemaining = 60;
-        } else {
+        if (currentQuestionIndex >= quiz.getNumQuestions()) {
             timer.stop();
-            JOptionPane.showMessageDialog(this, "Quiz completed!");
+            int score = quiz.gradeQuiz(answers);
+            JOptionPane.showMessageDialog(this,
+                    "Your score is: " + score + "/" + quiz.getNumQuestions());
             this.dispose();
         }
     }

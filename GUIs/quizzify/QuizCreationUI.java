@@ -11,9 +11,16 @@ import java.util.logging.Logger;
 import javax.swing.JLabel;
 
 import javax.swing.JOptionPane;
+<<<<<<< HEAD
 import javax.swing.JRadioButton;
 import javax.swing.Timer;
 
+=======
+import javax.swing.SwingUtilities;
+import javax.swing.UnsupportedLookAndFeelException;
+
+import util.Operation;
+>>>>>>> 0766ebedcd46412f35d1e696e117b1637251e3e7
 import util.Question;
 import util.Quiz;
 
@@ -28,9 +35,18 @@ public class QuizTakingUI extends javax.swing.JFrame {
     private int timeRemaining;
     private Timer timer;
     private int currentQuestionIndex;
+<<<<<<< HEAD
 
     /**
      * Creates new form QuizTakingUI
+=======
+    private boolean valid;
+    private String subject;
+
+    /**
+     * @param subject the subject for the quiz
+     *                Creates new form QuizCreationUI
+>>>>>>> 0766ebedcd46412f35d1e696e117b1637251e3e7
      */
     public QuizTakingUI() {
         initComponents();
@@ -74,7 +90,13 @@ public class QuizTakingUI extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
+<<<<<<< HEAD
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+=======
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
+>>>>>>> 0766ebedcd46412f35d1e696e117b1637251e3e7
     private void initComponents() {
 
         optionGroup = new javax.swing.ButtonGroup();
@@ -235,6 +257,7 @@ public class QuizTakingUI extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
+<<<<<<< HEAD
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -248,6 +271,145 @@ public class QuizTakingUI extends javax.swing.JFrame {
                 .addComponent(quizPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(193, Short.MAX_VALUE))
         );
+=======
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                .addGroup(layout
+                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jLabelCorrectAnswer,
+                                                                javax.swing.GroupLayout.Alignment.TRAILING,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE, 173,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(btnNextQuestion,
+                                                                javax.swing.GroupLayout.Alignment.TRAILING,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE, 179,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(layout
+                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addGap(6, 6, 6)
+                                                                .addComponent(btnFinish,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE, 179,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addComponent(answerComboBox,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE, 192,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(8, 8, 8))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout
+                                                .createSequentialGroup()
+                                                .addGroup(layout
+                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addComponent(lblSubject)
+                                                        .addComponent(questionLabel))
+                                                .addGap(36, 36, 36)
+                                                .addGroup(layout
+                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addGroup(layout.createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(jLabelOption3,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                131,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(jLabelOption1,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                139,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addGap(4, 4, 4)
+                                                                .addGroup(layout.createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(answerTfOne)
+                                                                        .addComponent(answerTfThree)))
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addGroup(layout.createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addGroup(layout.createSequentialGroup()
+                                                                                .addComponent(jLabelOption4,
+                                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                        131,
+                                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addPreferredGap(
+                                                                                        javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                                .addComponent(answerTfFour,
+                                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                        383,
+                                                                                        javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                        .addComponent(questionTextField,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                514,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addGroup(layout.createSequentialGroup()
+                                                                                .addComponent(jLabelOption2,
+                                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                        131,
+                                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addPreferredGap(
+                                                                                        javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                                .addComponent(answerTfTwo,
+                                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                        383,
+                                                                                        javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                        .addComponent(lblSubjectName))
+                                                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addGap(57, 57, 57)));
+        layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(lblSubject)
+                                        .addComponent(lblSubjectName))
+                                .addGap(16, 16, 16)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(questionTextField, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(questionLabel))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabelOption1, javax.swing.GroupLayout.PREFERRED_SIZE, 67,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(answerTfOne, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabelOption2, javax.swing.GroupLayout.PREFERRED_SIZE, 63,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(answerTfTwo, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabelOption3, javax.swing.GroupLayout.PREFERRED_SIZE, 69,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(answerTfThree, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabelOption4, javax.swing.GroupLayout.PREFERRED_SIZE, 90,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(answerTfFour, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabelCorrectAnswer, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(answerComboBox))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(btnFinish, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnNextQuestion, javax.swing.GroupLayout.DEFAULT_SIZE, 75,
+                                                Short.MAX_VALUE))
+                                .addGap(12, 12, 12)));
+>>>>>>> 0766ebedcd46412f35d1e696e117b1637251e3e7
 
         pack();
     }// </editor-fold>                        
@@ -290,13 +452,20 @@ public class QuizTakingUI extends javax.swing.JFrame {
                     break;
                 }
             }
+<<<<<<< HEAD
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(QuizTakingUI.class.getName()).log(java.util.logging.Level.SEVERE, null,
+=======
+        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException
+                | UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(QuizCreationUI.class.getName()).log(java.util.logging.Level.SEVERE, null,
+>>>>>>> 0766ebedcd46412f35d1e696e117b1637251e3e7
                     ex);
         }
         // </editor-fold>
 
         /* Create and display the form */
+<<<<<<< HEAD
         Quiz quiz = new Quiz();
         Question question1 = new Question("What is the capital of France?", List.of("London", "Berlin", "Paris"), 2);
         Question question2 = new Question("Which planet is known as the Red Planet?", List.of("Earth", "Mars", "Venus"),
@@ -313,6 +482,90 @@ public class QuizTakingUI extends javax.swing.JFrame {
         quiz.addQuestion(question3);
 
         java.awt.EventQueue.invokeLater(() -> new QuizTakingUI(quiz).setVisible(true));
+=======
+        java.awt.EventQueue.invokeLater(() -> new QuizCreationUI("English").setVisible(true));
+    }
+
+    private void addQuestion() {
+        String questionText = questionTextField.getText();
+        String option1 = this.validate(answerTfOne.getText());
+        String option2 = this.validate(answerTfTwo.getText());
+        String option3 = this.validate(answerTfThree.getText());
+        String option4 = this.validate(answerTfFour.getText());
+        Logger.getLogger(QuizCreationUI.class.getName()).info("options maybe added");
+        Logger.getLogger(QuizCreationUI.class.getName()).log(Level.INFO, "option 1: {0}", option1);
+        Logger.getLogger(QuizCreationUI.class.getName()).log(Level.INFO, "option 2: {0}", option2);
+        Logger.getLogger(QuizCreationUI.class.getName()).log(Level.INFO, "option 3: {0}", option3);
+        Logger.getLogger(QuizCreationUI.class.getName()).log(Level.INFO, "option 4: {0}", option4);
+
+        if (!valid) {
+            JOptionPane.showMessageDialog(this, "Please fill in all fields");
+            return;
+        }
+        List<String> options = new ArrayList<>();
+        options.add(option1);
+        Logger.getLogger(QuizCreationUI.class.getName()).info("option 1 added successfully to the list");
+        options.add(option2);
+        Logger.getLogger(QuizCreationUI.class.getName()).info("option 2 added successfully to the list");
+        options.add(option3);
+        Logger.getLogger(QuizCreationUI.class.getName()).info("option 3 added successfully to the list");
+        options.add(option4);
+        Logger.getLogger(QuizCreationUI.class.getName()).info("option 4 added successfully to the list");
+
+        Logger.getLogger(QuizCreationUI.class.getName()).info("All Options added maybe");
+        Logger.getLogger(QuizCreationUI.class.getName()).log(Level.INFO, "List: {0}", options);
+
+        int correctAnswerIndex = answerComboBox.getSelectedIndex();
+        Logger.getLogger(QuizCreationUI.class.getName()).log(Level.INFO, "Correct answer index: {0}",
+                correctAnswerIndex);
+
+        Question question = new Question(questionText, options, correctAnswerIndex);
+        Logger.getLogger(QuizCreationUI.class.getName()).log(Level.INFO, "Question created successfully: {0}",
+                question);
+
+        questions.add(question);
+
+        clearFields();
+        currentQuestionIndex++;
+        JOptionPane.showMessageDialog(this, "Question added!");
+    }
+
+    private void finishQuizCreation() {
+        // Add logic to save the quiz with the created questions
+        JOptionPane.showMessageDialog(this, "Quiz creation completed!");
+        this.createQuiz();
+        dispose();
+    }
+
+    private void clearFields() {
+        questionTextField.setText("");
+        answerTfThree.setText("");
+        answerTfFour.setText("");
+        answerTfTwo.setText("");
+        answerTfOne.setText("");
+        answerComboBox.setSelectedIndex(0);
+    }
+
+    private String validate(String args) {
+        // check if empty
+        valid = !(args.isEmpty() || args.length() == 0 || args.equals(""));
+        return args;
+    }
+
+    private void createQuiz() {
+        // Create a quiz
+        Quiz quiz = new Quiz();
+        quiz.setSubject(this.subject);
+        Operation op = new Operation();
+        quiz.saveQuiz(op.getCache("Teach"));
+        for (int i = 0; i < questions.size(); i++) {
+            Question question = questions.get(i);
+            question.saveToDatabase(quiz.getQuizID());
+            quiz.addQuestion(question);
+        }
+        // Create and start the QuizTakingGUI
+        SwingUtilities.invokeLater(() -> new QuizDoingLol(quiz).setVisible(true));
+>>>>>>> 0766ebedcd46412f35d1e696e117b1637251e3e7
     }
 
     public void startQuiz() {
