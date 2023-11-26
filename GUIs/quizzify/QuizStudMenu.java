@@ -7,6 +7,9 @@ package quizzify;
 
 import java.awt.Color;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+
+import util.Operation;
+
 import javax.swing.*;
 /**
  *
@@ -17,7 +20,10 @@ public class QuizStudMenu extends JInternalFrame {
     /**
      * Creates new form QuizStudMenu
      */
+    Operation O = new Operation();
+
     Color DefaultColour, ClickedColour;
+
     public QuizStudMenu() {
         initComponents();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
@@ -26,6 +32,35 @@ public class QuizStudMenu extends JInternalFrame {
 
         ClickedColour= new Color(204,102,255);
         DefaultColour= new Color(230,196,70);
+
+        int count = 0;
+        do {
+            String[] Detail = O.quizDetal(count);
+            if (count == 0) {
+                QuizID1.setText("Quiz " + Detail[0]);
+                Subject1.setText("Subject: " + Detail[1]);
+                QuizBy1.setText("Quiz by: " + Detail[2]);
+                Title1.setText("Title: " + Detail[3]);
+            } else if (count == 1) {
+                QuizID2.setText("Quiz " + Detail[0]);
+                Subject2.setText("Subject: " + Detail[1]);
+                QuizBy2.setText("Quiz by: " + Detail[2]);
+                Title2.setText("Title: " + Detail[3]);
+            } else if (count == 2) {
+                QuizID3.setText("Quiz " + Detail[0]);
+                Subject3.setText("Subject: " + Detail[1]);
+                QuizBy3.setText("Quiz by: " + Detail[2]);
+                Title3.setText("Title: " + Detail[3]);
+            } else if (count == 3) {
+                QuizID4.setText("Quiz " + Detail[0]);
+                Subject4.setText("Subject: " + Detail[1]);
+                QuizBy4.setText("Quiz by: " + Detail[2]);
+                Title4.setText("Title: " + Detail[3]);
+            }  
+
+            count++;
+        } while (count != 4);
+
     }
 
     /**
@@ -40,21 +75,25 @@ public class QuizStudMenu extends JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         PreviousButton = new javax.swing.JButton();
         QuizPanel1 = new javax.swing.JPanel();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField11 = new javax.swing.JTextField();
+        QuizID1 = new javax.swing.JLabel();
+        Title1 = new javax.swing.JLabel();
+        QuizBy1 = new javax.swing.JLabel();
+        Subject1 = new javax.swing.JLabel();
         QuizPanel2 = new javax.swing.JPanel();
-        jTextField12 = new javax.swing.JTextField();
-        jTextField13 = new javax.swing.JTextField();
-        jTextField14 = new javax.swing.JTextField();
-        QuizPanel4 = new javax.swing.JPanel();
-        jTextField15 = new javax.swing.JTextField();
-        jTextField16 = new javax.swing.JTextField();
-        jTextField17 = new javax.swing.JTextField();
+        QuizBy2 = new javax.swing.JLabel();
+        Subject2 = new javax.swing.JLabel();
+        QuizID2 = new javax.swing.JLabel();
+        Title2 = new javax.swing.JLabel();
         QuizPanel3 = new javax.swing.JPanel();
-        jTextField18 = new javax.swing.JTextField();
-        jTextField19 = new javax.swing.JTextField();
-        jTextField20 = new javax.swing.JTextField();
+        QuizBy3 = new javax.swing.JLabel();
+        Subject3 = new javax.swing.JLabel();
+        QuizID3 = new javax.swing.JLabel();
+        Title3 = new javax.swing.JLabel();
+        QuizPanel4 = new javax.swing.JPanel();
+        QuizBy4 = new javax.swing.JLabel();
+        Subject4 = new javax.swing.JLabel();
+        QuizID4 = new javax.swing.JLabel();
+        Title4 = new javax.swing.JLabel();
         NextButton = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -73,18 +112,23 @@ public class QuizStudMenu extends JInternalFrame {
             }
         });
 
-        jTextField7.setEditable(false);
-        jTextField7.setBackground(new java.awt.Color(230, 208, 112));
-        jTextField7.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jTextField7.setText("Title of the Quiz");
+        QuizID1.setBackground(new java.awt.Color(230, 208, 112));
+        QuizID1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        QuizID1.setText("No.");
+        QuizID1.setOpaque(true);
 
-        jTextField8.setEditable(false);
-        jTextField8.setBackground(new java.awt.Color(230, 208, 112));
-        jTextField8.setText("Quiz by: Teacher");
+        Title1.setBackground(new java.awt.Color(230, 208, 112));
+        Title1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        Title1.setText("Title of the Quiz");
+        Title1.setOpaque(true);
 
-        jTextField11.setEditable(false);
-        jTextField11.setBackground(new java.awt.Color(230, 208, 112));
-        jTextField11.setText("Subject name");
+        QuizBy1.setBackground(new java.awt.Color(230, 208, 112));
+        QuizBy1.setText("Quiz by: Teacher");
+        QuizBy1.setOpaque(true);
+
+        Subject1.setBackground(new java.awt.Color(230, 208, 112));
+        Subject1.setText("Subject: Name");
+        Subject1.setOpaque(true);
 
         javax.swing.GroupLayout QuizPanel1Layout = new javax.swing.GroupLayout(QuizPanel1);
         QuizPanel1.setLayout(QuizPanel1Layout);
@@ -93,20 +137,25 @@ public class QuizStudMenu extends JInternalFrame {
             .addGroup(QuizPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(QuizPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(35, Short.MAX_VALUE))
+                    .addGroup(QuizPanel1Layout.createSequentialGroup()
+                        .addComponent(QuizID1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Title1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(QuizBy1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Subject1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         QuizPanel1Layout.setVerticalGroup(
             QuizPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(QuizPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(QuizPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Title1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(QuizID1, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(QuizBy1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Subject1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -117,18 +166,23 @@ public class QuizStudMenu extends JInternalFrame {
             }
         });
 
-        jTextField12.setEditable(false);
-        jTextField12.setBackground(new java.awt.Color(230, 208, 112));
-        jTextField12.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jTextField12.setText("Title of the Quiz");
+        QuizBy2.setBackground(new java.awt.Color(230, 208, 112));
+        QuizBy2.setText("Quiz by: Teacher");
+        QuizBy2.setOpaque(true);
 
-        jTextField13.setEditable(false);
-        jTextField13.setBackground(new java.awt.Color(230, 208, 112));
-        jTextField13.setText("Quiz by: Teacher");
+        Subject2.setBackground(new java.awt.Color(230, 208, 112));
+        Subject2.setText("Subject: Name");
+        Subject2.setOpaque(true);
 
-        jTextField14.setEditable(false);
-        jTextField14.setBackground(new java.awt.Color(230, 208, 112));
-        jTextField14.setText("Subject name");
+        QuizID2.setBackground(new java.awt.Color(230, 208, 112));
+        QuizID2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        QuizID2.setText("No.");
+        QuizID2.setOpaque(true);
+
+        Title2.setBackground(new java.awt.Color(230, 208, 112));
+        Title2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        Title2.setText("Title of the Quiz");
+        Title2.setOpaque(true);
 
         javax.swing.GroupLayout QuizPanel2Layout = new javax.swing.GroupLayout(QuizPanel2);
         QuizPanel2.setLayout(QuizPanel2Layout);
@@ -137,64 +191,25 @@ public class QuizStudMenu extends JInternalFrame {
             .addGroup(QuizPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(QuizPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(QuizPanel2Layout.createSequentialGroup()
+                        .addComponent(QuizID2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Title2, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(QuizBy2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Subject2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         QuizPanel2Layout.setVerticalGroup(
             QuizPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(QuizPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(QuizPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Title2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(QuizID2, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(QuizBy2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        QuizPanel4.setBackground(new java.awt.Color(230, 196, 70));
-        QuizPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                QuizPanel4MousePressed(evt);
-            }
-        });
-
-        jTextField15.setEditable(false);
-        jTextField15.setBackground(new java.awt.Color(230, 208, 112));
-        jTextField15.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jTextField15.setText("Title of the Quiz");
-
-        jTextField16.setEditable(false);
-        jTextField16.setBackground(new java.awt.Color(230, 208, 112));
-        jTextField16.setText("Quiz by: Teacher");
-
-        jTextField17.setEditable(false);
-        jTextField17.setBackground(new java.awt.Color(230, 208, 112));
-        jTextField17.setText("Subject name");
-
-        javax.swing.GroupLayout QuizPanel4Layout = new javax.swing.GroupLayout(QuizPanel4);
-        QuizPanel4.setLayout(QuizPanel4Layout);
-        QuizPanel4Layout.setHorizontalGroup(
-            QuizPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(QuizPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(QuizPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(35, Short.MAX_VALUE))
-        );
-        QuizPanel4Layout.setVerticalGroup(
-            QuizPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(QuizPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Subject2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -205,18 +220,23 @@ public class QuizStudMenu extends JInternalFrame {
             }
         });
 
-        jTextField18.setEditable(false);
-        jTextField18.setBackground(new java.awt.Color(230, 208, 112));
-        jTextField18.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jTextField18.setText("Title of the Quiz");
+        QuizBy3.setBackground(new java.awt.Color(230, 208, 112));
+        QuizBy3.setText("Quiz by: Teacher");
+        QuizBy3.setOpaque(true);
 
-        jTextField19.setEditable(false);
-        jTextField19.setBackground(new java.awt.Color(230, 208, 112));
-        jTextField19.setText("Quiz by: Teacher");
+        Subject3.setBackground(new java.awt.Color(230, 208, 112));
+        Subject3.setText("Subject: Name");
+        Subject3.setOpaque(true);
 
-        jTextField20.setEditable(false);
-        jTextField20.setBackground(new java.awt.Color(230, 208, 112));
-        jTextField20.setText("Subject name");
+        QuizID3.setBackground(new java.awt.Color(230, 208, 112));
+        QuizID3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        QuizID3.setText("No.");
+        QuizID3.setOpaque(true);
+
+        Title3.setBackground(new java.awt.Color(230, 208, 112));
+        Title3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        Title3.setText("Title of the Quiz");
+        Title3.setOpaque(true);
 
         javax.swing.GroupLayout QuizPanel3Layout = new javax.swing.GroupLayout(QuizPanel3);
         QuizPanel3.setLayout(QuizPanel3Layout);
@@ -225,20 +245,79 @@ public class QuizStudMenu extends JInternalFrame {
             .addGroup(QuizPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(QuizPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(QuizPanel3Layout.createSequentialGroup()
+                        .addComponent(QuizID3, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Title3, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(QuizBy3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Subject3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         QuizPanel3Layout.setVerticalGroup(
             QuizPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(QuizPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(QuizPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Title3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(QuizID3, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(QuizBy3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Subject3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        QuizPanel4.setBackground(new java.awt.Color(230, 196, 70));
+        QuizPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                QuizPanel4MousePressed(evt);
+            }
+        });
+
+        QuizBy4.setBackground(new java.awt.Color(230, 208, 112));
+        QuizBy4.setText("Quiz by: Teacher");
+        QuizBy4.setOpaque(true);
+
+        Subject4.setBackground(new java.awt.Color(230, 208, 112));
+        Subject4.setText("Subject: Name");
+        Subject4.setOpaque(true);
+
+        QuizID4.setBackground(new java.awt.Color(230, 208, 112));
+        QuizID4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        QuizID4.setText("No.");
+        QuizID4.setOpaque(true);
+
+        Title4.setBackground(new java.awt.Color(230, 208, 112));
+        Title4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        Title4.setText("Title of the Quiz");
+        Title4.setOpaque(true);
+
+        javax.swing.GroupLayout QuizPanel4Layout = new javax.swing.GroupLayout(QuizPanel4);
+        QuizPanel4.setLayout(QuizPanel4Layout);
+        QuizPanel4Layout.setHorizontalGroup(
+            QuizPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(QuizPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(QuizPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(QuizPanel4Layout.createSequentialGroup()
+                        .addComponent(QuizID4, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Title4, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(QuizBy4, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Subject4, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        QuizPanel4Layout.setVerticalGroup(
+            QuizPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(QuizPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(QuizPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Title4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(QuizID4, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(QuizBy4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Subject4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -279,7 +358,7 @@ public class QuizStudMenu extends JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(421, 421, 421)
                         .addComponent(jLabel1)))
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addContainerGap(127, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -321,7 +400,7 @@ public class QuizStudMenu extends JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 6, Short.MAX_VALUE))
         );
 
         pack();
@@ -393,25 +472,29 @@ public class QuizStudMenu extends JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton NextButton;
     private javax.swing.JButton PreviousButton;
+    private javax.swing.JLabel QuizBy1;
+    private javax.swing.JLabel QuizBy2;
+    private javax.swing.JLabel QuizBy3;
+    private javax.swing.JLabel QuizBy4;
+    private javax.swing.JLabel QuizID1;
+    private javax.swing.JLabel QuizID2;
+    private javax.swing.JLabel QuizID3;
+    private javax.swing.JLabel QuizID4;
     private javax.swing.JPanel QuizPanel1;
     private javax.swing.JPanel QuizPanel2;
     private javax.swing.JPanel QuizPanel3;
     private javax.swing.JPanel QuizPanel4;
+    private javax.swing.JLabel Subject1;
+    private javax.swing.JLabel Subject2;
+    private javax.swing.JLabel Subject3;
+    private javax.swing.JLabel Subject4;
+    private javax.swing.JLabel Title1;
+    private javax.swing.JLabel Title2;
+    private javax.swing.JLabel Title3;
+    private javax.swing.JLabel Title4;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField16;
-    private javax.swing.JTextField jTextField17;
-    private javax.swing.JTextField jTextField18;
-    private javax.swing.JTextField jTextField19;
-    private javax.swing.JTextField jTextField20;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
 }

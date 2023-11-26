@@ -359,7 +359,7 @@ public class Operation {
     }
     /* ****************************************** */
 
-    // List Of QuizID
+    // List Of Quiz
     /* ****************************************** */
     public int num(String cQuery) {
 
@@ -433,6 +433,31 @@ public class Operation {
         return QuizIDs;
     }
 
+    public int[] quizIDEach() {
+
+        String query = "SELECT `Quiz_ID` from `Quiz`;";
+        String cQuery = "SELECT COUNT(*) FROM `Quiz`;";
+
+        int[] QuizIDs = new int[num(cQuery)];
+        int count = 0;
+
+        try {
+            stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE);
+            rs = stat.executeQuery(query);
+
+            while (rs.next()) {
+                QuizIDs[count] = rs.getInt(1);
+                count++;
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error " + e.getMessage());
+        }
+
+        return QuizIDs;
+    }
+
     public int[] quizIDAll() {
 
         String query = "SELECT `Quiz_ID` from `Quiz` where `Teacher_ID` = " + getCache("Teach") + ";";
@@ -456,6 +481,35 @@ public class Operation {
         }
 
         return QuizIDs;
+    }
+    
+    public String[] quizDetal(int num){
+
+        String[] QuizDetail = new String[4];
+        int[] QuizCount = quizIDEach();
+
+        String query = "SELECT * from `Quiz` WHERE Quiz_ID = " + QuizCount[num] + ";";
+
+        try {
+            stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE);
+            rs = stat.executeQuery(query);
+            rs.next();
+
+            int QuizID = rs.getInt(1);
+            int SubjID = rs.getInt(2);
+            int TeachID = rs.getInt(3);
+            String Title = rs.getString(4);
+
+            QuizDetail[0] = String.valueOf(QuizID); // QuizID
+            QuizDetail[1] = getSubject(SubjID); // SubjectID
+            QuizDetail[2] = getTeacher(TeachID); // TeacherID
+            QuizDetail[3] = Title; // Title
+        } catch (SQLException e) {
+            System.out.println("Error " + e.getMessage());
+        }
+
+        return QuizDetail;
     }
     /* ****************************************** */
 
@@ -546,6 +600,39 @@ public class Operation {
         return subjects;
     }
 
+    public String getSubject(int SubjID){
+
+        String query = "SELECT `Name` FROM `Subject` WHERE Subject_ID = " + SubjID + ";";
+        String subject = "";
+        try {
+            stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE);
+            rs = stat.executeQuery(query);
+            rs.next();
+            subject = rs.getString(1);
+
+        } catch (SQLException e) {
+            System.out.println("Error " + e.getMessage());
+        }
+        return subject;
+    }
+
+    public String getTeacher(int TeachID){
+
+        String query = "SELECT `Name` FROM `Teacher` WHERE teacher_ID = " + TeachID + ";";
+        String teacher = "";
+        try {
+            stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE);
+            rs = stat.executeQuery(query);
+            rs.next();
+            teacher = rs.getString(1);
+
+        } catch (SQLException e) {
+            System.out.println("Error " + e.getMessage());
+        }
+        return teacher;
+    }
     /* ****************************************** */
 
 }
