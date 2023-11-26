@@ -465,6 +465,31 @@ public class Operation {
         return QuizIDs;
     }
 
+    public int[] quizIDEach(int teach_ID) {
+
+        String query = "SELECT `Quiz_ID` from `Quiz` WHERE Teacher_ID = " + getCache("Teach") + " ORDER BY Quiz_ID ASC;";
+        String cQuery = "SELECT COUNT(*) FROM `Quiz` WHERE Teacher_ID = " + getCache("Teach") + ";";
+
+        int[] QuizIDs = new int[num(cQuery)];
+        int count = 0;
+
+        try {
+            stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE);
+            rs = stat.executeQuery(query);
+
+            while (rs.next()) {
+                QuizIDs[count] = rs.getInt(1);
+                count++;
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error " + e.getMessage());
+        }
+
+        return QuizIDs;
+    }
+
     public int[] quizIDAll() {
 
         String query = "SELECT `Quiz_ID` from `Quiz` where `Teacher_ID` = " + getCache("Teach") + ";";
@@ -490,7 +515,45 @@ public class Operation {
         return QuizIDs;
     }
 
-    public String[] quizDetal(int num) {
+    public String[] quizTeachDetal(int num) {
+
+        String[] QuizDetail = new String[4];
+        int NumQuiz = num("SELECT COUNT(*) FROM `Quiz` WHERE Teacher_ID = " + getCache("Teach")+ ";");
+
+        if (NumQuiz <= num) {
+            QuizDetail[0] = ""; // QuizID
+            QuizDetail[1] = ""; // SubjectID
+            QuizDetail[2] = ""; // TeacherID
+            QuizDetail[3] = ""; // Title
+        } else {
+            int[] QuizCount = quizIDEach(getCache("Teach"));
+
+            String query = "SELECT * from `Quiz` WHERE Quiz_ID = " + QuizCount[num] + " AND Teacher_ID = " + getCache("Teach") + " ORDER BY Quiz_ID ASC;";
+
+            try {
+                stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+                        ResultSet.CONCUR_UPDATABLE);
+                rs = stat.executeQuery(query);
+                rs.next();
+
+                int QuizID = rs.getInt(1);
+                int SubjID = rs.getInt(2);
+                int TeachID = rs.getInt(3);
+                String Title = rs.getString(4);
+
+                QuizDetail[0] = String.valueOf(QuizID); // QuizID
+                QuizDetail[1] = getSubject(SubjID); // SubjectID
+                QuizDetail[2] = getTeacher(TeachID); // TeacherID
+                QuizDetail[3] = Title; // Title
+            } catch (SQLException e) {
+                System.out.println("Error " + e.getMessage());
+            }
+        }
+
+        return QuizDetail;
+    }
+
+    public String[] quizStudDetal(int num) {
 
         String[] QuizDetail = new String[4];
         int NumQuiz = num("SELECT COUNT(*) FROM `Quiz`;");
