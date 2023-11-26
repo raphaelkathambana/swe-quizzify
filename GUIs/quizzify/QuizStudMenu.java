@@ -23,6 +23,8 @@ public class QuizStudMenu extends JInternalFrame {
     Operation O = new Operation();
 
     Color DefaultColour, ClickedColour;
+    int count = 0;
+
 
     public QuizStudMenu() {
         initComponents();
@@ -33,7 +35,6 @@ public class QuizStudMenu extends JInternalFrame {
         ClickedColour= new Color(204,102,255);
         DefaultColour= new Color(230,196,70);
 
-        int count = 0;
         do {
             String[] Detail = O.quizDetal(count);
             if (count == 0) {
@@ -41,21 +42,25 @@ public class QuizStudMenu extends JInternalFrame {
                 Subject1.setText("Subject: " + Detail[1]);
                 QuizBy1.setText("Quiz by: " + Detail[2]);
                 Title1.setText("Title: " + Detail[3]);
+            
             } else if (count == 1) {
                 QuizID2.setText("Quiz " + Detail[0]);
                 Subject2.setText("Subject: " + Detail[1]);
                 QuizBy2.setText("Quiz by: " + Detail[2]);
                 Title2.setText("Title: " + Detail[3]);
+            
             } else if (count == 2) {
                 QuizID3.setText("Quiz " + Detail[0]);
                 Subject3.setText("Subject: " + Detail[1]);
                 QuizBy3.setText("Quiz by: " + Detail[2]);
                 Title3.setText("Title: " + Detail[3]);
+            
             } else if (count == 3) {
                 QuizID4.setText("Quiz " + Detail[0]);
                 Subject4.setText("Subject: " + Detail[1]);
                 QuizBy4.setText("Quiz by: " + Detail[2]);
                 Title4.setText("Title: " + Detail[3]);
+            
             }  
 
             count++;
@@ -73,6 +78,7 @@ public class QuizStudMenu extends JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        logoLabel = new javax.swing.JLabel();
         PreviousButton = new javax.swing.JButton();
         QuizPanel1 = new javax.swing.JPanel();
         QuizID1 = new javax.swing.JLabel();
@@ -103,7 +109,14 @@ public class QuizStudMenu extends JInternalFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 100));
 
+        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/2.png"))); // NOI18N
+
         PreviousButton.setText("Previous");
+        PreviousButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PreviousButtonActionPerformed(evt);
+            }
+        });
 
         QuizPanel1.setBackground(new java.awt.Color(230, 196, 70));
         QuizPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -113,7 +126,7 @@ public class QuizStudMenu extends JInternalFrame {
         });
 
         QuizID1.setBackground(new java.awt.Color(230, 208, 112));
-        QuizID1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        QuizID1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         QuizID1.setText("No.");
         QuizID1.setOpaque(true);
 
@@ -138,8 +151,8 @@ public class QuizStudMenu extends JInternalFrame {
                 .addContainerGap()
                 .addGroup(QuizPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(QuizPanel1Layout.createSequentialGroup()
-                        .addComponent(QuizID1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(QuizID1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Title1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(QuizBy1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Subject1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -150,8 +163,8 @@ public class QuizStudMenu extends JInternalFrame {
             .addGroup(QuizPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(QuizPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Title1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(QuizID1, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE))
+                    .addComponent(Title1, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+                    .addComponent(QuizID1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(QuizBy1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -175,7 +188,7 @@ public class QuizStudMenu extends JInternalFrame {
         Subject2.setOpaque(true);
 
         QuizID2.setBackground(new java.awt.Color(230, 208, 112));
-        QuizID2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        QuizID2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         QuizID2.setText("No.");
         QuizID2.setOpaque(true);
 
@@ -192,8 +205,8 @@ public class QuizStudMenu extends JInternalFrame {
                 .addContainerGap()
                 .addGroup(QuizPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(QuizPanel2Layout.createSequentialGroup()
-                        .addComponent(QuizID2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(QuizID2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Title2, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(QuizBy2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Subject2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -204,8 +217,8 @@ public class QuizStudMenu extends JInternalFrame {
             .addGroup(QuizPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(QuizPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Title2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(QuizID2, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE))
+                    .addComponent(Title2, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+                    .addComponent(QuizID2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(QuizBy2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -229,7 +242,7 @@ public class QuizStudMenu extends JInternalFrame {
         Subject3.setOpaque(true);
 
         QuizID3.setBackground(new java.awt.Color(230, 208, 112));
-        QuizID3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        QuizID3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         QuizID3.setText("No.");
         QuizID3.setOpaque(true);
 
@@ -246,8 +259,8 @@ public class QuizStudMenu extends JInternalFrame {
                 .addContainerGap()
                 .addGroup(QuizPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(QuizPanel3Layout.createSequentialGroup()
-                        .addComponent(QuizID3, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(QuizID3, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Title3, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(QuizBy3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Subject3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -258,8 +271,8 @@ public class QuizStudMenu extends JInternalFrame {
             .addGroup(QuizPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(QuizPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Title3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(QuizID3, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE))
+                    .addComponent(Title3, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+                    .addComponent(QuizID3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(QuizBy3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -283,7 +296,7 @@ public class QuizStudMenu extends JInternalFrame {
         Subject4.setOpaque(true);
 
         QuizID4.setBackground(new java.awt.Color(230, 208, 112));
-        QuizID4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        QuizID4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         QuizID4.setText("No.");
         QuizID4.setOpaque(true);
 
@@ -300,8 +313,8 @@ public class QuizStudMenu extends JInternalFrame {
                 .addContainerGap()
                 .addGroup(QuizPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(QuizPanel4Layout.createSequentialGroup()
-                        .addComponent(QuizID4, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(QuizID4, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Title4, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(QuizBy4, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Subject4, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -312,8 +325,8 @@ public class QuizStudMenu extends JInternalFrame {
             .addGroup(QuizPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(QuizPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Title4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(QuizID4, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE))
+                    .addComponent(Title4, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+                    .addComponent(QuizID4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(QuizBy4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -322,11 +335,16 @@ public class QuizStudMenu extends JInternalFrame {
         );
 
         NextButton.setText("Next");
+        NextButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NextButtonActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("DO QUIZ!!");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
-        jLabel1.setText("Quiz Menu");
+        jLabel1.setText("Quizzify Menu");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Light", 0, 30)); // NOI18N
         jLabel2.setText("Select the Quiz you want to do!!");
@@ -336,58 +354,58 @@ public class QuizStudMenu extends JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(93, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(PreviousButton, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(NextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(QuizPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(QuizPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(70, 70, 70)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(64, 64, 64)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(QuizPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(QuizPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(25, 25, 25)
-                                .addComponent(PreviousButton, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36)
-                                .addComponent(NextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(QuizPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(QuizPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(421, 421, 421)
-                        .addComponent(jLabel1)))
-                .addContainerGap(127, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(333, 333, 333))
+                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(QuizPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(QuizPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(94, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(256, 256, 256)
+                .addComponent(logoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addGap(13, 13, 13)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(logoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(QuizPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(QuizPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(PreviousButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(NextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(29, 61, Short.MAX_VALUE))
+                        .addComponent(QuizPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(QuizPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(QuizPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(QuizPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(PreviousButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(NextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 53, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -398,9 +416,7 @@ public class QuizStudMenu extends JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -433,6 +449,90 @@ public class QuizStudMenu extends JInternalFrame {
         QuizPanel3.setBackground(DefaultColour);
         QuizPanel4.setBackground(ClickedColour);
     }//GEN-LAST:event_QuizPanel4MousePressed
+
+    private void PreviousButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PreviousButtonActionPerformed
+        if (count == 4){
+            JOptionPane.showMessageDialog(this, "No more Quizes!");
+        }
+        else {
+            int n = count;
+            count = count - 8;
+
+            do {
+                String[] Detail = O.quizDetal(count);
+                if (count == n - 8) {
+                    QuizID1.setText("Quiz " + Detail[0]);
+                    Subject1.setText("Subject: " + Detail[1]);
+                    QuizBy1.setText("Quiz by: " + Detail[2]);
+                    Title1.setText("Title: " + Detail[3]);
+                    
+                } else if (count == n - 7) {
+                    QuizID2.setText("Quiz " + Detail[0]);
+                    Subject2.setText("Subject: " + Detail[1]);
+                    QuizBy2.setText("Quiz by: " + Detail[2]);
+                    Title2.setText("Title: " + Detail[3]);
+                    
+                } else if (count == n - 6) {
+                    QuizID3.setText("Quiz " + Detail[0]);
+                    Subject3.setText("Subject: " + Detail[1]);
+                    QuizBy3.setText("Quiz by: " + Detail[2]);
+                    Title3.setText("Title: " + Detail[3]);
+                    
+                } else if (count == n - 5) {
+                    QuizID4.setText("Quiz " + Detail[0]);
+                    Subject4.setText("Subject: " + Detail[1]);
+                    QuizBy4.setText("Quiz by: " + Detail[2]);
+                    Title4.setText("Title: " + Detail[3]);
+                }  
+
+                count++;
+            } while (count != n-4);
+        }
+    }//GEN-LAST:event_PreviousButtonActionPerformed
+
+    private void NextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextButtonActionPerformed
+        // if (count == 4){
+        //     JOptionPane.showMessageDialog(this, "No more Quizes to show!");
+        // }
+        // else {
+        int NumQuiz = O.num("SELECT COUNT(*) FROM `Quiz`");
+        if (NumQuiz <= count){
+            JOptionPane.showMessageDialog(this, "No more Quizes!");
+        } 
+        else {
+            int n = count;
+
+            do {
+                String[] Detail = O.quizDetal(count);
+                if (count == n + 0) {
+                    QuizID1.setText("Quiz " + Detail[0]);
+                    Subject1.setText("Subject: " + Detail[1]);
+                    QuizBy1.setText("Quiz by: " + Detail[2]);
+                    Title1.setText("Title: " + Detail[3]);
+                    
+                } else if (count == n + 1) {
+                    QuizID2.setText("Quiz " + Detail[0]);
+                    Subject2.setText("Subject: " + Detail[1]);
+                    QuizBy2.setText("Quiz by: " + Detail[2]);
+                    Title2.setText("Title: " + Detail[3]);
+                    
+                } else if (count == n + 2) {
+                    QuizID3.setText("Quiz " + Detail[0]);
+                    Subject3.setText("Subject: " + Detail[1]);
+                    QuizBy3.setText("Quiz by: " + Detail[2]);
+                    Title3.setText("Title: " + Detail[3]);
+                    
+                } else if (count == n + 3) {
+                    QuizID4.setText("Quiz " + Detail[0]);
+                    Subject4.setText("Subject: " + Detail[1]);
+                    QuizBy4.setText("Quiz by: " + Detail[2]);
+                    Title4.setText("Title: " + Detail[3]);
+                }  
+
+                count++;
+            } while (count != n + 4 );
+        }
+    }//GEN-LAST:event_NextButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -496,5 +596,6 @@ public class QuizStudMenu extends JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel logoLabel;
     // End of variables declaration//GEN-END:variables
 }
