@@ -106,7 +106,7 @@ public class QuizTakingUI extends javax.swing.JFrame {
         javax.swing.GroupLayout quizPanelLayout = new javax.swing.GroupLayout(quizPanel);
         quizPanel.setLayout(quizPanelLayout);
         quizPanelLayout.setHorizontalGroup(
-<<<<<<< HEAD
+// <<<<<<< HEAD
             quizPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(quizPanelLayout.createSequentialGroup()
                 .addGap(42, 42, 42)
@@ -132,7 +132,7 @@ public class QuizTakingUI extends javax.swing.JFrame {
                 .addComponent(timerLabel)
                 .addContainerGap())
         );
-=======
+// =======
                 quizPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(quizPanelLayout.createSequentialGroup()
                                 .addGap(42, 42, 42)
@@ -150,7 +150,7 @@ public class QuizTakingUI extends javax.swing.JFrame {
                                                         .addComponent(timerLabel,
                                                                 javax.swing.GroupLayout.PREFERRED_SIZE, 160,
                                                                 javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addContainerGap()));
+                                .addContainerGap());
         quizPanelLayout.setVerticalGroup(
                 quizPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(quizPanelLayout.createSequentialGroup()
@@ -163,12 +163,12 @@ public class QuizTakingUI extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(timerLabel)
                                 .addContainerGap()));
->>>>>>> 0766ebedcd46412f35d1e696e117b1637251e3e7
+// >>>>>>> 0766ebedcd46412f35d1e696e117b1637251e3e7
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-<<<<<<< HEAD
+// <<<<<<< HEAD
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -182,13 +182,13 @@ public class QuizTakingUI extends javax.swing.JFrame {
                 .addComponent(quizPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-=======
+// =======
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(quizPanel, javax.swing.GroupLayout.DEFAULT_SIZE,
                                         javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addContainerGap()));
+                                .addContainerGap());
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
@@ -196,7 +196,7 @@ public class QuizTakingUI extends javax.swing.JFrame {
                                 .addComponent(quizPanel, javax.swing.GroupLayout.DEFAULT_SIZE,
                                         javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addContainerGap()));
->>>>>>> 0766ebedcd46412f35d1e696e117b1637251e3e7
+// >>>>>>> 0766ebedcd46412f35d1e696e117b1637251e3e7
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

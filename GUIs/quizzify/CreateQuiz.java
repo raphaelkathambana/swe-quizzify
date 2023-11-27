@@ -4,17 +4,13 @@
  */
 package quizzify;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.swing.SwingUtilities;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.JOptionPane;
 
-import util.GetConnection;
 import util.Operation;
 
 /**
@@ -22,7 +18,8 @@ import util.Operation;
  * @author austi
  */
 public class CreateQuiz extends javax.swing.JInternalFrame {
-    static GetConnection connection = GetConnection.getInstance();
+
+    private boolean valid;
 
     /**
      * Creates new form CreateQuiz
@@ -42,12 +39,15 @@ public class CreateQuiz extends javax.swing.JInternalFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         SubjectMenu = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         ContinueButton = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        tfQuizTitle = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 51));
         setPreferredSize(new java.awt.Dimension(778, 522));
@@ -65,45 +65,91 @@ public class CreateQuiz extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Title of your Quiz");
+
+        tfQuizTitle.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        tfQuizTitle.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(
+                                        javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGap(249, 249, 249)
+                                                .addGroup(layout.createParallelGroup(
+                                                        javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jLabel2)
+                                                        .addComponent(ContinueButton,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                210,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGroup(layout.createSequentialGroup()
                                                 .addGap(151, 151, 151)
-                                                .addComponent(jLabel1))
+                                                .addGroup(layout.createParallelGroup(
+                                                        javax.swing.GroupLayout.Alignment.LEADING,
+                                                        false)
+                                                        .addComponent(jLabel1,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                Short.MAX_VALUE)
+                                                        .addComponent(tfQuizTitle)))
                                         .addGroup(layout.createSequentialGroup()
-                                                .addGap(307, 307, 307)
-                                                .addComponent(SubjectMenu, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                .addGap(313, 313, 313)
+                                                .addComponent(SubjectMenu,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
                                                         javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGap(248, 248, 248)
-                                                .addComponent(ContinueButton, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                        210, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addContainerGap(199, Short.MAX_VALUE)));
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap(205, Short.MAX_VALUE)));
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addGap(58, 58, 58)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 75,
+                                .addComponent(jLabel1,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        75,
                                         javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(SubjectMenu, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(32, 32, 32)
-                                .addComponent(ContinueButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57,
+                                .addPreferredGap(
+                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(SubjectMenu,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE,
                                         javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(205, Short.MAX_VALUE)));
+                                .addPreferredGap(
+                                        javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(tfQuizTitle,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        65,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(
+                                        javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                        26, Short.MAX_VALUE)
+                                .addComponent(ContinueButton,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        57,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(106, 106, 106)));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void ContinueButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ContinueButtonActionPerformed
         String subject = SubjectMenu.getItemAt(getSelectedSubjectIndex());
-        SwingUtilities.invokeLater(() -> new QuizCreationUI(subject).setVisible(true));
+        String quizTitle = this.validate(tfQuizTitle.getText());
+        if (!valid) {
+            JOptionPane.showMessageDialog(this, "Please fill in all fields");
+            return;
+        }
+        Logger.getLogger(CreateQuiz.class.getName()).info("Quiz Data Forwarded");
+        Logger.getLogger(CreateQuiz.class.getName()).log(Level.INFO, "subject: {0}", subject);
+        Logger.getLogger(CreateQuiz.class.getName()).log(Level.INFO, "title: {0}", quizTitle);
+        SwingUtilities.invokeLater(() -> new QuizCreationUI(subject, quizTitle).setVisible(true));
     }// GEN-LAST:event_ContinueButtonActionPerformed
 
     private int getSelectedSubjectIndex() {
@@ -116,9 +162,17 @@ public class CreateQuiz extends javax.swing.JInternalFrame {
         return operation.getSubjectsFromDatabase();
     }
 
+    private String validate(String args) {
+        // check if empty
+        valid = !(args.isEmpty() || args.length() == 0 || args.equals(""));
+        return args;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ContinueButton;
     private javax.swing.JComboBox<String> SubjectMenu;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JTextField tfQuizTitle;
     // End of variables declaration//GEN-END:variables
 }
