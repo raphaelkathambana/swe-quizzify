@@ -156,7 +156,7 @@ public class QuizzifyDashboard extends JFrame {
         );
 
         jPanel1.add(createStud);
-        createStud.setBounds(0, 0, 240, 94);
+        createStud.setBounds(0, 0, 231, 74);
 
         viewStud.setBackground(new java.awt.Color(153, 0, 153));
         viewStud.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -190,7 +190,7 @@ public class QuizzifyDashboard extends JFrame {
         );
 
         jPanel1.add(viewStud);
-        viewStud.setBounds(0, 103, 240, 89);
+        viewStud.setBounds(0, 103, 240, 69);
 
         CreateQuiz.setBackground(new java.awt.Color(153, 0, 153));
         CreateQuiz.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -224,7 +224,7 @@ public class QuizzifyDashboard extends JFrame {
         );
 
         jPanel1.add(CreateQuiz);
-        CreateQuiz.setBounds(0, 201, 240, 89);
+        CreateQuiz.setBounds(0, 201, 240, 69);
 
         ViewQuiz.setBackground(new java.awt.Color(153, 0, 153));
         ViewQuiz.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -258,7 +258,7 @@ public class QuizzifyDashboard extends JFrame {
         );
 
         jPanel1.add(ViewQuiz);
-        ViewQuiz.setBounds(0, 299, 240, 89);
+        ViewQuiz.setBounds(0, 299, 240, 69);
 
         studentProg.setBackground(new java.awt.Color(153, 0, 153));
         studentProg.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -286,8 +286,8 @@ public class QuizzifyDashboard extends JFrame {
         studentProgLayout.setVerticalGroup(
             studentProgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(studentProgLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
                 .addGap(24, 24, 24))
         );
 
@@ -303,7 +303,7 @@ public class QuizzifyDashboard extends JFrame {
             }
         });
         jPanel1.add(logoutButton);
-        logoutButton.setBounds(20, 480, 101, 33);
+        logoutButton.setBounds(20, 480, 130, 31);
 
         jPanel3.add(jPanel1);
         jPanel1.setBounds(0, 170, 240, 550);

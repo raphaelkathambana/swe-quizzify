@@ -40,7 +40,7 @@ public class QuizStudMenu extends JInternalFrame {
         ClickedInnerColour= new Color(219,147,255);
 
         do {
-            String[] Detail = O.quizStudDetal(count);
+            String[] Detail = O.quizStudDetail(count);
             if (count == 0) {
                 QuizID1.setText("Quiz " + Detail[0]);
                 Subject1.setText("Subject: " + Detail[1]);
@@ -561,7 +561,7 @@ public class QuizStudMenu extends JInternalFrame {
             count = count - 8;
 
             do {
-                String[] Detail = O.quizStudDetal(count);
+                String[] Detail = O.quizStudDetail(count);
                 if (count == n - 8) {
                     QuizID1.setText("Quiz " + Detail[0]);
                     Subject1.setText("Subject: " + Detail[1]);
@@ -602,7 +602,7 @@ public class QuizStudMenu extends JInternalFrame {
             int n = count;
 
             do {
-                String[] Detail = O.quizStudDetal(count);
+                String[] Detail = O.quizStudDetail(count);
                 if (count == n + 0) {
                     QuizID1.setText("Quiz " + Detail[0]);
                     Subject1.setText("Subject: " + Detail[1]);
