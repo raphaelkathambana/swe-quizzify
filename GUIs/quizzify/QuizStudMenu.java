@@ -23,6 +23,9 @@ public class QuizStudMenu extends JInternalFrame {
     Operation O = new Operation();
 
     String userType = "Stud";
+    String QuizID = "";
+    int Quiz1_ID, Quiz2_ID, Quiz3_ID, Quiz4_ID;
+    int Select = 0;
 
     Color DefaultColour, ClickedColour, DefaultInnerColour, ClickedInnerColour;
     int count = 0;
@@ -43,24 +46,28 @@ public class QuizStudMenu extends JInternalFrame {
             String[] Detail = O.quizStudDetal(count);
             if (count == 0) {
                 QuizID1.setText("Quiz " + Detail[0]);
+                Quiz1_ID = Integer.valueOf(Detail[0]);
                 Subject1.setText("Subject: " + Detail[1]);
                 QuizBy1.setText("Quiz by: " + Detail[2]);
                 Title1.setText("Title: " + Detail[3]);
             
             } else if (count == 1) {
                 QuizID2.setText("Quiz " + Detail[0]);
+                Quiz2_ID = Integer.valueOf(Detail[0]);
                 Subject2.setText("Subject: " + Detail[1]);
                 QuizBy2.setText("Quiz by: " + Detail[2]);
                 Title2.setText("Title: " + Detail[3]);
             
             } else if (count == 2) {
                 QuizID3.setText("Quiz " + Detail[0]);
+                Quiz3_ID = Integer.valueOf(Detail[0]);
                 Subject3.setText("Subject: " + Detail[1]);
                 QuizBy3.setText("Quiz by: " + Detail[2]);
                 Title3.setText("Title: " + Detail[3]);
             
             } else if (count == 3) {
                 QuizID4.setText("Quiz " + Detail[0]);
+                Quiz4_ID = Integer.valueOf(Detail[0]);
                 Subject4.setText("Subject: " + Detail[1]);
                 QuizBy4.setText("Quiz by: " + Detail[2]);
                 Title4.setText("Title: " + Detail[3]);
@@ -103,7 +110,7 @@ public class QuizStudMenu extends JInternalFrame {
         QuizID4 = new javax.swing.JLabel();
         Title4 = new javax.swing.JLabel();
         NextButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        QUIZ = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -341,8 +348,13 @@ public class QuizStudMenu extends JInternalFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton1.setText("DO QUIZ!!");
+        QUIZ.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        QUIZ.setText("DO QUIZ!!");
+        QUIZ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                QUIZActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(204, 102, 255));
 
@@ -397,7 +409,7 @@ public class QuizStudMenu extends JInternalFrame {
                         .addComponent(QuizPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(70, 70, 70)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(QUIZ, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(QuizPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(QuizPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -420,7 +432,7 @@ public class QuizStudMenu extends JInternalFrame {
                         .addComponent(QuizPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(QUIZ, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(PreviousButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(NextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -442,6 +454,8 @@ public class QuizStudMenu extends JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void QuizPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_QuizPanel1MousePressed
+        Select = 1;
+
         QuizPanel1.setBackground(ClickedColour);
         QuizPanel2.setBackground(DefaultColour);
         QuizPanel3.setBackground(DefaultColour);
@@ -469,6 +483,8 @@ public class QuizStudMenu extends JInternalFrame {
     }//GEN-LAST:event_QuizPanel1MousePressed
 
     private void QuizPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_QuizPanel2MousePressed
+        Select = 2;
+
         QuizPanel1.setBackground(DefaultColour);
         QuizPanel2.setBackground(ClickedColour);
         QuizPanel3.setBackground(DefaultColour);
@@ -496,6 +512,8 @@ public class QuizStudMenu extends JInternalFrame {
     }//GEN-LAST:event_QuizPanel2MousePressed
 
     private void QuizPanel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_QuizPanel3MousePressed
+        Select = 3;
+
         QuizPanel1.setBackground(DefaultColour);
         QuizPanel2.setBackground(DefaultColour);
         QuizPanel3.setBackground(ClickedColour);
@@ -523,6 +541,8 @@ public class QuizStudMenu extends JInternalFrame {
     }//GEN-LAST:event_QuizPanel3MousePressed
 
     private void QuizPanel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_QuizPanel4MousePressed
+        Select = 4;
+
         QuizPanel1.setBackground(DefaultColour);
         QuizPanel2.setBackground(DefaultColour);
         QuizPanel3.setBackground(DefaultColour);
@@ -561,24 +581,28 @@ public class QuizStudMenu extends JInternalFrame {
                 String[] Detail = O.quizStudDetal(count);
                 if (count == n - 8) {
                     QuizID1.setText("Quiz " + Detail[0]);
+                    Quiz1_ID = Integer.valueOf(Detail[0]);
                     Subject1.setText("Subject: " + Detail[1]);
                     QuizBy1.setText("Quiz by: " + Detail[2]);
                     Title1.setText("Title: " + Detail[3]);
                     
                 } else if (count == n - 7) {
                     QuizID2.setText("Quiz " + Detail[0]);
+                    Quiz2_ID = Integer.valueOf(Detail[0]);
                     Subject2.setText("Subject: " + Detail[1]);
                     QuizBy2.setText("Quiz by: " + Detail[2]);
                     Title2.setText("Title: " + Detail[3]);
                     
                 } else if (count == n - 6) {
                     QuizID3.setText("Quiz " + Detail[0]);
+                    Quiz3_ID = Integer.valueOf(Detail[0]);
                     Subject3.setText("Subject: " + Detail[1]);
                     QuizBy3.setText("Quiz by: " + Detail[2]);
                     Title3.setText("Title: " + Detail[3]);
                     
                 } else if (count == n - 5) {
                     QuizID4.setText("Quiz " + Detail[0]);
+                    Quiz4_ID = Integer.valueOf(Detail[0]);
                     Subject4.setText("Subject: " + Detail[1]);
                     QuizBy4.setText("Quiz by: " + Detail[2]);
                     Title4.setText("Title: " + Detail[3]);
@@ -602,24 +626,28 @@ public class QuizStudMenu extends JInternalFrame {
                 String[] Detail = O.quizStudDetal(count);
                 if (count == n + 0) {
                     QuizID1.setText("Quiz " + Detail[0]);
+                    Quiz1_ID = Integer.valueOf(Detail[0]);
                     Subject1.setText("Subject: " + Detail[1]);
                     QuizBy1.setText("Quiz by: " + Detail[2]);
                     Title1.setText("Title: " + Detail[3]);
                     
                 } else if (count == n + 1) {
                     QuizID2.setText("Quiz " + Detail[0]);
+                    Quiz2_ID = Integer.valueOf(Detail[0]);
                     Subject2.setText("Subject: " + Detail[1]);
                     QuizBy2.setText("Quiz by: " + Detail[2]);
                     Title2.setText("Title: " + Detail[3]);
                     
                 } else if (count == n + 2) {
                     QuizID3.setText("Quiz " + Detail[0]);
+                    Quiz3_ID = Integer.valueOf(Detail[0]);
                     Subject3.setText("Subject: " + Detail[1]);
                     QuizBy3.setText("Quiz by: " + Detail[2]);
                     Title3.setText("Title: " + Detail[3]);
                     
                 } else if (count == n + 3) {
                     QuizID4.setText("Quiz " + Detail[0]);
+                    Quiz4_ID = Integer.valueOf(Detail[0]);
                     Subject4.setText("Subject: " + Detail[1]);
                     QuizBy4.setText("Quiz by: " + Detail[2]);
                     Title4.setText("Title: " + Detail[3]);
@@ -630,6 +658,42 @@ public class QuizStudMenu extends JInternalFrame {
         }
     }//GEN-LAST:event_NextButtonActionPerformed
 
+    int QID;
+    private void QUIZActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QUIZActionPerformed
+        
+        TakeQuiz T = new TakeQuiz();
+        // V.showQuiz();
+        // this.setVisible(false);
+
+        if (Select == 1){
+            QuizID = QuizID1.getText();
+            QID = Integer.valueOf(Quiz1_ID);
+            this.dispose();
+            T.setVisible(true);
+        } else if (Select == 2){
+            QuizID = QuizID2.getText();
+            QID = Integer.valueOf(Quiz2_ID);
+            this.dispose();
+            T.setVisible(true);
+        } else if (Select == 3){
+            QuizID = QuizID3.getText();
+            QID = Integer.valueOf(Quiz3_ID);
+            this.dispose();
+            T.setVisible(true);
+        } else if (Select == 4){
+            QuizID = QuizID4.getText();
+            QID = Integer.valueOf(Quiz4_ID);
+            this.dispose();
+            T.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Please Select a Quiz!");
+        }
+
+        O.setQuizCache(QID);
+
+    }//GEN-LAST:event_QUIZActionPerformed
+
+    
     /**
      * @param args the command line arguments
      */
@@ -668,6 +732,7 @@ public class QuizStudMenu extends JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton NextButton;
     private javax.swing.JButton PreviousButton;
+    private javax.swing.JButton QUIZ;
     private javax.swing.JLabel QuizBy1;
     private javax.swing.JLabel QuizBy2;
     private javax.swing.JLabel QuizBy3;
@@ -688,7 +753,6 @@ public class QuizStudMenu extends JInternalFrame {
     private javax.swing.JLabel Title2;
     private javax.swing.JLabel Title3;
     private javax.swing.JLabel Title4;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

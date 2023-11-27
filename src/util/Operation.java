@@ -141,7 +141,51 @@ public class Operation {
         }
     }
     /* ****************************************** */
+    public void setQuizCache(int ID) {
 
+        String query = "";
+
+        query = "INSERT INTO QuizCache (`ID`) VALUES (?);";
+
+        try {
+            pStat = connection.getConnection().prepareStatement(query);
+            pStat.setInt(1, ID);
+            pStat.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println("Error " + e.getMessage());
+        }
+    }
+
+    public int getQuizCache() {
+
+        String query = "SELECT * FROM QuizCache;";
+
+        try {
+            stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE);
+            rs = stat.executeQuery(query);
+            rs.next();
+            theId = rs.getInt(1);
+
+        } catch (SQLException e) {
+            System.out.println("Error " + e.getMessage());
+        }
+        return theId;
+    }
+
+    public void delQuizCache() {
+
+        String query = "DELETE FROM `QuizCache`;";
+
+        try {
+            pStat = connection.getConnection().prepareStatement(query);
+            pStat.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println("Error " + e.getMessage());
+        }
+    }
     // Retrieval of User Details
     /* ****************************************** */
     public void Details(int ID, String Type) {
@@ -465,6 +509,31 @@ public class Operation {
         return QuizIDs;
     }
 
+    public int[] questionEach() {
+
+        String query = "SELECT `Quiz_ID` from `Question`;";
+        String cQuery = "SELECT COUNT(*) FROM `Question`;";
+
+        int[] QuizIDs = new int[num(cQuery)];
+        int count = 0;
+
+        try {
+            stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE);
+            rs = stat.executeQuery(query);
+
+            while (rs.next()) {
+                QuizIDs[count] = rs.getInt(1);
+                count++;
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error " + e.getMessage());
+        }
+
+        return QuizIDs;
+    }
+
     public int[] quizIDEach(int teach_ID) {
 
         String query = "SELECT `Quiz_ID` from `Quiz` WHERE Teacher_ID = " + getCache("Teach") + " ORDER BY Quiz_ID ASC;";
@@ -594,6 +663,46 @@ public class Operation {
         }
 
         return QuizDetail;
+    }
+
+    public String[] questionDetails(int quizID, int num){
+        String[] QuestionDetail = new String[5];
+        int NumQuiz = num("SELECT COUNT(*) FROM `Questions` WHERE `Quiz_ID` = " + quizID + ";");
+
+        if (NumQuiz <= num) {
+            QuestionDetail[0] = ""; // Question
+            QuestionDetail[1] = ""; // A
+            QuestionDetail[2] = ""; // B
+            QuestionDetail[3] = ""; // C
+            QuestionDetail[4] = ""; // Answer
+        } else {
+            // int[] QuizCount = quizIDEach();
+
+            String query = "SELECT * from `Questions` WHERE Quiz_ID = " + quizID + ";";
+
+            try {
+                stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+                        ResultSet.CONCUR_UPDATABLE);
+                rs = stat.executeQuery(query);
+                rs.next();
+
+                String Quest = rs.getString("Question");
+                String A = rs.getString("Option-A");
+                String B = rs.getString("Option-B");
+                String C = rs.getString("Option-C");
+                String D = rs.getString("Answer");
+
+                QuestionDetail[0] = Quest; // Question
+                QuestionDetail[1] = A; // A
+                QuestionDetail[2] = B; // B
+                QuestionDetail[3] = C; // C
+                QuestionDetail[4] = D; // Answer
+            } catch (SQLException e) {
+                System.out.println("Error " + e.getMessage());
+            }
+        }
+
+        return QuestionDetail;
     }
     /* ****************************************** */
 
