@@ -35,8 +35,6 @@ public class QuizMenu extends javax.swing.JInternalFrame {
         QuizScreen = new javax.swing.JDesktopPane();
         CreateQuizPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        ViewQuizPanel = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 51));
 
@@ -83,41 +81,13 @@ public class QuizMenu extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        ViewQuizPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ViewQuizPanelMouseClicked(evt);
-            }
-        });
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel2.setText("View Quizes");
-
-        javax.swing.GroupLayout ViewQuizPanelLayout = new javax.swing.GroupLayout(ViewQuizPanel);
-        ViewQuizPanel.setLayout(ViewQuizPanelLayout);
-        ViewQuizPanelLayout.setHorizontalGroup(
-            ViewQuizPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ViewQuizPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        ViewQuizPanelLayout.setVerticalGroup(
-            ViewQuizPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ViewQuizPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ViewQuizPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(CreateQuizPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(CreateQuizPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(QuizMenuLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -132,9 +102,7 @@ public class QuizMenu extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(CreateQuizPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ViewQuizPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(316, Short.MAX_VALUE))
+                        .addContainerGap(422, Short.MAX_VALUE))
                     .addComponent(QuizScreen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
@@ -148,20 +116,11 @@ public class QuizMenu extends javax.swing.JInternalFrame {
         QuizScreen.add(create).setVisible(true);
     }//GEN-LAST:event_CreateQuizPanelMouseClicked
 
-    private void ViewQuizPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ViewQuizPanelMouseClicked
-        // TODO add your handling code here:
-        ViewQuiz view = new ViewQuiz();
-        QuizScreen.removeAll();
-        QuizScreen.add(view).setVisible(true);
-    }//GEN-LAST:event_ViewQuizPanelMouseClicked
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CreateQuizPanel;
     private javax.swing.JLabel QuizMenuLabel;
     private javax.swing.JDesktopPane QuizScreen;
-    private javax.swing.JPanel ViewQuizPanel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

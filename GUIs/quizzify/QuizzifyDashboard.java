@@ -410,7 +410,7 @@ public class QuizzifyDashboard extends JFrame {
     }//GEN-LAST:event_logoLabelMousePressed
 
     private void CreateQuizMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CreateQuizMouseClicked
-        QuizMenu quiz = new QuizMenu();
+        CreateQuiz quiz = new CreateQuiz();
         ViewScreen.removeAll();
         ViewScreen.add(quiz).setVisible(true);
     }//GEN-LAST:event_CreateQuizMouseClicked

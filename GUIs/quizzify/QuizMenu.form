@@ -26,10 +26,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="ViewQuizPanel" max="32767" attributes="0"/>
-                  <Component id="CreateQuizPanel" max="32767" attributes="0"/>
-              </Group>
+              <Component id="CreateQuizPanel" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="QuizMenuLabel" min="-2" pref="479" max="-2" attributes="0"/>
@@ -47,9 +44,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="CreateQuizPanel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="ViewQuizPanel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="316" max="32767" attributes="0"/>
+                      <EmptySpace pref="422" max="32767" attributes="0"/>
                   </Group>
                   <Component id="QuizScreen" max="32767" attributes="0"/>
               </Group>
@@ -121,42 +116,6 @@
               <Font name="Segoe UI" size="36" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Create Quiz"/>
-          </Properties>
-        </Component>
-      </SubComponents>
-    </Container>
-    <Container class="javax.swing.JPanel" name="ViewQuizPanel">
-      <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ViewQuizPanelMouseClicked"/>
-      </Events>
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel2" min="-2" pref="218" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel2" pref="88" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel2">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="36" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="View Quizes"/>
           </Properties>
         </Component>
       </SubComponents>

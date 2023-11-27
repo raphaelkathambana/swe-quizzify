@@ -49,7 +49,7 @@ public class QuizCreationUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         questionLabel = new javax.swing.JLabel();
@@ -68,27 +68,54 @@ public class QuizCreationUI extends javax.swing.JFrame {
         btnNextQuestion = new javax.swing.JButton();
         lblSubject = new javax.swing.JLabel();
         lblSubjectName = new javax.swing.JLabel();
+        logoLabel = new javax.swing.JLabel();
+        closeLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(153, 0, 153));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setUndecorated(true);
 
+        questionLabel.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         questionLabel.setText("Question");
 
+        questionTextField.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        questionTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                questionTextFieldActionPerformed(evt);
+            }
+        });
+
+        jLabelOption1.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabelOption1.setText("Option 1");
 
+        jLabelOption2.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabelOption2.setText("Option 2");
 
+        jLabelOption3.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabelOption3.setText("Option 3");
 
+        jLabelOption4.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabelOption4.setText("Option 4");
 
         String[] answerOptions = { "Option 1", "Option 2", "Option 3", "Option 4" };
         answerComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(answerOptions));
 
+        jLabelCorrectAnswer.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabelCorrectAnswer.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelCorrectAnswer.setText("Correct Answer");
 
-        btnFinish.setText("Finish");
+        answerTfThree.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+
+        answerTfFour.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+
+        answerTfTwo.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+
+        answerTfOne.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+
+        btnFinish.setBackground(new java.awt.Color(255, 255, 51));
+        btnFinish.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        btnFinish.setText("FINISH");
         btnFinish.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnFinish.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,6 +123,8 @@ public class QuizCreationUI extends javax.swing.JFrame {
             }
         });
 
+        btnNextQuestion.setBackground(new java.awt.Color(255, 255, 51));
+        btnNextQuestion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnNextQuestion.setText("Next Question");
         btnNextQuestion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnNextQuestion.addActionListener(new java.awt.event.ActionListener() {
@@ -104,153 +133,123 @@ public class QuizCreationUI extends javax.swing.JFrame {
             }
         });
 
+        lblSubject.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         lblSubject.setText("Subject:");
 
+        lblSubjectName.setFont(new java.awt.Font("Pristina", 1, 20)); // NOI18N
         lblSubjectName.setText(this.subject);
+
+        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/2.png"))); // NOI18N
+
+        closeLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_Close_100px_22.png"))); // NOI18N
+        closeLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                closeLabelMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGap(0, 0, Short.MAX_VALUE)
-                                                .addGroup(layout
-                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(jLabelCorrectAnswer,
-                                                                javax.swing.GroupLayout.Alignment.TRAILING,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE, 173,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(btnNextQuestion,
-                                                                javax.swing.GroupLayout.Alignment.TRAILING,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE, 179,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(layout
-                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addGap(6, 6, 6)
-                                                                .addComponent(btnFinish,
-                                                                        javax.swing.GroupLayout.PREFERRED_SIZE, 179,
-                                                                        javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addComponent(answerComboBox,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE, 192,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(8, 8, 8))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout
-                                                .createSequentialGroup()
-                                                .addGroup(layout
-                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addComponent(lblSubject)
-                                                        .addComponent(questionLabel))
-                                                .addGap(36, 36, 36)
-                                                .addGroup(layout
-                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addGroup(layout.createParallelGroup(
-                                                                        javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addComponent(jLabelOption3,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                131,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(jLabelOption1,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                139,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                .addGap(4, 4, 4)
-                                                                .addGroup(layout.createParallelGroup(
-                                                                        javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addComponent(answerTfOne)
-                                                                        .addComponent(answerTfThree)))
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addGroup(layout.createParallelGroup(
-                                                                        javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addGroup(layout.createSequentialGroup()
-                                                                                .addComponent(jLabelOption4,
-                                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                        131,
-                                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                .addPreferredGap(
-                                                                                        javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                                .addComponent(answerTfFour,
-                                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                        383,
-                                                                                        javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                        .addComponent(questionTextField,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                514,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addGroup(layout.createSequentialGroup()
-                                                                                .addComponent(jLabelOption2,
-                                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                        131,
-                                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                .addPreferredGap(
-                                                                                        javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                                .addComponent(answerTfTwo,
-                                                                                        javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                        383,
-                                                                                        javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                        .addComponent(lblSubjectName))
-                                                                .addGap(0, 0, Short.MAX_VALUE)))))
-                                .addGap(57, 57, 57)));
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(questionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                    .addComponent(lblSubject, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelOption3, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelOption1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(4, 4, 4)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(answerTfOne)
+                            .addComponent(answerTfThree)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblSubjectName)
+                        .addGap(0, 464, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelOption2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(answerTfTwo))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelOption4, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(answerTfFour))
+                    .addComponent(questionTextField))
+                .addGap(2, 2, 2)
+                .addComponent(closeLabel))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(logoLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabelCorrectAnswer, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnNextQuestion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(answerComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(btnFinish, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(8, 8, 8))
+        );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(lblSubject)
-                                        .addComponent(lblSubjectName))
-                                .addGap(16, 16, 16)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(questionTextField, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(questionLabel))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabelOption1, javax.swing.GroupLayout.PREFERRED_SIZE, 67,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(answerTfOne, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabelOption2, javax.swing.GroupLayout.PREFERRED_SIZE, 63,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(answerTfTwo, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabelOption3, javax.swing.GroupLayout.PREFERRED_SIZE, 69,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(answerTfThree, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabelOption4, javax.swing.GroupLayout.PREFERRED_SIZE, 90,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(answerTfFour, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jLabelCorrectAnswer, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(answerComboBox))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(btnFinish, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnNextQuestion, javax.swing.GroupLayout.DEFAULT_SIZE, 75,
-                                                Short.MAX_VALUE))
-                                .addGap(12, 12, 12)));
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSubject)
+                    .addComponent(lblSubjectName)
+                    .addComponent(closeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(questionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(questionLabel))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelOption1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(answerTfOne, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelOption2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(answerTfTwo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelOption3, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(answerTfThree, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelOption4, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(answerTfFour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabelCorrectAnswer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(answerComboBox))
+                        .addGap(30, 30, 30)
+                        .addComponent(btnNextQuestion, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                        .addGap(73, 73, 73))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(logoLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnFinish, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())))))
+        );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void closeLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeLabelMouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_closeLabelMouseClicked
 
     private void btnFinishActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnFinishActionPerformed
         finishQuizCreation();
@@ -380,6 +379,7 @@ public class QuizCreationUI extends javax.swing.JFrame {
     private javax.swing.JTextField answerTfTwo;
     private javax.swing.JButton btnFinish;
     private javax.swing.JButton btnNextQuestion;
+    private javax.swing.JLabel closeLabel;
     private javax.swing.JLabel jLabelCorrectAnswer;
     private javax.swing.JLabel jLabelOption1;
     private javax.swing.JLabel jLabelOption2;
@@ -387,6 +387,7 @@ public class QuizCreationUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelOption4;
     private javax.swing.JLabel lblSubject;
     private javax.swing.JLabel lblSubjectName;
+    private javax.swing.JLabel logoLabel;
     private javax.swing.JLabel questionLabel;
     private javax.swing.JTextField questionTextField;
     // End of variables declaration//GEN-END:variables
