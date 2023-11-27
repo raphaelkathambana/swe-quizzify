@@ -17,6 +17,7 @@ public class Quiz {
 
     private List<Question> questions;
     private String subject;
+    private String title;
 
     static GetConnection connection = GetConnection.getInstance();
 
@@ -27,6 +28,12 @@ public class Quiz {
     public Quiz(String subject) {
         questions = new ArrayList<>();
         this.subject = subject;
+    }
+
+    public Quiz(String subject, String title) {
+        questions = new ArrayList<>();
+        this.subject = subject;
+        this.title = title;
     }
 
     public String getSubject() {
@@ -86,5 +93,17 @@ public class Quiz {
     public int getQuizID() {
         Operation op = new Operation();
         return op.getQuizID();
+    }
+
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }
