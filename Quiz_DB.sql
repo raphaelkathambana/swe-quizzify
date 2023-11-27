@@ -39,9 +39,9 @@ INSERT INTO `Subject` (`Name`) VALUES ("Social Studies");
 
 CREATE TABLE IF NOT EXISTS `Quiz` (
     `Quiz_ID` int(4) NOT NULL AUTO_INCREMENT,
-    `Title` varchar(200),
     `Subject_ID` int(4),
     `Teacher_ID` int(4),
+    `Title` varchar(200),
     `Complete` boolean,
     
     PRIMARY KEY (`Quiz_ID`),
