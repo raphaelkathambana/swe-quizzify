@@ -49,24 +49,40 @@ public class QuizTeachMenu extends JInternalFrame {
                 Subject1.setText("Subject: " + Detail[1]);
                 QuizBy1.setText("Quiz by: " + Detail[2]);
                 Title1.setText("Title: " + Detail[3]);
+                if(Detail[4].equals("true"))
+                    Status1.setText("Complete");
+                else if(Detail[4].equals("false"))
+                    Status1.setText("incomplete");
             
             } else if (count == 1) {
                 QuizID2.setText("Quiz " + Detail[0]);
                 Subject2.setText("Subject: " + Detail[1]);
                 QuizBy2.setText("Quiz by: " + Detail[2]);
                 Title2.setText("Title: " + Detail[3]);
+                if(Detail[4].equals("true"))
+                    Status2.setText("Complete");
+                else if(Detail[4].equals("false"))
+                    Status2.setText("incomplete");
             
             } else if (count == 2) {
                 QuizID3.setText("Quiz " + Detail[0]);
                 Subject3.setText("Subject: " + Detail[1]);
                 QuizBy3.setText("Quiz by: " + Detail[2]);
                 Title3.setText("Title: " + Detail[3]);
+                if(Detail[4].equals("true"))
+                    Status3.setText("Complete");
+                else if(Detail[4].equals("false"))
+                    Status3.setText("incomplete");
             
             } else if (count == 3) {
                 QuizID4.setText("Quiz " + Detail[0]);
                 Subject4.setText("Subject: " + Detail[1]);
                 QuizBy4.setText("Quiz by: " + Detail[2]);
                 Title4.setText("Title: " + Detail[3]);
+                if(Detail[4].equals("true"))
+                    Status4.setText("Complete");
+                else if(Detail[4].equals("false"))
+                    Status4.setText("incomplete");
             }  
 
             count++;
@@ -90,21 +106,25 @@ public class QuizTeachMenu extends JInternalFrame {
         Title1 = new javax.swing.JLabel();
         QuizBy1 = new javax.swing.JLabel();
         Subject1 = new javax.swing.JLabel();
+        Status1 = new javax.swing.JLabel();
         QuizPanel2 = new javax.swing.JPanel();
         QuizBy2 = new javax.swing.JLabel();
         Subject2 = new javax.swing.JLabel();
         QuizID2 = new javax.swing.JLabel();
         Title2 = new javax.swing.JLabel();
+        Status2 = new javax.swing.JLabel();
         QuizPanel3 = new javax.swing.JPanel();
         QuizBy3 = new javax.swing.JLabel();
         Subject3 = new javax.swing.JLabel();
         QuizID3 = new javax.swing.JLabel();
         Title3 = new javax.swing.JLabel();
+        Status3 = new javax.swing.JLabel();
         QuizPanel4 = new javax.swing.JPanel();
         QuizBy4 = new javax.swing.JLabel();
         Subject4 = new javax.swing.JLabel();
         QuizID4 = new javax.swing.JLabel();
         Title4 = new javax.swing.JLabel();
+        Status4 = new javax.swing.JLabel();
         NextButton = new javax.swing.JButton();
         EditButton = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
@@ -147,6 +167,10 @@ public class QuizTeachMenu extends JInternalFrame {
         Subject1.setText("Subject: Name");
         Subject1.setOpaque(true);
 
+        Status1.setBackground(new java.awt.Color(230, 208, 112));
+        Status1.setText("Status");
+        Status1.setOpaque(true);
+
         javax.swing.GroupLayout QuizPanel1Layout = new javax.swing.GroupLayout(QuizPanel1);
         QuizPanel1.setLayout(QuizPanel1Layout);
         QuizPanel1Layout.setHorizontalGroup(
@@ -158,7 +182,10 @@ public class QuizTeachMenu extends JInternalFrame {
                         .addComponent(QuizID1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Title1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(QuizBy1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(QuizPanel1Layout.createSequentialGroup()
+                        .addComponent(QuizBy1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Status1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(Subject1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -170,7 +197,9 @@ public class QuizTeachMenu extends JInternalFrame {
                     .addComponent(Title1, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
                     .addComponent(QuizID1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(QuizBy1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(QuizPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(QuizBy1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Status1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Subject1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -201,6 +230,10 @@ public class QuizTeachMenu extends JInternalFrame {
         Title2.setText("Title of the Quiz");
         Title2.setOpaque(true);
 
+        Status2.setBackground(new java.awt.Color(230, 208, 112));
+        Status2.setText("Status");
+        Status2.setOpaque(true);
+
         javax.swing.GroupLayout QuizPanel2Layout = new javax.swing.GroupLayout(QuizPanel2);
         QuizPanel2.setLayout(QuizPanel2Layout);
         QuizPanel2Layout.setHorizontalGroup(
@@ -212,7 +245,10 @@ public class QuizTeachMenu extends JInternalFrame {
                         .addComponent(QuizID2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Title2, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(QuizBy2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(QuizPanel2Layout.createSequentialGroup()
+                        .addComponent(QuizBy2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Status2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(Subject2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -224,7 +260,9 @@ public class QuizTeachMenu extends JInternalFrame {
                     .addComponent(Title2, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
                     .addComponent(QuizID2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(QuizBy2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(QuizPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(QuizBy2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Status2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Subject2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -255,6 +293,10 @@ public class QuizTeachMenu extends JInternalFrame {
         Title3.setText("Title of the Quiz");
         Title3.setOpaque(true);
 
+        Status3.setBackground(new java.awt.Color(230, 208, 112));
+        Status3.setText("Status");
+        Status3.setOpaque(true);
+
         javax.swing.GroupLayout QuizPanel3Layout = new javax.swing.GroupLayout(QuizPanel3);
         QuizPanel3.setLayout(QuizPanel3Layout);
         QuizPanel3Layout.setHorizontalGroup(
@@ -266,7 +308,10 @@ public class QuizTeachMenu extends JInternalFrame {
                         .addComponent(QuizID3, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Title3, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(QuizBy3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(QuizPanel3Layout.createSequentialGroup()
+                        .addComponent(QuizBy3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Status3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(Subject3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -278,7 +323,9 @@ public class QuizTeachMenu extends JInternalFrame {
                     .addComponent(Title3, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
                     .addComponent(QuizID3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(QuizBy3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(QuizPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(QuizBy3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Status3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Subject3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -309,6 +356,10 @@ public class QuizTeachMenu extends JInternalFrame {
         Title4.setText("Title of the Quiz");
         Title4.setOpaque(true);
 
+        Status4.setBackground(new java.awt.Color(230, 208, 112));
+        Status4.setText("Status");
+        Status4.setOpaque(true);
+
         javax.swing.GroupLayout QuizPanel4Layout = new javax.swing.GroupLayout(QuizPanel4);
         QuizPanel4.setLayout(QuizPanel4Layout);
         QuizPanel4Layout.setHorizontalGroup(
@@ -320,7 +371,10 @@ public class QuizTeachMenu extends JInternalFrame {
                         .addComponent(QuizID4, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Title4, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(QuizBy4, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(QuizPanel4Layout.createSequentialGroup()
+                        .addComponent(QuizBy4, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Status4, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(Subject4, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -332,7 +386,9 @@ public class QuizTeachMenu extends JInternalFrame {
                     .addComponent(Title4, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
                     .addComponent(QuizID4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(QuizBy4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(QuizPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(QuizBy4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Status4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Subject4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -695,6 +751,10 @@ public class QuizTeachMenu extends JInternalFrame {
     private javax.swing.JPanel QuizPanel2;
     private javax.swing.JPanel QuizPanel3;
     private javax.swing.JPanel QuizPanel4;
+    private javax.swing.JLabel Status1;
+    private javax.swing.JLabel Status2;
+    private javax.swing.JLabel Status3;
+    private javax.swing.JLabel Status4;
     private javax.swing.JLabel Subject1;
     private javax.swing.JLabel Subject2;
     private javax.swing.JLabel Subject3;
@@ -703,34 +763,10 @@ public class QuizTeachMenu extends JInternalFrame {
     private javax.swing.JLabel Title2;
     private javax.swing.JLabel Title3;
     private javax.swing.JLabel Title4;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JLabel logoLabel;
-    private javax.swing.JLabel logoLabel1;
-    private javax.swing.JLabel logoLabel2;
-    private javax.swing.JLabel logoLabel3;
-    private javax.swing.JLabel logoLabel4;
-    private javax.swing.JLabel logoLabel5;
     private javax.swing.JLabel logoLabel6;
     // End of variables declaration//GEN-END:variables
 }

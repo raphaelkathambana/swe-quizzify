@@ -111,7 +111,6 @@ public class QuizStudMenu extends JInternalFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        PreviousButton.setBackground(new java.awt.Color(230, 196, 70));
         PreviousButton.setText("Previous");
         PreviousButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -335,7 +334,6 @@ public class QuizStudMenu extends JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        NextButton.setBackground(new java.awt.Color(230, 196, 70));
         NextButton.setText("Next");
         NextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -343,7 +341,6 @@ public class QuizStudMenu extends JInternalFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(230, 196, 70));
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton1.setText("DO QUIZ!!");
 
@@ -594,7 +591,7 @@ public class QuizStudMenu extends JInternalFrame {
 
     private void NextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextButtonActionPerformed
 
-        int NumQuiz = O.num("SELECT COUNT(*) FROM `Quiz`");
+        int NumQuiz = O.num("SELECT COUNT(*) FROM `Quiz` WHERE `Complete` = 1");
         if (NumQuiz <= count){
             JOptionPane.showMessageDialog(this, "No more Quizes!");
         } 

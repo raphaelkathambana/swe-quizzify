@@ -440,8 +440,8 @@ public class Operation {
 
     public int[] quizIDEach() {
 
-        String query = "SELECT `Quiz_ID` from `Quiz` ORDER BY Quiz_ID ASC;";
-        String cQuery = "SELECT COUNT(*) FROM `Quiz`;";
+        String query = "SELECT `Quiz_ID` from `Quiz` WHERE `Complete` = 1 ORDER BY Quiz_ID ASC;";
+        String cQuery = "SELECT COUNT(*) FROM `Quiz`WHERE `Complete` = 1 ;";
 
         int[] quizIDs = new int[num(cQuery)];
         int count = 0;
@@ -515,7 +515,7 @@ public class Operation {
 
     public String[] quizTeachDetail(int num) {
 
-        String[] QuizDetail = new String[4];
+        String[] QuizDetail = new String[5];
         int NumQuiz = num("SELECT COUNT(*) FROM `Quiz` WHERE Teacher_ID = " + getCache("Teach")+ ";");
 
         if (NumQuiz <= num) {
@@ -523,6 +523,7 @@ public class Operation {
             QuizDetail[1] = ""; // SubjectID
             QuizDetail[2] = ""; // TeacherID
             QuizDetail[3] = ""; // Title
+            QuizDetail[4] = ""; // Complete
         } else {
             int[] quizCount = quizIDEach(getCache("Teach"));
 
@@ -535,14 +536,18 @@ public class Operation {
                 rs.next();
 
                 int QuizID = rs.getInt(1);
-                int SubjID = rs.getInt(3);
-                int TeachID = rs.getInt(4);
-                String Title = rs.getString(2);
+                int SubjID = rs.getInt(2);
+                int TeachID = rs.getInt(3);
+                String Title = rs.getString(4);
+                boolean Comp = rs.getBoolean(5);
 
                 QuizDetail[0] = String.valueOf(QuizID); // QuizID
                 QuizDetail[1] = getSubject(SubjID); // SubjectID
                 QuizDetail[2] = getTeacher(TeachID); // TeacherID
                 QuizDetail[3] = Title; // Title
+                QuizDetail[4] = String.valueOf(Comp);
+
+                System.out.println(QuizDetail[4]);
             } catch (SQLException e) {
                 System.out.println("Error " + e.getMessage());
             }
@@ -554,7 +559,7 @@ public class Operation {
     public String[] quizStudDetail(int num) {
 
         String[] QuizDetail = new String[4];
-        int NumQuiz = num("SELECT COUNT(*) FROM `Quiz`;");
+        int NumQuiz = num("SELECT COUNT(*) FROM `Quiz` WHERE `Complete` = 1;");
 
         if (NumQuiz <= num) {
             QuizDetail[0] = ""; // QuizID
@@ -564,7 +569,7 @@ public class Operation {
         } else {
             int[] QuizCount = quizIDEach();
 
-            String query = "SELECT * from `Quiz` WHERE Quiz_ID = " + QuizCount[num] + " ORDER BY Quiz_ID ASC;";
+            String query = "SELECT * from `Quiz` WHERE `Complete` = 1 AND Quiz_ID = " + QuizCount[num] + " ORDER BY Quiz_ID ASC;";
 
             try {
                 stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,

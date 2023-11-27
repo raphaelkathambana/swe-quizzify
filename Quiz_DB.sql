@@ -42,6 +42,7 @@ CREATE TABLE IF NOT EXISTS `Quiz` (
     `Title` varchar(200),
     `Subject_ID` int(4),
     `Teacher_ID` int(4),
+    `Complete` boolean,
     
     PRIMARY KEY (`Quiz_ID`),
     
@@ -52,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `Quiz` (
     CONSTRAINT FK_1
 	FOREIGN KEY (`Teacher_ID`)
 	REFERENCES `Teacher` (`Teacher_ID`)
-) AUTO_INCREMENT=0001;
+)AUTO_INCREMENT=0001;
 
 CREATE TABLE IF NOT EXISTS `Questions`(
 	`Quiz_ID` int(4) NOT NULL,
