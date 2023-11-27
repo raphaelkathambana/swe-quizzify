@@ -1,5 +1,6 @@
 package quizzify;
 
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -258,6 +259,8 @@ public class QuizCreationUI extends javax.swing.JFrame {
     private void btnNextQuestionActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnNextQuestionActionPerformed
         addQuestion();
     }// GEN-LAST:event_btnNextQuestionActionPerformed
+        private void questionTextFieldActionPerformed(ActionEvent evt) {
+            }
 
     /**
      * @param args the command line arguments

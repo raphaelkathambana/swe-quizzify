@@ -55,11 +55,7 @@ public class CreateQuiz extends javax.swing.JInternalFrame {
         setPreferredSize(new java.awt.Dimension(1100, 670));
 
         SubjectMenu.setModel(new javax.swing.DefaultComboBoxModel<>(getSubjects()));
-        SubjectMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SubjectMenuActionPerformed(evt);
-            }
-        });
+
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("What subject will you be adding to?");
